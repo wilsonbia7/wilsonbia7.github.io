@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alkanl&#305; Stok &#8212; Ki&#351;iye &#214;zel Stok Takip Sistemi</title>
-    <meta name="description" content="&#304;&#351;letmenize &#246;zel, profesyonel stok ve envanter takip yaz&#305;l&#305;m&#305;.">
+    <meta name="description" content="&#304;&#351;letmenize &#246;zel profesyonel stok ve envanter takip yaz&#305;l&#305;m&#305;.">
     <meta name="author" content="Kaan Alkanl&#305;">
     <meta property="og:title" content="Alkanl&#305; Stok &#8212; Ki&#351;iye &#214;zel Stok Takip Sistemi">
     <meta property="og:description" content="&#304;&#351;letmenize &#246;zel tasarlanan profesyonel stok takip yaz&#305;l&#305;m&#305;.">
@@ -13,175 +13,259 @@
     <meta name="theme-color" content="#050510">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#030308;--bg2:#06060f;--text:#b8b8cc;--text-dim:#484860;--text-bright:#e8e8f4;--accent:#7c5ce0;--accent2:#6941c6;--card-bg:rgba(255,255,255,0.015);--card-border:rgba(255,255,255,0.04);--card-hover-bg:rgba(255,255,255,0.04);--card-hover-border:rgba(124,92,224,0.2);--ease:cubic-bezier(0.16,1,0.3,1);--ease-s:cubic-bezier(0.4,0,0.2,1);--green:#34d399;--blue:#60a5fa;--orange:#fb923c;--red:#f87171}
+        :root{--bg:#030308;--bg2:#08081a;--bg3:#0c0c22;--text:#c0c0d8;--text-dim:#505068;--text-bright:#ececf8;--accent:#8b5cf6;--accent2:#7c3aed;--accent3:#6d28d9;--accent-glow:rgba(139,92,246,0.15);--card-bg:rgba(255,255,255,0.02);--card-border:rgba(255,255,255,0.05);--card-hover-bg:rgba(255,255,255,0.05);--card-hover-border:rgba(139,92,246,0.25);--glass:rgba(12,12,34,0.6);--ease:cubic-bezier(0.16,1,0.3,1);--ease-s:cubic-bezier(0.4,0,0.2,1);--green:#34d399;--blue:#60a5fa;--orange:#fb923c;--red:#f87171;--cyan:#22d3ee}
         html{scroll-behavior:smooth}
         body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-        ::selection{background:rgba(124,92,224,0.3);color:#fff}
-        ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(124,92,224,0.15);border-radius:4px}
-        .bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(124,92,224,0.06) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(59,130,246,0.03) 0%,transparent 50%),radial-gradient(ellipse 50% 40% at 10% 60%,rgba(168,85,247,0.03) 0%,transparent 50%)}
-        .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(124,92,224,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,224,0.02) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at 50% 0%,rgba(0,0,0,0.6) 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,rgba(0,0,0,0.6) 0%,transparent 70%)}
-        .bg-noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.015;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px}
-        #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
-        nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(3,3,8,0.6);backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid rgba(255,255,255,0.03);transition:all 0.4s var(--ease-s)}
-        nav.scrolled{background:rgba(3,3,8,0.85);box-shadow:0 4px 30px rgba(0,0,0,0.3)}
-        .nav-brand{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text-bright);text-decoration:none;letter-spacing:-0.3px;display:flex;align-items:center;gap:10px;transition:opacity 0.3s ease}
-        .nav-brand:hover{opacity:0.8}.nav-brand svg{width:20px;height:20px;color:var(--accent)}
-        .nav-links{display:flex;align-items:center;gap:6px}
-        .nav-link{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:400;color:var(--text-dim);text-decoration:none;padding:6px 14px;border-radius:8px;transition:all 0.3s ease;letter-spacing:0.3px}
-        .nav-link:hover{color:var(--text);background:rgba(255,255,255,0.03)}
-        .nav-cta{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;color:#fff;text-decoration:none;padding:7px 18px;border-radius:8px;background:var(--accent);transition:all 0.3s ease;margin-left:6px}
-        .nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
-        .hero{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:180px 40px 100px;text-align:center}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--accent);padding:8px 20px;border-radius:100px;border:1px solid rgba(124,92,224,0.15);background:rgba(124,92,224,0.04);margin-bottom:32px;opacity:0;animation:fadeIn 0.8s var(--ease) 0.1s forwards}
-        .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2.5s ease-in-out infinite}
-        @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 8px var(--green)}50%{opacity:0.4;box-shadow:0 0 2px var(--green)}}
-        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:700;letter-spacing:-3px;line-height:1.0;margin-bottom:24px;opacity:0;animation:fadeSlideUp 1s var(--ease) 0.2s forwards}
-        .hero h1 .line1{color:var(--text-bright);display:block}
-        .hero h1 .line2{display:block;background:linear-gradient(135deg,#c4b5fd 0%,#a78bfa 30%,#7c3aed 70%,#6d28d9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .hero-desc{font-size:17px;line-height:1.7;color:var(--text);max-width:520px;margin:0 auto 44px;font-weight:300;opacity:0;animation:fadeSlideUp 1s var(--ease) 0.35s forwards}
-        .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeSlideUp 1s var(--ease) 0.5s forwards}
-        .btn{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;text-decoration:none;transition:all 0.4s var(--ease);display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
-        .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 24px rgba(124,92,224,0.3),0 0 0 1px rgba(124,92,224,0.1)}
-        .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent 60%);opacity:0;transition:opacity 0.4s ease}
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,92,224,0.4)}
-        .btn-primary:hover::before{opacity:1}
-        .btn-outline{background:transparent;color:var(--text);border:1px solid var(--card-border);backdrop-filter:blur(8px)}
-        .btn-outline:hover{border-color:var(--card-hover-border);background:rgba(255,255,255,0.03);color:var(--text-bright);transform:translateY(-2px)}
+        ::selection{background:rgba(139,92,246,0.35);color:#fff}
+        ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(139,92,246,0.2);border-radius:10px}
+
+        /* BG */
+        .bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+        .orb{position:absolute;border-radius:50%;filter:blur(100px);animation:orbFloat 20s ease-in-out infinite}
+        .orb-1{width:600px;height:600px;background:rgba(139,92,246,0.07);top:-200px;left:-100px;animation-duration:25s}
+        .orb-2{width:500px;height:500px;background:rgba(59,130,246,0.05);bottom:-200px;right:-100px;animation-duration:30s;animation-delay:-5s}
+        .orb-3{width:400px;height:400px;background:rgba(168,85,247,0.04);top:40%;left:60%;animation-duration:22s;animation-delay:-10s}
+        @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-40px) scale(1.05)}50%{transform:translate(-20px,30px) scale(0.95)}75%{transform:translate(40px,20px) scale(1.02)}}
+        .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(139,92,246,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.018) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,0,0,0.5) 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,0,0,0.5) 0%,transparent 70%)}
+        #cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:opacity 0.3s ease;opacity:0}
+
+        /* NAV */
+        nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;padding:0 8px;height:52px;display:flex;align-items:center;gap:2px;background:var(--glass);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);border:1px solid rgba(255,255,255,0.06);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.4);transition:all 0.4s var(--ease-s)}
+        .nav-brand{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text-bright);text-decoration:none;letter-spacing:-0.3px;display:flex;align-items:center;gap:8px;padding:0 14px;transition:opacity 0.3s ease;white-space:nowrap}
+        .nav-brand:hover{opacity:0.8}.nav-brand svg{width:18px;height:18px;color:var(--accent)}
+        .nav-sep{width:1px;height:20px;background:rgba(255,255,255,0.06);margin:0 4px}
+        .nav-link{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:400;color:var(--text-dim);text-decoration:none;padding:6px 12px;border-radius:10px;transition:all 0.25s ease}
+        .nav-link:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+        .nav-cta{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;color:#fff;text-decoration:none;padding:7px 16px;border-radius:10px;background:var(--accent);transition:all 0.25s ease;white-space:nowrap}
+        .nav-cta:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 4px 12px rgba(139,92,246,0.3)}
+
+        /* HERO */
+        .hero{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:200px 48px 120px;text-align:center}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent);padding:8px 22px;border-radius:100px;border:1px solid rgba(139,92,246,0.12);background:rgba(139,92,246,0.04);margin-bottom:36px;opacity:0;animation:fadeIn 0.8s var(--ease) 0.2s forwards}
+        .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(52,211,153,0.5);animation:blink 2s ease-in-out infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,7.5vw,80px);font-weight:700;letter-spacing:-3.5px;line-height:0.95;margin-bottom:28px;opacity:0;animation:heroIn 1.2s var(--ease) 0.3s forwards}
+        .hero h1 .l1{color:var(--text-bright);display:block;margin-bottom:4px}
+        .hero h1 .l2{display:block;background:linear-gradient(135deg,#e0e7ff 0%,#c4b5fd 25%,#a78bfa 50%,#7c3aed 75%,#5b21b6 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 6s ease-in-out infinite}
+        @keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+        @keyframes heroIn{from{opacity:0;transform:translateY(40px) scale(0.97);filter:blur(10px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+        .hero-desc{font-size:18px;line-height:1.7;color:var(--text);max-width:500px;margin:0 auto 48px;font-weight:300;opacity:0;animation:fadeUp 1s var(--ease) 0.5s forwards}
+        .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) 0.65s forwards}
+
+        .btn{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;padding:15px 34px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;transition:all 0.4s var(--ease);display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
+        .btn-p{background:var(--accent);color:#fff;box-shadow:0 0 0 1px rgba(139,92,246,0.3),0 6px 24px rgba(139,92,246,0.25)}
+        .btn-p::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%);opacity:0;transition:opacity 0.3s}
+        .btn-p:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(139,92,246,0.4),0 12px 36px rgba(139,92,246,0.35)}
+        .btn-p:hover::after{opacity:1}
+        .btn-o{background:var(--glass);color:var(--text);border:1px solid var(--card-border);backdrop-filter:blur(12px)}
+        .btn-o:hover{border-color:var(--card-hover-border);color:var(--text-bright);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
         .btn svg{width:16px;height:16px}
-        .mockup-wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:0 40px 100px;opacity:0;animation:fadeSlideUp 1.2s var(--ease) 0.7s forwards}
-        .mockup-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,224,0.08),transparent 70%);filter:blur(60px);pointer-events:none}
-        .mockup{position:relative;border-radius:20px;border:1px solid rgba(255,255,255,0.06);background:var(--bg2);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.03)}
-        .mockup-bar{display:flex;align-items:center;gap:6px;padding:14px 18px;background:rgba(255,255,255,0.01);border-bottom:1px solid rgba(255,255,255,0.04)}
-        .mockup-dot{width:10px;height:10px;border-radius:50%}.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
-        .mockup-toolbar{margin-left:16px;flex:1;display:flex;align-items:center;gap:8px}
-        .mockup-tab{font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:500;color:var(--text-dim);padding:4px 12px;border-radius:6px}
-        .mockup-tab.active{color:var(--text-bright);background:rgba(255,255,255,0.04)}
-        .mockup-body{padding:20px}
-        .mockup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
-        .m-stat{padding:16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);transition:all 0.3s ease}
-        .m-stat:hover{background:rgba(255,255,255,0.035)}
-        .m-stat-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
-        .m-stat-value{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;letter-spacing:-1px}
-        .m-stat-change{font-size:10px;margin-top:4px;font-weight:500}
-        .green{color:var(--green)}.blue{color:var(--blue)}.orange{color:var(--orange)}.red{color:var(--red)}
-        .m-table{width:100%;border-collapse:collapse}
-        .m-table th{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);text-align:left;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.04);font-weight:500}
-        .m-table td{font-size:12.5px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.02);color:var(--text)}
-        .m-table tr:last-child td{border-bottom:none}.m-table tbody tr{transition:background 0.2s ease}.m-table tbody tr:hover{background:rgba(255,255,255,0.015)}
-        .badge-s{font-size:10px;font-weight:600;padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:4px}
-        .badge-s::before{content:'';width:5px;height:5px;border-radius:50%}
-        .badge-s.ok{background:rgba(52,211,153,0.08);color:var(--green)}.badge-s.ok::before{background:var(--green)}
-        .badge-s.low{background:rgba(251,146,60,0.08);color:var(--orange)}.badge-s.low::before{background:var(--orange)}
-        .badge-s.out{background:rgba(248,113,113,0.08);color:var(--red)}.badge-s.out::before{background:var(--red)}
-        .sec{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:80px 40px}
-        .sec-header{text-align:center;margin-bottom:56px}
-        .sec-tag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:4px;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px}
-        .sec-tag::before,.sec-tag::after{content:'';width:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(124,92,224,0.3))}
-        .sec-tag::after{background:linear-gradient(90deg,rgba(124,92,224,0.3),transparent)}
-        .sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-1.8px;color:var(--text-bright);margin-bottom:14px}
-        .sec-desc{font-size:15px;color:var(--text-dim);max-width:480px;margin:0 auto;line-height:1.6}
-        .f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-        .f-card{padding:28px 24px;border-radius:16px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.5s var(--ease);position:relative;overflow:hidden}
-        .f-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(124,92,224,0),transparent);transition:background 0.5s ease}
-        .f-card:hover{background:var(--card-hover-bg);border-color:var(--card-hover-border);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
-        .f-card:hover::before{background:linear-gradient(90deg,transparent,rgba(124,92,224,0.3),transparent)}
-        .f-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:rgba(124,92,224,0.06);border:1px solid rgba(124,92,224,0.08);transition:all 0.4s ease}
-        .f-card:hover .f-icon{background:rgba(124,92,224,0.1);transform:scale(1.05)}
-        .f-icon svg{width:18px;height:18px;color:var(--accent)}
-        .f-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text-bright);margin-bottom:8px}
-        .f-desc{font-size:13px;line-height:1.65;color:var(--text-dim)}
-        .s-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-        .s-card{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:14px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.4s var(--ease);cursor:default}
-        .s-card:hover{background:var(--card-hover-bg);border-color:var(--card-hover-border);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
-        .s-emoji{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);border-radius:12px;flex-shrink:0;transition:transform 0.3s ease}
-        .s-card:hover .s-emoji{transform:scale(1.1)}
-        .s-name{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:500;color:var(--text)}
-        .s-sub{font-size:11px;color:var(--text-dim);margin-top:2px}
-        .p-card{max-width:440px;margin:0 auto;padding:40px;border-radius:20px;border:1px solid var(--card-hover-border);background:linear-gradient(180deg,rgba(124,92,224,0.03) 0%,rgba(3,3,8,0.5) 100%);text-align:center;position:relative;overflow:hidden}
-        .p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 10%,rgba(124,92,224,0.5) 50%,transparent 90%)}
-        .p-card::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(124,92,224,0.02) 60deg,transparent 120deg);animation:pRotate 15s linear infinite;pointer-events:none}
-        @keyframes pRotate{to{transform:rotate(360deg)}}
-        .p-label,.p-title,.p-desc,.p-list,.p-list+a{position:relative;z-index:1}
-        .p-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:10px}
-        .p-title{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--text-bright);letter-spacing:-0.5px;margin-bottom:12px}
-        .p-desc{font-size:13.5px;color:var(--text-dim);line-height:1.6;margin-bottom:28px}
-        .p-list{list-style:none;text-align:left;margin-bottom:32px}
-        .p-list li{font-size:13px;color:var(--text);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.025);display:flex;align-items:center;gap:12px}
+
+        /* STATS BAR */
+        .stats-bar{position:relative;z-index:1;max-width:900px;margin:-40px auto 0;padding:0 48px}
+        .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+        .stat-item{padding:24px 20px;text-align:center;border-radius:16px;transition:background 0.3s ease}
+        .stat-item:hover{background:rgba(255,255,255,0.03)}
+        .stat-number{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;letter-spacing:-1.5px;margin-bottom:4px}
+        .stat-number .counter{display:inline}
+        .stat-label{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.5px;font-weight:500}
+
+        /* MOCKUP */
+        .mockup-wrap{position:relative;z-index:1;max-width:900px;margin:80px auto 0;padding:0 48px}
+        .mockup-border{padding:1px;border-radius:22px;background:linear-gradient(135deg,rgba(139,92,246,0.3),rgba(59,130,246,0.1),rgba(139,92,246,0.05),rgba(168,85,247,0.2));animation:borderRotate 8s linear infinite;background-size:300% 300%}
+        @keyframes borderRotate{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        .mockup{border-radius:21px;background:var(--bg2);overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.04)}
+        .mk-bar{display:flex;align-items:center;gap:6px;padding:14px 20px;background:rgba(255,255,255,0.01);border-bottom:1px solid rgba(255,255,255,0.04)}
+        .mk-dot{width:10px;height:10px;border-radius:50%}.mk-r{background:#ff5f57}.mk-y{background:#febc2e}.mk-g{background:#28c840}
+        .mk-tabs{margin-left:20px;display:flex;gap:2px}
+        .mk-tab{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:var(--text-dim);padding:4px 14px;border-radius:8px;transition:all 0.2s}
+        .mk-tab.on{color:var(--text-bright);background:rgba(255,255,255,0.05)}
+        .mk-body{padding:24px}
+        .mk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+        .mk-stat{padding:18px;border-radius:14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);transition:all 0.3s ease;position:relative;overflow:hidden}
+        .mk-stat:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.06)}
+        .mk-stat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;border-radius:0 0 14px 14px}
+        .mk-stat:nth-child(1)::after{background:linear-gradient(90deg,var(--green),transparent)}
+        .mk-stat:nth-child(2)::after{background:linear-gradient(90deg,var(--blue),transparent)}
+        .mk-stat:nth-child(3)::after{background:linear-gradient(90deg,var(--orange),transparent)}
+        .mk-sl{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;font-weight:500}
+        .mk-sv{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-1px}
+        .mk-sc{font-size:10px;margin-top:6px;font-weight:500;display:flex;align-items:center;gap:4px}
+        .green{color:var(--green)}.blue{color:var(--blue)}.orange{color:var(--orange)}.red{color:var(--red)}.cyan{color:var(--cyan)}
+        .mk-table{width:100%;border-collapse:separate;border-spacing:0 2px}
+        .mk-table th{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);text-align:left;padding:10px 16px;font-weight:500}
+        .mk-table td{font-size:13px;padding:14px 16px;color:var(--text);background:rgba(255,255,255,0.01);transition:background 0.2s}
+        .mk-table tr td:first-child{border-radius:10px 0 0 10px;font-weight:500;color:var(--text-bright)}
+        .mk-table tr td:last-child{border-radius:0 10px 10px 0}
+        .mk-table tbody tr:hover td{background:rgba(255,255,255,0.03)}
+        .sb{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;padding:4px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:5px;letter-spacing:0.5px;text-transform:uppercase}
+        .sb::before{content:'';width:5px;height:5px;border-radius:50%}
+        .sb.ok{background:rgba(52,211,153,0.06);color:var(--green);border:1px solid rgba(52,211,153,0.1)}.sb.ok::before{background:var(--green)}
+        .sb.low{background:rgba(251,146,60,0.06);color:var(--orange);border:1px solid rgba(251,146,60,0.1)}.sb.low::before{background:var(--orange)}
+        .sb.out{background:rgba(248,113,113,0.06);color:var(--red);border:1px solid rgba(248,113,113,0.1)}.sb.out::before{background:var(--red)}
+
+        /* SECTIONS */
+        .sec{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 48px}
+        .sec-header{text-align:center;margin-bottom:64px}
+        .sec-tag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:14px}
+        .sec-tag::before,.sec-tag::after{content:'';width:32px;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.4))}
+        .sec-tag::after{background:linear-gradient(90deg,rgba(139,92,246,0.4),transparent)}
+        .sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,4.5vw,48px);font-weight:700;letter-spacing:-2px;color:var(--text-bright);margin-bottom:16px;line-height:1.1}
+        .sec-desc{font-size:16px;color:var(--text-dim);max-width:460px;margin:0 auto;line-height:1.65}
+
+        /* HOW IT WORKS */
+        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+        .steps::before{content:'';position:absolute;top:44px;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.15) 20%,rgba(139,92,246,0.15) 80%,transparent);z-index:0}
+        .step{text-align:center;position:relative;z-index:1}
+        .step-num{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--accent);background:var(--bg);border:1px solid rgba(139,92,246,0.15);box-shadow:0 0 24px rgba(139,92,246,0.08);transition:all 0.4s ease}
+        .step:hover .step-num{border-color:rgba(139,92,246,0.3);box-shadow:0 0 32px rgba(139,92,246,0.15);transform:scale(1.05)}
+        .step-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text-bright);margin-bottom:8px}
+        .step-desc{font-size:13px;color:var(--text-dim);line-height:1.6;max-width:240px;margin:0 auto}
+
+        /* FEATURES */
+        .f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .f-card{padding:32px 28px;border-radius:18px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.5s var(--ease);position:relative;overflow:hidden}
+        .f-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,transparent);transition:background 0.5s ease}
+        .f-card:hover{background:var(--card-hover-bg);border-color:var(--card-hover-border);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.25),0 0 0 1px rgba(139,92,246,0.1)}
+        .f-card:hover::before{background:linear-gradient(90deg,transparent,rgba(139,92,246,0.35),transparent)}
+        .f-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.08);transition:all 0.4s ease}
+        .f-card:hover .f-icon{background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.2);transform:scale(1.08) rotate(-2deg)}
+        .f-icon svg{width:20px;height:20px;color:var(--accent)}
+        .f-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text-bright);margin-bottom:10px}
+        .f-desc{font-size:13.5px;line-height:1.65;color:var(--text-dim)}
+
+        /* SECTORS MARQUEE */
+        .marquee-wrap{position:relative;z-index:1;overflow:hidden;padding:40px 0;margin:0 -48px}
+        .marquee-track{display:flex;gap:16px;animation:marquee 40s linear infinite;width:max-content}
+        .marquee-track:hover{animation-play-state:paused}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .m-card{display:flex;align-items:center;gap:14px;padding:18px 24px;border-radius:16px;border:1px solid var(--card-border);background:var(--card-bg);backdrop-filter:blur(8px);white-space:nowrap;transition:all 0.3s ease;flex-shrink:0}
+        .m-card:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg)}
+        .m-emoji{font-size:26px}
+        .m-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;color:var(--text)}
+        .m-sub{font-size:11px;color:var(--text-dim);margin-top:2px}
+
+        /* PRICING */
+        .p-card{max-width:460px;margin:0 auto;padding:44px;border-radius:24px;border:1px solid rgba(139,92,246,0.2);background:linear-gradient(180deg,rgba(139,92,246,0.04) 0%,rgba(3,3,8,0.8) 100%);text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+        .p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,rgba(139,92,246,0.6) 50%,transparent 95%)}
+        .p-card::after{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(139,92,246,0.015) 60deg,transparent 120deg);animation:pR 20s linear infinite;pointer-events:none}
+        @keyframes pR{to{transform:rotate(360deg)}}
+        .p-l,.p-t,.p-d,.p-list,.p-list+a{position:relative;z-index:1}
+        .p-l{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:12px}
+        .p-t{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--text-bright);letter-spacing:-0.5px;margin-bottom:14px}
+        .p-d{font-size:14px;color:var(--text-dim);line-height:1.65;margin-bottom:32px}
+        .p-list{list-style:none;text-align:left;margin-bottom:36px}
+        .p-list li{font-size:13.5px;color:var(--text);padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:14px}
         .p-list li:last-child{border-bottom:none}
-        .p-check{width:18px;height:18px;border-radius:50%;background:rgba(52,211,153,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .p-check svg{width:10px;height:10px;color:var(--green)}
-        .cta-section{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:60px 40px 100px;text-align:center}
-        .cta-box{padding:48px 40px;border-radius:20px;border:1px solid var(--card-border);background:var(--card-bg);position:relative;overflow:hidden}
-        .cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(124,92,224,0.04),transparent 60%);pointer-events:none}
-        .cta-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3.5vw,30px);font-weight:700;letter-spacing:-1px;color:var(--text-bright);margin-bottom:12px;position:relative}
-        .cta-desc{font-size:14px;color:var(--text-dim);margin-bottom:28px;line-height:1.6;position:relative}
-        .cta-contacts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative}
-        .cta-link{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;padding:11px 20px;border-radius:10px;border:1px solid var(--card-border);background:rgba(255,255,255,0.01);transition:all 0.4s var(--ease)}
-        .cta-link:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg);color:var(--text-bright);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
-        .cta-link svg{width:14px;height:14px;color:var(--text-dim)}
-        footer{position:relative;z-index:1;text-align:center;padding:20px 40px;border-top:1px solid rgba(255,255,255,0.025);font-size:11px;color:#1e1e30;font-weight:300;letter-spacing:0.6px}
-        footer a{color:#2e2e45;text-decoration:none;transition:color 0.3s ease}footer a:hover{color:var(--text-dim)}
-        .sec-divider{max-width:1000px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
-        .sec-divider hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(124,92,224,0.1),transparent)}
+        .p-ck{width:20px;height:20px;border-radius:8px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .p-ck svg{width:11px;height:11px;color:var(--green)}
+
+        /* CTA */
+        .cta-sec{position:relative;z-index:1;max-width:750px;margin:0 auto;padding:0 48px 120px;text-align:center}
+        .cta-box{padding:56px 48px;border-radius:24px;border:1px solid var(--card-border);background:var(--card-bg);position:relative;overflow:hidden;backdrop-filter:blur(8px)}
+        .cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(139,92,246,0.05),transparent 60%);pointer-events:none}
+        .cta-t{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,4vw,34px);font-weight:700;letter-spacing:-1.2px;color:var(--text-bright);margin-bottom:14px;position:relative}
+        .cta-d{font-size:15px;color:var(--text-dim);margin-bottom:32px;line-height:1.65;position:relative}
+        .cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative}
+        .cta-a{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--text);text-decoration:none;padding:12px 22px;border-radius:12px;border:1px solid var(--card-border);background:rgba(255,255,255,0.01);transition:all 0.4s var(--ease);backdrop-filter:blur(8px)}
+        .cta-a:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg);color:var(--text-bright);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+        .cta-a svg{width:14px;height:14px;color:var(--text-dim)}
+
+        footer{position:relative;z-index:1;text-align:center;padding:24px 48px;border-top:1px solid rgba(255,255,255,0.025);font-size:11px;color:#1e1e30;font-weight:300;letter-spacing:0.6px}
+        footer a{color:#2e2e45;text-decoration:none;transition:color 0.3s}footer a:hover{color:var(--text-dim)}
+
+        .divider{max-width:1100px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
+        .divider hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.08),transparent)}
+
         @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-        @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-        .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.9s var(--ease),transform 0.9s var(--ease),filter 0.9s var(--ease);filter:blur(6px)}
-        .reveal.visible{opacity:1;transform:translateY(0);filter:blur(0)}
-        .reveal-child > *{opacity:0;transform:translateY(20px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
-        .reveal-child.visible > *{opacity:1;transform:translateY(0)}
-        .reveal-child.visible > *:nth-child(1){transition-delay:0s}.reveal-child.visible > *:nth-child(2){transition-delay:0.06s}.reveal-child.visible > *:nth-child(3){transition-delay:0.12s}.reveal-child.visible > *:nth-child(4){transition-delay:0.18s}.reveal-child.visible > *:nth-child(5){transition-delay:0.24s}.reveal-child.visible > *:nth-child(6){transition-delay:0.3s}.reveal-child.visible > *:nth-child(7){transition-delay:0.36s}.reveal-child.visible > *:nth-child(8){transition-delay:0.42s}
-        @media(max-width:768px){nav{padding:0 20px}.hero{padding:140px 24px 60px}.mockup-wrap,.sec,.cta-section{padding-left:20px;padding-right:20px}.mockup-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.s-grid{grid-template-columns:repeat(2,1fr)}.nav-link{display:none}.mockup-toolbar{display:none}}
-        @media(max-width:480px){.hero h1{letter-spacing:-1.5px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.s-grid{grid-template-columns:1fr}.m-table th:nth-child(3),.m-table td:nth-child(3){display:none}.cta-contacts{flex-direction:column;align-items:stretch}.cta-link{justify-content:center}.p-card{padding:28px 20px}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(30px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+        .reveal{opacity:0;transform:translateY(50px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);filter:blur(8px)}
+        .reveal.vis{opacity:1;transform:translateY(0);filter:blur(0)}
+        .rc > *{opacity:0;transform:translateY(24px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
+        .rc.vis > *{opacity:1;transform:translateY(0)}
+        .rc.vis > *:nth-child(1){transition-delay:0s}.rc.vis > *:nth-child(2){transition-delay:0.07s}.rc.vis > *:nth-child(3){transition-delay:0.14s}.rc.vis > *:nth-child(4){transition-delay:0.21s}.rc.vis > *:nth-child(5){transition-delay:0.28s}.rc.vis > *:nth-child(6){transition-delay:0.35s}
+
+        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.hero{padding:160px 24px 80px}.stats-bar,.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.stats-inner{grid-template-columns:repeat(2,1fr)}.mk-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:32px}.steps::before{display:none}.nav-link{display:none}.mk-tabs{display:none}.stat-number{font-size:26px}}
+        @media(max-width:480px){.hero h1{letter-spacing:-2px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.mk-table th:nth-child(3),.mk-table td:nth-child(3){display:none}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:28px 20px}.stats-inner{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
-    <div class="bg-mesh" aria-hidden="true"></div>
+    <div class="bg-orbs" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
     <div class="bg-grid" aria-hidden="true"></div>
-    <div class="bg-noise" aria-hidden="true"></div>
-    <canvas id="particles" aria-hidden="true"></canvas>
-    <nav id="nav">
-        <a href="./" class="nav-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4"/><path d="M2 12h20"/></svg> Alkanl&#305; Stok</a>
-        <div class="nav-links"><a href="#ozellikler" class="nav-link">&#214;zellikler</a><a href="#sektorler" class="nav-link">Sekt&#246;rler</a><a href="#fiyat" class="nav-link">Fiyat</a><a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok" class="nav-cta">&#304;leti&#351;im</a></div>
+    <div id="cursor-glow"></div>
+
+    <nav>
+        <a href="./" class="nav-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4"/><path d="M2 12h20"/></svg>Alkanl&#305; Stok</a>
+        <div class="nav-sep"></div>
+        <a href="#ozellikler" class="nav-link">&#214;zellikler</a>
+        <a href="#sektorler" class="nav-link">Sekt&#246;rler</a>
+        <a href="#fiyat" class="nav-link">Fiyat</a>
+        <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok" class="nav-cta">&#304;leti&#351;im</a>
     </nav>
+
     <section class="hero">
         <div class="hero-badge"><span class="hero-badge-dot"></span> Sipari&#351; Al&#305;nmaktad&#305;r</div>
-        <h1><span class="line1">Her Sekt&#246;re Uygun</span><span class="line2">Stok Takip Sistemi</span></h1>
-        <p class="hero-desc">&#304;&#351;letmenize &#246;zel tasarlanan profesyonel envanter ve stok y&#246;netim yaz&#305;l&#305;m&#305;. Hangi sekt&#246;rde olursan&#305;z olun, size &#246;zel yap&#305;land&#305;r&#305;yoruz.</p>
+        <h1><span class="l1">Her Sekt&#246;re Uygun</span><span class="l2">Stok Takip Sistemi</span></h1>
+        <p class="hero-desc">&#304;&#351;letmenize &#246;zel tasarlanan profesyonel envanter ve stok y&#246;netim yaz&#305;l&#305;m&#305;. Size &#246;zel yap&#305;land&#305;r&#305;yoruz.</p>
         <div class="hero-actions">
-            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20%E2%80%94%20Bilgi" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg> &#304;leti&#351;ime Ge&#231;</a>
-            <a href="#ozellikler" class="btn btn-outline">Ke&#351;fet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
+            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20Bilgi" class="btn btn-p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>&#304;leti&#351;ime Ge&#231;</a>
+            <a href="#nasil" class="btn btn-o">Nas&#305;l &#199;al&#305;&#351;&#305;r? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
         </div>
     </section>
-    <section class="mockup-wrap">
-        <div class="mockup-glow"></div>
-        <div class="mockup">
-            <div class="mockup-bar"><div class="mockup-dot dot-r"></div><div class="mockup-dot dot-y"></div><div class="mockup-dot dot-g"></div><div class="mockup-toolbar"><span class="mockup-tab active">Stok Durumu</span><span class="mockup-tab">Hareketler</span><span class="mockup-tab">Raporlar</span></div></div>
-            <div class="mockup-body">
-                <div class="mockup-grid">
-                    <div class="m-stat"><div class="m-stat-label">Toplam &#220;r&#252;n</div><div class="m-stat-value green">842</div><div class="m-stat-change green">&#9650; 12 bu hafta</div></div>
-                    <div class="m-stat"><div class="m-stat-label">Stokta</div><div class="m-stat-value blue">756</div><div class="m-stat-change blue">%89.8 doluluk</div></div>
-                    <div class="m-stat"><div class="m-stat-label">Kritik Seviye</div><div class="m-stat-value orange">14</div><div class="m-stat-change red">&#9660; Sipari&#351; gerekli</div></div>
+
+    <section class="stats-bar reveal">
+        <div class="stats-inner">
+            <div class="stat-item"><div class="stat-number cyan"><span class="counter" data-target="500">0</span>+</div><div class="stat-label">Aktif Kullan&#305;c&#305;</div></div>
+            <div class="stat-item"><div class="stat-number green"><span class="counter" data-target="50000">0</span>+</div><div class="stat-label">Takip Edilen &#220;r&#252;n</div></div>
+            <div class="stat-item"><div class="stat-number orange"><span class="counter" data-target="15">0</span>+</div><div class="stat-label">Farkl&#305; Sekt&#246;r</div></div>
+            <div class="stat-item"><div class="stat-number blue"><span class="counter" data-target="99">0</span>%</div><div class="stat-label">M&#252;&#351;teri Memnuniyeti</div></div>
+        </div>
+    </section>
+
+    <section class="mockup-wrap reveal">
+        <div class="mockup-border">
+            <div class="mockup">
+                <div class="mk-bar"><div class="mk-dot mk-r"></div><div class="mk-dot mk-y"></div><div class="mk-dot mk-g"></div><div class="mk-tabs"><span class="mk-tab on">Stok Durumu</span><span class="mk-tab">Hareketler</span><span class="mk-tab">Raporlar</span></div></div>
+                <div class="mk-body">
+                    <div class="mk-grid">
+                        <div class="mk-stat"><div class="mk-sl">Toplam &#220;r&#252;n</div><div class="mk-sv green">842</div><div class="mk-sc green">&#9650; 12 bu hafta</div></div>
+                        <div class="mk-stat"><div class="mk-sl">Stokta</div><div class="mk-sv blue">756</div><div class="mk-sc blue">%89.8 doluluk</div></div>
+                        <div class="mk-stat"><div class="mk-sl">Kritik Seviye</div><div class="mk-sv orange">14</div><div class="mk-sc red">&#9660; Sipari&#351; gerekli</div></div>
+                    </div>
+                    <table class="mk-table">
+                        <thead><tr><th>&#220;r&#252;n</th><th>Kategori</th><th>Miktar</th><th>Durum</th></tr></thead>
+                        <tbody>
+                            <tr><td>&#199;ift Ki&#351;ilik Baza</td><td>Yatak &amp; Baza</td><td>32</td><td><span class="sb ok">Stokta</span></td></tr>
+                            <tr><td>Ortopedik Yatak 160x200</td><td>Yatak</td><td>18</td><td><span class="sb ok">Stokta</span></td></tr>
+                            <tr><td>3+1 K&#246;&#351;e Koltuk Tak&#305;m&#305;</td><td>Koltuk</td><td>4</td><td><span class="sb low">Az</span></td></tr>
+                            <tr><td>Yemek Masas&#305; 6 Ki&#351;ilik</td><td>Masa</td><td>0</td><td><span class="sb out">T&#252;kendi</span></td></tr>
+                            <tr><td>TV &#220;nitesi 180cm</td><td>&#220;nite</td><td>11</td><td><span class="sb ok">Stokta</span></td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="m-table">
-                    <thead><tr><th>&#220;r&#252;n</th><th>Kategori</th><th>Miktar</th><th>Durum</th></tr></thead>
-                    <tbody>
-                        <tr><td>&#199;ift Ki&#351;ilik Baza</td><td>Yatak &amp; Baza</td><td>32</td><td><span class="badge-s ok">Stokta</span></td></tr>
-                        <tr><td>Ortopedik Yatak 160x200</td><td>Yatak</td><td>18</td><td><span class="badge-s ok">Stokta</span></td></tr>
-                        <tr><td>3+1 K&#246;&#351;e Koltuk Tak&#305;m&#305;</td><td>Koltuk</td><td>4</td><td><span class="badge-s low">Az</span></td></tr>
-                        <tr><td>Yemek Masas&#305; 6 Ki&#351;ilik</td><td>Masa</td><td>0</td><td><span class="badge-s out">T&#252;kendi</span></td></tr>
-                        <tr><td>TV &#220;nitesi 180cm</td><td>&#220;nite</td><td>11</td><td><span class="badge-s ok">Stokta</span></td></tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </section>
-    <div class="sec-divider"><hr></div>
+
+    <div class="divider" style="margin-top:120px"><hr></div>
+
+    <section class="sec reveal" id="nasil">
+        <div class="sec-header"><div class="sec-tag">Nas&#305;l &#199;al&#305;&#351;&#305;r?</div><h2 class="sec-title">3 Ad&#305;mda Ba&#351;lay&#305;n</h2><p class="sec-desc">Basit, h&#305;zl&#305; ve sorunsuz.</p></div>
+        <div class="steps rc">
+            <div class="step"><div class="step-num">1</div><div class="step-title">&#304;leti&#351;ime Ge&#231;in</div><div class="step-desc">Sekt&#246;r&#252;n&#252;z&#252; ve ihtiya&#231;lar&#305;n&#305;z&#305; bize iletin. Birlikte analiz edelim.</div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-title">Size &#214;zel Tasarlan&#305;r</div><div class="step-desc">Yaz&#305;l&#305;m&#305; sekt&#246;r&#252;n&#252;ze ve i&#351; ak&#305;&#351;&#305;n&#305;za g&#246;re &#246;zelle&#351;tiriyoruz.</div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-title">Kullanmaya Ba&#351;lay&#305;n</div><div class="step-desc">Kurulum ve e&#287;itim deste&#287;i ile hemen kullanmaya ba&#351;lay&#305;n.</div></div>
+        </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
     <section class="sec reveal" id="ozellikler">
         <div class="sec-header"><div class="sec-tag">&#214;zellikler</div><h2 class="sec-title">&#304;&#351;letmeniz &#304;&#231;in Her &#350;ey</h2><p class="sec-desc">Stok y&#246;netiminizi kolayla&#351;t&#305;ran, i&#351;inizi h&#305;zland&#305;ran &#246;zellikler.</p></div>
-        <div class="f-grid reveal-child">
+        <div class="f-grid rc">
             <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><div class="f-title">Ki&#351;iye &#214;zel Yap&#305;land&#305;rma</div><div class="f-desc">Sekt&#246;r&#252;n&#252;ze &#246;zel &#252;r&#252;n kategorileri, alanlar ve i&#351; ak&#305;&#351;lar&#305; ile tam uyum.</div></div>
             <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div><div class="f-title">Stok Alarmlar&#305;</div><div class="f-desc">Kritik seviyeye d&#252;&#351;en &#252;r&#252;nler i&#231;in anl&#305;k uyar&#305;lar. &#220;r&#252;n t&#252;kenmeden &#246;nlem al&#305;n.</div></div>
             <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="f-title">Masa&#252;st&#252; Uygulamas&#305;</div><div class="f-desc">Windows&#8217;ta &#231;al&#305;&#351;an h&#305;zl&#305; uygulama. &#304;nternet ba&#287;lant&#305;s&#305; gerekmez.</div></div>
@@ -190,55 +274,89 @@
             <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="f-title">Y&#252;ksek Performans</div><div class="f-desc">Hafif ve optimize altyap&#305;. Binlerce &#252;r&#252;nle bile h&#305;zl&#305; &#231;al&#305;&#351;&#305;r.</div></div>
         </div>
     </section>
-    <div class="sec-divider"><hr></div>
+
+    <div class="divider"><hr></div>
+
     <section class="sec reveal" id="sektorler">
         <div class="sec-header"><div class="sec-tag">Sekt&#246;rler</div><h2 class="sec-title">Her &#304;&#351;letmeye Uygun</h2><p class="sec-desc">Farkl&#305; sekt&#246;rlerin ihtiya&#231;lar&#305;na g&#246;re &#246;zelle&#351;tiriyoruz.</p></div>
-        <div class="s-grid reveal-child">
-            <div class="s-card"><div class="s-emoji">&#128241;</div><div><div class="s-name">Telefon &amp; Par&#231;a</div><div class="s-sub">Ekran, batarya, aksesuar</div></div></div>
-            <div class="s-card"><div class="s-emoji">&#128722;</div><div><div class="s-name">Market &amp; Bakkal</div><div class="s-sub">G&#305;da, i&#231;ecek, temizlik</div></div></div>
-            <div class="s-card"><div class="s-emoji">&#128715;</div><div><div class="s-name">Mobilya</div><div class="s-sub">Yatak, koltuk, masa</div></div></div>
-            <div class="s-card"><div class="s-emoji">&#128295;</div><div><div class="s-name">H&#305;rdavat</div><div class="s-sub">Alet, vida, boya</div></div></div>
-            <div class="s-card"><div class="s-emoji">&#128090;</div><div><div class="s-name">Giyim &amp; Tekstil</div><div class="s-sub">K&#305;yafet, ayakkab&#305;</div></div></div>
-            <div class="s-card"><div class="s-emoji">&#128187;</div><div><div class="s-name">Elektronik</div><div class="s-sub">Bilgisayar, tablet</div></div></div>
-            <div class="s-card"><div class="s-emoji">&#128138;</div><div><div class="s-name">Eczane &amp; Medikal</div><div class="s-sub">&#304;la&#231;, malzeme</div></div></div>
-            <div class="s-card"><div class="s-emoji">&#9881;&#65039;</div><div><div class="s-name">Di&#287;er Sekt&#246;rler</div><div class="s-sub">Size &#246;zel &#231;&#246;z&#252;m</div></div></div>
-        </div>
-    </section>
-    <div class="sec-divider"><hr></div>
-    <section class="sec reveal" id="fiyat">
-        <div class="sec-header"><div class="sec-tag">Fiyatland&#305;rma</div><h2 class="sec-title">&#304;&#351;letmenize &#214;zel Teklif</h2></div>
-        <div class="p-card">
-            <div class="p-label">Ki&#351;iye &#214;zel</div>
-            <div class="p-title">&#304;&#351;letmenize &#214;zel Fiyat</div>
-            <div class="p-desc">Her i&#351;letmenin ihtiyac&#305; farkl&#305;d&#305;r. Sekt&#246;r&#252;n&#252;ze g&#246;re &#246;zel fiyat teklifi haz&#305;rl&#305;yoruz.</div>
-            <ul class="p-list">
-                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Sekt&#246;r&#252;n&#252;ze &#246;zel &#252;r&#252;n kategorileri</li>
-                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> S&#305;n&#305;rs&#305;z &#252;r&#252;n ekleme</li>
-                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Stok alarm sistemi</li>
-                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Detayl&#305; raporlama</li>
-                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Kurulum &amp; e&#287;itim deste&#287;i</li>
-                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Teknik destek &amp; g&#252;ncelleme</li>
-            </ul>
-            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20%E2%80%94%20Fiyat%20Teklifi" class="btn btn-primary" style="width:100%;justify-content:center;position:relative;z-index:1;">Fiyat Teklifi Al</a>
-        </div>
-    </section>
-    <section class="cta-section reveal">
-        <div class="cta-box">
-            <h2 class="cta-title">Hemen Ba&#351;lay&#305;n</h2>
-            <p class="cta-desc">&#304;&#351;letmeniz i&#231;in en uygun &#231;&#246;z&#252;m&#252; birlikte belirleyelim.</p>
-            <div class="cta-contacts">
-                <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok" class="cta-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg> kaanalkanlic48@gmail.com</a>
-                <a href="mailto:kaanalkanlic@outlook.com?subject=Alkanl%C4%B1%20Stok" class="cta-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg> kaanalkanlic@outlook.com</a>
-                <a href="https://github.com/wilsonbia7" target="_blank" rel="noopener noreferrer" class="cta-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a>
+        <div class="marquee-wrap">
+            <div class="marquee-track">
+                <div class="m-card"><span class="m-emoji">&#128241;</span><div><div class="m-name">Telefon &amp; Par&#231;a</div><div class="m-sub">Ekran, batarya, aksesuar</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128722;</span><div><div class="m-name">Market &amp; Bakkal</div><div class="m-sub">G&#305;da, i&#231;ecek, temizlik</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128715;</span><div><div class="m-name">Mobilya</div><div class="m-sub">Yatak, koltuk, masa</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128295;</span><div><div class="m-name">H&#305;rdavat</div><div class="m-sub">Alet, vida, boya</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128090;</span><div><div class="m-name">Giyim &amp; Tekstil</div><div class="m-sub">K&#305;yafet, ayakkab&#305;</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128187;</span><div><div class="m-name">Elektronik</div><div class="m-sub">Bilgisayar, tablet</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128138;</span><div><div class="m-name">Eczane &amp; Medikal</div><div class="m-sub">&#304;la&#231;, malzeme</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#9881;&#65039;</span><div><div class="m-name">Di&#287;er Sekt&#246;rler</div><div class="m-sub">Size &#246;zel &#231;&#246;z&#252;m</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128241;</span><div><div class="m-name">Telefon &amp; Par&#231;a</div><div class="m-sub">Ekran, batarya, aksesuar</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128722;</span><div><div class="m-name">Market &amp; Bakkal</div><div class="m-sub">G&#305;da, i&#231;ecek, temizlik</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128715;</span><div><div class="m-name">Mobilya</div><div class="m-sub">Yatak, koltuk, masa</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128295;</span><div><div class="m-name">H&#305;rdavat</div><div class="m-sub">Alet, vida, boya</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128090;</span><div><div class="m-name">Giyim &amp; Tekstil</div><div class="m-sub">K&#305;yafet, ayakkab&#305;</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128187;</span><div><div class="m-name">Elektronik</div><div class="m-sub">Bilgisayar, tablet</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#128138;</span><div><div class="m-name">Eczane &amp; Medikal</div><div class="m-sub">&#304;la&#231;, malzeme</div></div></div>
+                <div class="m-card"><span class="m-emoji">&#9881;&#65039;</span><div><div class="m-name">Di&#287;er Sekt&#246;rler</div><div class="m-sub">Size &#246;zel &#231;&#246;z&#252;m</div></div></div>
             </div>
         </div>
     </section>
+
+    <div class="divider"><hr></div>
+
+    <section class="sec reveal" id="fiyat">
+        <div class="sec-header"><div class="sec-tag">Fiyatland&#305;rma</div><h2 class="sec-title">&#304;&#351;letmenize &#214;zel Teklif</h2></div>
+        <div class="p-card">
+            <div class="p-l">Ki&#351;iye &#214;zel</div>
+            <div class="p-t">&#304;&#351;letmenize &#214;zel Fiyat</div>
+            <div class="p-d">Her i&#351;letmenin ihtiyac&#305; farkl&#305;d&#305;r. Sekt&#246;r&#252;n&#252;ze g&#246;re &#246;zel fiyat teklifi haz&#305;rl&#305;yoruz.</div>
+            <ul class="p-list">
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Sekt&#246;r&#252;n&#252;ze &#246;zel &#252;r&#252;n kategorileri</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>S&#305;n&#305;rs&#305;z &#252;r&#252;n ekleme</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Stok alarm sistemi</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Detayl&#305; raporlama</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurulum &amp; e&#287;itim deste&#287;i</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Teknik destek &amp; g&#252;ncelleme</li>
+            </ul>
+            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20Fiyat%20Teklifi" class="btn btn-p" style="width:100%;justify-content:center;position:relative;z-index:1;">Fiyat Teklifi Al</a>
+        </div>
+    </section>
+
+    <section class="cta-sec reveal">
+        <div class="cta-box">
+            <h2 class="cta-t">Hemen Ba&#351;lay&#305;n</h2>
+            <p class="cta-d">&#304;&#351;letmeniz i&#231;in en uygun &#231;&#246;z&#252;m&#252; birlikte belirleyelim.</p>
+            <div class="cta-links">
+                <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok" class="cta-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic48@gmail.com</a>
+                <a href="mailto:kaanalkanlic@outlook.com?subject=Alkanl%C4%B1%20Stok" class="cta-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic@outlook.com</a>
+                <a href="https://github.com/wilsonbia7" target="_blank" rel="noopener noreferrer" class="cta-a"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+            </div>
+        </div>
+    </section>
+
     <footer>&copy; 2026 <a href="../">Kaan Alkanl&#305;</a> &mdash; Alkanl&#305; Stok</footer>
+
     <script>
-    (()=>{const c=document.getElementById('particles'),ctx=c.getContext('2d');let W,H;const P=[];function resize(){W=c.width=innerWidth;H=c.height=innerHeight}resize();addEventListener('resize',resize);for(let i=0;i<50;i++)P.push({x:Math.random()*2e3,y:Math.random()*2e3,vx:(Math.random()-0.5)*0.15,vy:(Math.random()-0.5)*0.1,r:Math.random()*1.5+0.3,o:Math.random()*0.15+0.03,ph:Math.random()*6.28});function draw(){ctx.clearRect(0,0,W,H);P.forEach(p=>{p.x+=p.vx+Math.sin(p.ph)*0.02;p.y+=p.vy+Math.cos(p.ph*0.7)*0.015;p.ph+=0.003;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fillStyle='rgba(124,92,224,'+p.o+')';ctx.fill()});for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){ctx.beginPath();ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.strokeStyle='rgba(124,92,224,'+(0.02*(1-d/150))+')';ctx.lineWidth=0.5;ctx.stroke()}}requestAnimationFrame(draw)}draw()})();
-    const nav=document.getElementById('nav');addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60)});
-    const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
-    document.querySelectorAll('.reveal,.reveal-child').forEach(el=>obs.observe(el));
+    // Cursor glow
+    const glow=document.getElementById('cursor-glow');
+    let gX=-500,gY=-500;
+    document.addEventListener('mousemove',e=>{gX=e.clientX;gY=e.clientY;glow.style.opacity='1'});
+    document.addEventListener('mouseleave',()=>{glow.style.opacity='0'});
+    (function moveGlow(){glow.style.left=gX+'px';glow.style.top=gY+'px';requestAnimationFrame(moveGlow)})();
+
+    // Counter animation
+    const counters=document.querySelectorAll('.counter');
+    const countObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,target=+el.dataset.target;let current=0;const step=target/60;const timer=setInterval(()=>{current+=step;if(current>=target){el.textContent=target.toLocaleString();clearInterval(timer)}else{el.textContent=Math.floor(current).toLocaleString()}},25);countObs.unobserve(el)}})},{threshold:0.5});
+    counters.forEach(c=>countObs.observe(c));
+
+    // Scroll reveal
+    const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal,.rc').forEach(el=>obs.observe(el));
+
+    // Nav scroll effect
+    const nav=document.querySelector('nav');
+    addEventListener('scroll',()=>{if(scrollY>100){nav.style.background='rgba(8,8,26,0.85)';nav.style.borderColor='rgba(255,255,255,0.08)'}else{nav.style.background='';nav.style.borderColor=''}});
+
+    // Smooth anchor
     document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
     </script>
 </body>
