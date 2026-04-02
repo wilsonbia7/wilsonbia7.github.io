@@ -64,15 +64,6 @@
         .btn-o:hover{border-color:var(--card-hover-border);color:var(--text-bright);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
         .btn svg{width:16px;height:16px}
 
-        /* STATS BAR */
-        .stats-bar{position:relative;z-index:1;max-width:900px;margin:-40px auto 0;padding:0 48px}
-        .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,0.3)}
-        .stat-item{padding:24px 20px;text-align:center;border-radius:16px;transition:background 0.3s ease}
-        .stat-item:hover{background:rgba(255,255,255,0.03)}
-        .stat-number{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;letter-spacing:-1.5px;margin-bottom:4px}
-        .stat-number .counter{display:inline}
-        .stat-label{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.5px;font-weight:500}
-
         /* MOCKUP */
         .mockup-wrap{position:relative;z-index:1;max-width:900px;margin:80px auto 0;padding:0 48px}
         .mockup-border{padding:1px;border-radius:22px;background:linear-gradient(135deg,rgba(139,92,246,0.3),rgba(59,130,246,0.1),rgba(139,92,246,0.05),rgba(168,85,247,0.2));animation:borderRotate 8s linear infinite;background-size:300% 300%}
@@ -214,7 +205,6 @@
         .ss-main{padding:20px 24px}
         .ss-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
         .ss-page-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text-bright)}
-        .ss-search{font-family:'Inter',sans-serif;font-size:11px;padding:7px 14px 7px 32px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);color:var(--text-dim);width:180px;position:relative}
         .ss-btn-small{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:500;padding:6px 14px;border-radius:8px;border:none;cursor:default;display:inline-flex;align-items:center;gap:5px}
         .ss-btn-primary{background:var(--accent);color:#fff}
         .ss-btn-ghost{background:rgba(255,255,255,0.03);color:var(--text-dim);border:1px solid rgba(255,255,255,0.05)}
@@ -239,27 +229,6 @@
         .ss-form-label{font-size:10px;font-weight:500;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:block}
         .ss-form-input{width:100%;font-size:11px;padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);color:var(--text-bright);font-family:'Inter',sans-serif}
         .ss-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-        .ss-timeline{position:relative;padding-left:24px}
-        .ss-timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:1px;background:rgba(139,92,246,0.1)}
-        .ss-timeline-item{position:relative;padding:12px 16px;margin-bottom:8px;border-radius:10px;background:rgba(255,255,255,0.012);border:1px solid rgba(255,255,255,0.03)}
-        .ss-timeline-item::before{content:'';position:absolute;left:-21px;top:18px;width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);background:var(--bg2)}
-        .ss-timeline-item.in::before{border-color:var(--green);background:rgba(52,211,153,0.15)}
-        .ss-timeline-item.out::before{border-color:var(--orange);background:rgba(251,146,60,0.15)}
-        .ss-tl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
-        .ss-tl-product{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--text-bright)}
-        .ss-tl-badge{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:0.5px}
-        .ss-tl-badge.in{background:rgba(52,211,153,0.06);color:var(--green);border:1px solid rgba(52,211,153,0.1)}
-        .ss-tl-badge.out{background:rgba(251,146,60,0.06);color:var(--orange);border:1px solid rgba(251,146,60,0.1)}
-        .ss-tl-details{font-size:10px;color:var(--text-dim);display:flex;gap:16px}
-        .ss-report-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-        .ss-donut-wrap{display:flex;align-items:center;gap:16px;padding:16px;border-radius:12px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.03)}
-        .ss-donut{width:80px;height:80px;border-radius:50%;background:conic-gradient(var(--green) 0deg 200deg,var(--blue) 200deg 280deg,var(--orange) 280deg 330deg,var(--red) 330deg 360deg);position:relative;flex-shrink:0}
-        .ss-donut::after{content:'';position:absolute;inset:14px;border-radius:50%;background:var(--bg2)}
-        .ss-donut-legend{display:flex;flex-direction:column;gap:6px}
-        .ss-donut-item{font-size:10px;color:var(--text-dim);display:flex;align-items:center;gap:6px}
-        .ss-donut-dot{width:7px;height:7px;border-radius:2px;flex-shrink:0}
-        .ss-export-row{display:flex;gap:8px;margin-top:12px}
-
         .showcase-info{padding:28px 32px;border-radius:18px;border:1px solid var(--card-border);background:var(--card-bg);backdrop-filter:blur(8px)}
         .showcase-info-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text-bright);margin-bottom:12px;display:flex;align-items:center;gap:12px}
         .showcase-info-title svg{width:22px;height:22px;color:var(--accent)}
@@ -268,8 +237,8 @@
         .showcase-features li{font-size:12.5px;color:var(--text-dim);display:flex;align-items:center;gap:8px;padding:6px 0}
         .showcase-features li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
-        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.hero{padding:160px 24px 80px}.stats-bar,.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.stats-inner{grid-template-columns:repeat(2,1fr)}.mk-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:32px}.steps::before{display:none}.nav-link{display:none}.mk-tabs{display:none}.stat-number{font-size:26px}.ss-sidebar-layout{grid-template-columns:1fr}.ss-sidebar{display:none}.ss-cards-row{grid-template-columns:repeat(2,1fr)}.showcase-features{grid-template-columns:1fr}.ss-report-grid{grid-template-columns:1fr}.ss-form-row{grid-template-columns:1fr}}
-        @media(max-width:480px){.hero h1{letter-spacing:-2px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.mk-table th:nth-child(3),.mk-table td:nth-child(3){display:none}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:28px 20px}.stats-inner{grid-template-columns:1fr}.ss-cards-row{grid-template-columns:1fr}.showcase-tabs{gap:4px}.s-tab{font-size:11px;padding:8px 14px}.s-tab span{display:none}}
+        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.hero{padding:160px 24px 80px}.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.mk-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:32px}.steps::before{display:none}.nav-link{display:none}.mk-tabs{display:none}.ss-sidebar-layout{grid-template-columns:1fr}.ss-sidebar{display:none}.ss-cards-row{grid-template-columns:repeat(2,1fr)}.showcase-features{grid-template-columns:1fr}.ss-form-row{grid-template-columns:1fr}}
+        @media(max-width:480px){.hero h1{letter-spacing:-2px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.mk-table th:nth-child(3),.mk-table td:nth-child(3){display:none}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:28px 20px}.ss-cards-row{grid-template-columns:1fr}.showcase-tabs{gap:4px}.s-tab{font-size:11px;padding:8px 14px}.s-tab span{display:none}}
     </style>
 </head>
 <body>
@@ -311,11 +280,11 @@
                     <table class="mk-table">
                         <thead><tr><th>Stok Kodu</th><th>Kategori</th><th>&#214;l&#231;&#252;</th><th>Durum</th></tr></thead>
                         <tbody>
-                            <tr><td>ELISSBZ-160X200</td><td>Baza</td><td>160x200</td><td><span class="sb ok">Stokta</span></td></tr>
-                            <tr><td>ELISSYT-90X200</td><td>Yatak</td><td>90x200</td><td><span class="sb ok">Stokta</span></td></tr>
-                            <tr><td>SOLARBZ-140X200</td><td>Baza</td><td>140x200</td><td><span class="sb low">Az</span></td></tr>
-                            <tr><td>VIVABSL-180X200</td><td>Ba&#351;l&#305;k</td><td>180x200</td><td><span class="sb out">T&#252;kendi</span></td></tr>
-                            <tr><td>ELISSYT-160X200</td><td>Yatak</td><td>160x200</td><td><span class="sb ok">Stokta</span></td></tr>
+                            <tr><td>ZENTBZ-160X200</td><td>Baza</td><td>160x200</td><td><span class="sb ok">Stokta</span></td></tr>
+                            <tr><td>ZENTYT-90X200</td><td>Yatak</td><td>90x200</td><td><span class="sb ok">Stokta</span></td></tr>
+                            <tr><td>ARVBZ-140X200</td><td>Baza</td><td>140x200</td><td><span class="sb low">Az</span></td></tr>
+                            <tr><td>PRELBSL-180X200</td><td>Ba&#351;l&#305;k</td><td>180x200</td><td><span class="sb out">T&#252;kendi</span></td></tr>
+                            <tr><td>ZENTYT-160X200</td><td>Yatak</td><td>160x200</td><td><span class="sb ok">Stokta</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -363,7 +332,7 @@
                         <div class="ss-main">
                             <div class="ss-topbar"><div class="ss-page-title">Dashboard</div><div style="display:flex;gap:6px"><span class="ss-btn-small ss-btn-ghost" style="font-size:9px">Stok durumu ve son hareketler</span></div></div>
                             <div class="ss-cards-row">
-                                <div class="ss-card-mini"><div class="ss-card-mini-label">&#220;r&#252;n &#199;e&#351;idi</div><div class="ss-card-mini-val blue">148</div><div class="ss-card-mini-change green">Yatak, Baza, Ba&#351;l&#305;k</div></div>
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">&#220;r&#252;n &#199;e&#351;idi</div><div class="ss-card-mini-val blue">148</div><div class="ss-card-mini-change green">&#9650; 5 yeni eklendi</div></div>
                                 <div class="ss-card-mini"><div class="ss-card-mini-label">Toplam Stok</div><div class="ss-card-mini-val green">2.460</div><div class="ss-card-mini-change green">&#9650; 84 yeni giri&#351;</div></div>
                                 <div class="ss-card-mini"><div class="ss-card-mini-label">D&#252;&#351;&#252;k Stok</div><div class="ss-card-mini-val orange">7</div><div class="ss-card-mini-change orange">5 adet alt&#305;</div></div>
                                 <div class="ss-card-mini"><div class="ss-card-mini-label">T&#252;kenen</div><div class="ss-card-mini-val red">3</div><div class="ss-card-mini-change red">&#9660; Sipari&#351; gerekli</div></div>
@@ -381,9 +350,9 @@
                                     <div class="ss-chart-title">Son Hareketler</div>
                                     <table class="ss-table-mini" style="margin:0">
                                         <tbody>
-                                            <tr><td style="font-size:10px">ELISSBZ-160X200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td style="font-size:10px">+12</td></tr>
-                                            <tr><td style="font-size:10px">SOLARYT-90X200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td style="font-size:10px">-4</td></tr>
-                                            <tr><td style="font-size:10px">VIVABSL-180X200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td style="font-size:10px">+8</td></tr>
+                                            <tr><td style="font-size:10px">ZENTBZ-160X200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td style="font-size:10px">+12</td></tr>
+                                            <tr><td style="font-size:10px">ARVYT-90X200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td style="font-size:10px">-4</td></tr>
+                                            <tr><td style="font-size:10px">PRELBSL-180X200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td style="font-size:10px">+8</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -426,11 +395,11 @@
                                 <div style="background:rgba(139,92,246,0.04);border:1px solid rgba(139,92,246,0.1);border-radius:10px;padding:14px 16px;margin-bottom:16px">
                                     <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span style="width:20px;height:20px;border-radius:6px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px">1</span> &#220;r&#252;n Se&#231;imi</div>
                                     <div class="ss-form-group"><div class="ss-form-label">Kategori</div><div class="ss-form-input" style="display:flex;justify-content:space-between;align-items:center"><span>Yatak</span><span style="color:var(--text-dim);font-size:9px">&#9660;</span></div></div>
-                                    <div class="ss-form-group"><div class="ss-form-label">&#220;r&#252;n Ad&#305;</div><div class="ss-form-input" style="display:flex;justify-content:space-between;align-items:center"><span>ELISS</span><span style="color:var(--text-dim);font-size:9px">&#9660;</span></div></div>
+                                    <div class="ss-form-group"><div class="ss-form-label">&#220;r&#252;n Ad&#305;</div><div class="ss-form-input" style="display:flex;justify-content:space-between;align-items:center"><span>ZENTRO</span><span style="color:var(--text-dim);font-size:9px">&#9660;</span></div></div>
                                     <div class="ss-form-group"><div class="ss-form-label">&#214;l&#231;&#252;</div><div class="ss-form-input" style="display:flex;justify-content:space-between;align-items:center"><span>160x200</span><span style="color:var(--text-dim);font-size:9px">&#9660;</span></div></div>
                                     <div style="background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.12);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;margin-top:10px">
                                         <div style="color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
-                                        <div><div style="font-size:11px;font-weight:600;color:var(--text-bright)">ELISSYT-160X200</div><div style="font-size:9px;color:var(--text-dim)">Yatak &middot; 160x200 &middot; Stok: 24</div></div>
+                                        <div><div style="font-size:11px;font-weight:600;color:var(--text-bright)">ZENTYT-160X200</div><div style="font-size:9px;color:var(--text-dim)">Yatak &middot; 160x200 &middot; Stok: 24</div></div>
                                     </div>
                                 </div>
                                 <div style="background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:14px 16px">
@@ -487,12 +456,12 @@
                             <table class="ss-table-mini">
                                 <thead><tr><th>Stok Kodu</th><th>Kategori</th><th>&#220;r&#252;n Ad&#305;</th><th>&#214;l&#231;&#252;</th><th>Stok</th><th>Durum</th></tr></thead>
                                 <tbody>
-                                    <tr><td>ELISSYT-160X200</td><td>Yatak</td><td>ELISS</td><td>160x200</td><td>24</td><td><span class="sb ok">Stokta</span></td></tr>
-                                    <tr><td>ELISSBZ-160X200</td><td>Baza</td><td>ELISS</td><td>160x200</td><td>18</td><td><span class="sb ok">Stokta</span></td></tr>
-                                    <tr><td>SOLARYT-90X200</td><td>Yatak</td><td>SOLAR</td><td>90x200</td><td>3</td><td><span class="sb low">Az</span></td></tr>
-                                    <tr><td>VIVABSL-180X200</td><td>Ba&#351;l&#305;k</td><td>VIVA</td><td>180x200</td><td>0</td><td><span class="sb out">T&#252;kendi</span></td></tr>
-                                    <tr><td>SOLARBZ-140X200</td><td>Baza</td><td>SOLAR</td><td>140x200</td><td>2</td><td><span class="sb low">Az</span></td></tr>
-                                    <tr><td>ELISSYT-90X200</td><td>Yatak</td><td>ELISS</td><td>90x200</td><td>31</td><td><span class="sb ok">Stokta</span></td></tr>
+                                    <tr><td>ZENTYT-160X200</td><td>Yatak</td><td>ZENTRO</td><td>160x200</td><td>24</td><td><span class="sb ok">Stokta</span></td></tr>
+                                    <tr><td>ZENTBZ-160X200</td><td>Baza</td><td>ZENTRO</td><td>160x200</td><td>18</td><td><span class="sb ok">Stokta</span></td></tr>
+                                    <tr><td>ARVYT-90X200</td><td>Yatak</td><td>ARVON</td><td>90x200</td><td>3</td><td><span class="sb low">Az</span></td></tr>
+                                    <tr><td>PRELBSL-180X200</td><td>Ba&#351;l&#305;k</td><td>PRELUX</td><td>180x200</td><td>0</td><td><span class="sb out">T&#252;kendi</span></td></tr>
+                                    <tr><td>ARVBZ-140X200</td><td>Baza</td><td>ARVON</td><td>140x200</td><td>2</td><td><span class="sb low">Az</span></td></tr>
+                                    <tr><td>ZENTYT-90X200</td><td>Yatak</td><td>ZENTRO</td><td>90x200</td><td>31</td><td><span class="sb ok">Stokta</span></td></tr>
                                 </tbody>
                             </table>
                             <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:10px;color:var(--text-dim)"><span>6 / 148 &#252;r&#252;n g&#246;steriliyor</span></div>
@@ -500,7 +469,7 @@
                     </div>
                 </div>
                 <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;n Listesi &mdash; T&#252;m Stok Envanterin</div>
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;n Listesi &mdash; T&#252;m Envanteriniz Tek Ekranda</div>
                     <p class="showcase-info-desc">&#220;r&#252;n listesi ekran&#305;nda t&#252;m &#252;r&#252;nlerinizi stok kodu, kategori, ad, &#246;l&#231;&#252; ve stok miktar&#305; ile g&#246;r&#252;rs&#252;n&#252;z. Arama &#231;ubu&#287;undan kod, isim veya &#246;l&#231;&#252;ye g&#246;re arayabilir, kategori filtresi ile daraltabilirsiniz. Renk kodlu durum etiketleri ile hangi &#252;r&#252;n&#252;n t&#252;kendi&#287;ini veya az kald&#305;&#287;&#305;n&#305; an&#305;nda fark edersiniz. T&#252;m listeyi CSV olarak d&#305;&#351;a aktarabilirsiniz.</p>
                     <ul class="showcase-features">
                         <li>Stok kodu, isim veya &#246;l&#231;&#252;ye g&#246;re arama</li>
@@ -538,11 +507,11 @@
                             <table class="ss-table-mini">
                                 <thead><tr><th>Tarih</th><th>Stok Kodu</th><th>&#220;r&#252;n</th><th>&#214;l&#231;&#252;</th><th>T&#252;r</th><th>Miktar</th><th>Not</th></tr></thead>
                                 <tbody>
-                                    <tr><td style="font-size:9px">02.04.2026 14:32</td><td>ELISSYT-160X200</td><td>ELISS</td><td>160x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+12</td><td style="font-size:9px;color:var(--text-dim)">Fabrika sevk</td></tr>
-                                    <tr><td style="font-size:9px">02.04.2026 13:15</td><td>SOLARYT-90X200</td><td>SOLAR</td><td>90x200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td>-4</td><td style="font-size:9px;color:var(--text-dim)">Ma&#287;aza teslimat</td></tr>
-                                    <tr><td style="font-size:9px">02.04.2026 11:48</td><td>ELISSBZ-160X200</td><td>ELISS</td><td>160x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+8</td><td style="font-size:9px;color:var(--text-dim)"></td></tr>
-                                    <tr><td style="font-size:9px">01.04.2026 16:20</td><td>VIVABSL-180X200</td><td>VIVA</td><td>180x200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td>-2</td><td style="font-size:9px;color:var(--text-dim)">Sipari&#351; #1042</td></tr>
-                                    <tr><td style="font-size:9px">01.04.2026 10:05</td><td>SOLARBZ-140X200</td><td>SOLAR</td><td>140x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+6</td><td style="font-size:9px;color:var(--text-dim)">Depo transferi</td></tr>
+                                    <tr><td style="font-size:9px">02.04.2026 14:32</td><td>ZENTYT-160X200</td><td>ZENTRO</td><td>160x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+12</td><td style="font-size:9px;color:var(--text-dim)">Fabrika sevk</td></tr>
+                                    <tr><td style="font-size:9px">02.04.2026 13:15</td><td>ARVYT-90X200</td><td>ARVON</td><td>90x200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td>-4</td><td style="font-size:9px;color:var(--text-dim)">Ma&#287;aza teslimat</td></tr>
+                                    <tr><td style="font-size:9px">02.04.2026 11:48</td><td>ZENTBZ-160X200</td><td>ZENTRO</td><td>160x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+8</td><td style="font-size:9px;color:var(--text-dim)"></td></tr>
+                                    <tr><td style="font-size:9px">01.04.2026 16:20</td><td>PRELBSL-180X200</td><td>PRELUX</td><td>180x200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td>-2</td><td style="font-size:9px;color:var(--text-dim)">Sipari&#351; #1042</td></tr>
+                                    <tr><td style="font-size:9px">01.04.2026 10:05</td><td>ARVBZ-140X200</td><td>ARVON</td><td>140x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+6</td><td style="font-size:9px;color:var(--text-dim)">Depo transferi</td></tr>
                                 </tbody>
                             </table>
                         </div>
