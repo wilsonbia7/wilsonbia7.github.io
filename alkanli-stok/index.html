@@ -188,8 +188,87 @@
         .rc.vis > *{opacity:1;transform:translateY(0)}
         .rc.vis > *:nth-child(1){transition-delay:0s}.rc.vis > *:nth-child(2){transition-delay:0.07s}.rc.vis > *:nth-child(3){transition-delay:0.14s}.rc.vis > *:nth-child(4){transition-delay:0.21s}.rc.vis > *:nth-child(5){transition-delay:0.28s}.rc.vis > *:nth-child(6){transition-delay:0.35s}
 
-        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.hero{padding:160px 24px 80px}.stats-bar,.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.stats-inner{grid-template-columns:repeat(2,1fr)}.mk-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:32px}.steps::before{display:none}.nav-link{display:none}.mk-tabs{display:none}.stat-number{font-size:26px}}
-        @media(max-width:480px){.hero h1{letter-spacing:-2px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.mk-table th:nth-child(3),.mk-table td:nth-child(3){display:none}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:28px 20px}.stats-inner{grid-template-columns:1fr}}
+        /* APP SHOWCASE */
+        .showcase-tabs{display:flex;justify-content:center;gap:6px;margin-bottom:40px;flex-wrap:wrap}
+        .s-tab{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--text-dim);padding:10px 22px;border-radius:12px;border:1px solid var(--card-border);background:var(--card-bg);cursor:pointer;transition:all 0.3s ease;display:flex;align-items:center;gap:8px}
+        .s-tab:hover{border-color:rgba(139,92,246,0.15);color:var(--text)}
+        .s-tab.active{background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.25);color:var(--accent)}
+        .s-tab svg{width:16px;height:16px}
+        .showcase-panel{display:none;animation:fadeUp 0.5s var(--ease)}
+        .showcase-panel.active{display:block}
+        .showcase-layout{display:grid;grid-template-columns:1fr;gap:32px}
+        .showcase-screen{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);background:var(--bg2);box-shadow:0 24px 64px rgba(0,0,0,0.4)}
+        .ss-bar{display:flex;align-items:center;gap:6px;padding:12px 18px;background:rgba(255,255,255,0.015);border-bottom:1px solid rgba(255,255,255,0.04)}
+        .ss-dot{width:9px;height:9px;border-radius:50%}
+        .ss-title{margin-left:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:0.5px}
+        .ss-body{padding:20px}
+        .ss-sidebar-layout{display:grid;grid-template-columns:220px 1fr;gap:0;min-height:380px}
+        .ss-sidebar{padding:16px;border-right:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.008)}
+        .ss-sidebar-logo{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--accent);margin-bottom:20px;padding:8px 12px;display:flex;align-items:center;gap:8px}
+        .ss-sidebar-logo svg{width:18px;height:18px}
+        .ss-menu-item{font-family:'Inter',sans-serif;font-size:12px;color:var(--text-dim);padding:9px 12px;border-radius:8px;margin-bottom:2px;display:flex;align-items:center;gap:10px;transition:all 0.2s}
+        .ss-menu-item.active{background:rgba(139,92,246,0.08);color:var(--accent)}
+        .ss-menu-item svg{width:15px;height:15px;opacity:0.5}
+        .ss-menu-item.active svg{opacity:1}
+        .ss-main{padding:20px 24px}
+        .ss-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+        .ss-page-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text-bright)}
+        .ss-search{font-family:'Inter',sans-serif;font-size:11px;padding:7px 14px 7px 32px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);color:var(--text-dim);width:180px;position:relative}
+        .ss-btn-small{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:500;padding:6px 14px;border-radius:8px;border:none;cursor:default;display:inline-flex;align-items:center;gap:5px}
+        .ss-btn-primary{background:var(--accent);color:#fff}
+        .ss-btn-ghost{background:rgba(255,255,255,0.03);color:var(--text-dim);border:1px solid rgba(255,255,255,0.05)}
+        .ss-cards-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+        .ss-card-mini{padding:14px;border-radius:10px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.03)}
+        .ss-card-mini-label{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);margin-bottom:6px;font-weight:500}
+        .ss-card-mini-val{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.5px}
+        .ss-card-mini-change{font-size:9px;margin-top:4px;font-weight:500}
+        .ss-table-mini{width:100%;border-collapse:separate;border-spacing:0 2px}
+        .ss-table-mini th{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);text-align:left;padding:8px 12px;font-weight:500}
+        .ss-table-mini td{font-size:11px;padding:10px 12px;color:var(--text);background:rgba(255,255,255,0.008);transition:background 0.2s}
+        .ss-table-mini tr td:first-child{border-radius:8px 0 0 8px;font-weight:500;color:var(--text-bright)}
+        .ss-table-mini tr td:last-child{border-radius:0 8px 8px 0}
+        .ss-table-mini tbody tr:hover td{background:rgba(255,255,255,0.025)}
+        .ss-chart-area{border-radius:12px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.03);padding:16px;margin-bottom:16px}
+        .ss-chart-title{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--text-bright);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+        .ss-chart-title span{font-size:9px;color:var(--text-dim);font-weight:400;text-transform:uppercase;letter-spacing:1px}
+        .ss-bars{display:flex;align-items:flex-end;gap:6px;height:100px}
+        .ss-bar-col{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--accent),rgba(139,92,246,0.3));transition:height 0.8s var(--ease);position:relative}
+        .ss-bar-col::after{content:attr(data-label);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:7px;color:var(--text-dim);white-space:nowrap}
+        .ss-form-group{margin-bottom:14px}
+        .ss-form-label{font-size:10px;font-weight:500;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:block}
+        .ss-form-input{width:100%;font-size:11px;padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);color:var(--text-bright);font-family:'Inter',sans-serif}
+        .ss-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .ss-timeline{position:relative;padding-left:24px}
+        .ss-timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:1px;background:rgba(139,92,246,0.1)}
+        .ss-timeline-item{position:relative;padding:12px 16px;margin-bottom:8px;border-radius:10px;background:rgba(255,255,255,0.012);border:1px solid rgba(255,255,255,0.03)}
+        .ss-timeline-item::before{content:'';position:absolute;left:-21px;top:18px;width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);background:var(--bg2)}
+        .ss-timeline-item.in::before{border-color:var(--green);background:rgba(52,211,153,0.15)}
+        .ss-timeline-item.out::before{border-color:var(--orange);background:rgba(251,146,60,0.15)}
+        .ss-tl-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+        .ss-tl-product{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--text-bright)}
+        .ss-tl-badge{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:0.5px}
+        .ss-tl-badge.in{background:rgba(52,211,153,0.06);color:var(--green);border:1px solid rgba(52,211,153,0.1)}
+        .ss-tl-badge.out{background:rgba(251,146,60,0.06);color:var(--orange);border:1px solid rgba(251,146,60,0.1)}
+        .ss-tl-details{font-size:10px;color:var(--text-dim);display:flex;gap:16px}
+        .ss-report-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+        .ss-donut-wrap{display:flex;align-items:center;gap:16px;padding:16px;border-radius:12px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.03)}
+        .ss-donut{width:80px;height:80px;border-radius:50%;background:conic-gradient(var(--green) 0deg 200deg,var(--blue) 200deg 280deg,var(--orange) 280deg 330deg,var(--red) 330deg 360deg);position:relative;flex-shrink:0}
+        .ss-donut::after{content:'';position:absolute;inset:14px;border-radius:50%;background:var(--bg2)}
+        .ss-donut-legend{display:flex;flex-direction:column;gap:6px}
+        .ss-donut-item{font-size:10px;color:var(--text-dim);display:flex;align-items:center;gap:6px}
+        .ss-donut-dot{width:7px;height:7px;border-radius:2px;flex-shrink:0}
+        .ss-export-row{display:flex;gap:8px;margin-top:12px}
+
+        .showcase-info{padding:28px 32px;border-radius:18px;border:1px solid var(--card-border);background:var(--card-bg);backdrop-filter:blur(8px)}
+        .showcase-info-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text-bright);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+        .showcase-info-title svg{width:22px;height:22px;color:var(--accent)}
+        .showcase-info-desc{font-size:14px;color:var(--text);line-height:1.75;margin-bottom:18px}
+        .showcase-features{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+        .showcase-features li{font-size:12.5px;color:var(--text-dim);display:flex;align-items:center;gap:8px;padding:6px 0}
+        .showcase-features li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.hero{padding:160px 24px 80px}.stats-bar,.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.stats-inner{grid-template-columns:repeat(2,1fr)}.mk-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:32px}.steps::before{display:none}.nav-link{display:none}.mk-tabs{display:none}.stat-number{font-size:26px}.ss-sidebar-layout{grid-template-columns:1fr}.ss-sidebar{display:none}.ss-cards-row{grid-template-columns:repeat(2,1fr)}.showcase-features{grid-template-columns:1fr}.ss-report-grid{grid-template-columns:1fr}.ss-form-row{grid-template-columns:1fr}}
+        @media(max-width:480px){.hero h1{letter-spacing:-2px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.mk-table th:nth-child(3),.mk-table td:nth-child(3){display:none}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:28px 20px}.stats-inner{grid-template-columns:1fr}.ss-cards-row{grid-template-columns:1fr}.showcase-tabs{gap:4px}.s-tab{font-size:11px;padding:8px 14px}.s-tab span{display:none}}
     </style>
 </head>
 <body>
@@ -200,6 +279,7 @@
     <nav>
         <a href="./" class="nav-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4"/><path d="M2 12h20"/></svg>Alkanl&#305; Stok</a>
         <div class="nav-sep"></div>
+        <a href="#ekran-goruntuleri" class="nav-link">Ekranlar</a>
         <a href="#ozellikler" class="nav-link">&#214;zellikler</a>
         <a href="#sektorler" class="nav-link">Sekt&#246;rler</a>
         <a href="#fiyat" class="nav-link">Fiyat</a>
@@ -258,6 +338,242 @@
             <div class="step"><div class="step-num">1</div><div class="step-title">&#304;leti&#351;ime Ge&#231;in</div><div class="step-desc">Sekt&#246;r&#252;n&#252;z&#252; ve ihtiya&#231;lar&#305;n&#305;z&#305; bize iletin. Birlikte analiz edelim.</div></div>
             <div class="step"><div class="step-num">2</div><div class="step-title">Size &#214;zel Tasarlan&#305;r</div><div class="step-desc">Yaz&#305;l&#305;m&#305; sekt&#246;r&#252;n&#252;ze ve i&#351; ak&#305;&#351;&#305;n&#305;za g&#246;re &#246;zelle&#351;tiriyoruz.</div></div>
             <div class="step"><div class="step-num">3</div><div class="step-title">Kullanmaya Ba&#351;lay&#305;n</div><div class="step-desc">Kurulum ve e&#287;itim deste&#287;i ile hemen kullanmaya ba&#351;lay&#305;n.</div></div>
+        </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <section class="sec reveal" id="ekran-goruntuleri">
+        <div class="sec-header"><div class="sec-tag">Uygulama &#304;&#231;i</div><h2 class="sec-title">Ekran G&#246;r&#252;nt&#252;leri</h2><p class="sec-desc">Uygulamam&#305;z&#305;n i&#231;inden ger&#231;ek ekranlar ve detayl&#305; a&#231;&#305;klamalar.</p></div>
+
+        <div class="showcase-tabs">
+            <button class="s-tab active" data-panel="panel-dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Ana Panel</span></button>
+            <button class="s-tab" data-panel="panel-urun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg><span>&#220;r&#252;n Y&#246;netimi</span></button>
+            <button class="s-tab" data-panel="panel-hareket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Stok Hareketleri</span></button>
+            <button class="s-tab" data-panel="panel-rapor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Raporlama</span></button>
+        </div>
+
+        <!-- PANEL 1: Dashboard -->
+        <div class="showcase-panel active" id="panel-dashboard">
+            <div class="showcase-layout">
+                <div class="showcase-screen">
+                    <div class="ss-bar"><div class="ss-dot mk-r"></div><div class="ss-dot mk-y"></div><div class="ss-dot mk-g"></div><div class="ss-title">Alkanl&#305; Stok &mdash; Ana Panel</div></div>
+                    <div class="ss-sidebar-layout">
+                        <div class="ss-sidebar">
+                            <div class="ss-sidebar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Alkanl&#305; Stok</div>
+                            <div class="ss-menu-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Ana Panel</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>&#220;r&#252;nler</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Hareketler</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Raporlar</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alarmlar</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4"/></svg>Ayarlar</div>
+                        </div>
+                        <div class="ss-main">
+                            <div class="ss-topbar"><div class="ss-page-title">Ana Panel</div><div style="display:flex;gap:6px"><span class="ss-btn-small ss-btn-ghost">&#128276; 3 Uyar&#305;</span><span class="ss-btn-small ss-btn-ghost">Mobilya Ma&#287;azas&#305;</span></div></div>
+                            <div class="ss-cards-row">
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Toplam &#220;r&#252;n</div><div class="ss-card-mini-val green">842</div><div class="ss-card-mini-change green">&#9650; 12 bu hafta</div></div>
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Stok De&#287;eri</div><div class="ss-card-mini-val cyan">&#8378;284.500</div><div class="ss-card-mini-change green">&#9650; %3.2</div></div>
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Bug&#252;nk&#252; Hareket</div><div class="ss-card-mini-val blue">23</div><div class="ss-card-mini-change orange">14 giri&#351; / 9 &#231;&#305;k&#305;&#351;</div></div>
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Kritik Seviye</div><div class="ss-card-mini-val red">5</div><div class="ss-card-mini-change red">&#9660; Sipari&#351; gerekli</div></div>
+                            </div>
+                            <div class="ss-chart-area">
+                                <div class="ss-chart-title">Haftal&#305;k Stok Hareketleri <span>Son 7 G&#252;n</span></div>
+                                <div class="ss-bars">
+                                    <div class="ss-bar-col" style="height:45%" data-label="Pzt"></div>
+                                    <div class="ss-bar-col" style="height:72%" data-label="Sal"></div>
+                                    <div class="ss-bar-col" style="height:58%" data-label="&#199;ar"></div>
+                                    <div class="ss-bar-col" style="height:85%" data-label="Per"></div>
+                                    <div class="ss-bar-col" style="height:40%" data-label="Cum"></div>
+                                    <div class="ss-bar-col" style="height:25%" data-label="Cmt"></div>
+                                    <div class="ss-bar-col" style="height:15%" data-label="Paz"></div>
+                                </div>
+                            </div>
+                            <table class="ss-table-mini">
+                                <thead><tr><th>Son Hareketler</th><th>T&#252;r</th><th>Miktar</th><th>Tarih</th></tr></thead>
+                                <tbody>
+                                    <tr><td>3+1 K&#246;&#351;e Koltuk</td><td><span class="sb out">&#199;&#305;k&#305;&#351;</span></td><td>2 adet</td><td>Dak. &#246;nce</td></tr>
+                                    <tr><td>Ortopedik Yatak</td><td><span class="sb ok">Giri&#351;</span></td><td>10 adet</td><td>1 saat</td></tr>
+                                    <tr><td>TV &#220;nitesi 180cm</td><td><span class="sb out">&#199;&#305;k&#305;&#351;</span></td><td>1 adet</td><td>3 saat</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-info">
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Ana Panel &mdash; T&#252;m Verilere Tek Bak&#305;&#351;</div>
+                    <p class="showcase-info-desc">Uygulaman&#305;n ana ekran&#305;nda i&#351;letmenizin t&#252;m stok durumunu tek bir panelde g&#246;r&#252;rs&#252;n&#252;z. Toplam &#252;r&#252;n say&#305;s&#305;, stok de&#287;eri, g&#252;nl&#252;k hareketler ve kritik seviyedeki &#252;r&#252;nler anl&#305;k olarak g&#252;ncellenir. Haftal&#305;k hareket grafi&#287;i ile trendi takip eder, son hareketler listesinden yeni giri&#351; ve &#231;&#305;k&#305;&#351;lar&#305; an&#305;nda g&#246;r&#252;rs&#252;n&#252;z.</p>
+                    <ul class="showcase-features">
+                        <li>Anl&#305;k stok &#246;zet kartlar&#305;</li>
+                        <li>Haftal&#305;k hareket grafi&#287;i</li>
+                        <li>Son hareketler ak&#305;&#351;&#305;</li>
+                        <li>Kritik seviye uyar&#305;lar&#305;</li>
+                        <li>T&#252;rk Liras&#305; stok de&#287;eri hesaplamas&#305;</li>
+                        <li>Yan men&#252;den h&#305;zl&#305; navigasyon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 2: Ürün Yönetimi -->
+        <div class="showcase-panel" id="panel-urun">
+            <div class="showcase-layout">
+                <div class="showcase-screen">
+                    <div class="ss-bar"><div class="ss-dot mk-r"></div><div class="ss-dot mk-y"></div><div class="ss-dot mk-g"></div><div class="ss-title">Alkanl&#305; Stok &mdash; &#220;r&#252;n Y&#246;netimi</div></div>
+                    <div class="ss-sidebar-layout">
+                        <div class="ss-sidebar">
+                            <div class="ss-sidebar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Alkanl&#305; Stok</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Ana Panel</div>
+                            <div class="ss-menu-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>&#220;r&#252;nler</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Hareketler</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Raporlar</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alarmlar</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/></svg>Ayarlar</div>
+                        </div>
+                        <div class="ss-main">
+                            <div class="ss-topbar"><div class="ss-page-title">&#220;r&#252;n Y&#246;netimi</div><div style="display:flex;gap:6px"><span class="ss-btn-small ss-btn-primary">+ Yeni &#220;r&#252;n</span><span class="ss-btn-small ss-btn-ghost">Filtrele</span></div></div>
+                            <div style="margin-bottom:16px;display:flex;gap:8px">
+                                <div class="ss-form-input" style="width:240px;display:flex;align-items:center;gap:6px;color:var(--text-dim)">&#128269; &#220;r&#252;n ara...</div>
+                                <span class="ss-btn-small ss-btn-ghost">Kategori: T&#252;m&#252;</span>
+                                <span class="ss-btn-small ss-btn-ghost">Durum: T&#252;m&#252;</span>
+                            </div>
+                            <table class="ss-table-mini">
+                                <thead><tr><th>&#220;r&#252;n Ad&#305;</th><th>Kategori</th><th>Fiyat</th><th>Stok</th><th>Durum</th></tr></thead>
+                                <tbody>
+                                    <tr><td>&#199;ift Ki&#351;ilik Baza Set</td><td>Yatak &amp; Baza</td><td>&#8378;4.200</td><td>32</td><td><span class="sb ok">Stokta</span></td></tr>
+                                    <tr><td>Ortopedik Yatak 160x200</td><td>Yatak</td><td>&#8378;3.800</td><td>18</td><td><span class="sb ok">Stokta</span></td></tr>
+                                    <tr><td>3+1 K&#246;&#351;e Koltuk Tak&#305;m&#305;</td><td>Koltuk</td><td>&#8378;12.500</td><td>4</td><td><span class="sb low">Az</span></td></tr>
+                                    <tr><td>6 Ki&#351;ilik Yemek Masas&#305;</td><td>Masa</td><td>&#8378;5.600</td><td>0</td><td><span class="sb out">T&#252;kendi</span></td></tr>
+                                    <tr><td>TV &#220;nitesi 180cm</td><td>&#220;nite</td><td>&#8378;2.900</td><td>11</td><td><span class="sb ok">Stokta</span></td></tr>
+                                    <tr><td>Gardrop 6 Kap&#305;</td><td>Gardrop</td><td>&#8378;7.800</td><td>3</td><td><span class="sb low">Az</span></td></tr>
+                                    <tr><td>&#199;al&#305;&#351;ma Masas&#305; 120cm</td><td>Masa</td><td>&#8378;1.950</td><td>22</td><td><span class="sb ok">Stokta</span></td></tr>
+                                </tbody>
+                            </table>
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:10px;color:var(--text-dim)"><span>7 / 842 &#252;r&#252;n g&#246;steriliyor</span><div style="display:flex;gap:4px"><span class="ss-btn-small ss-btn-ghost">&#8592;</span><span class="ss-btn-small ss-btn-primary">1</span><span class="ss-btn-small ss-btn-ghost">2</span><span class="ss-btn-small ss-btn-ghost">3</span><span class="ss-btn-small ss-btn-ghost">&#8594;</span></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-info">
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>&#220;r&#252;n Y&#246;netimi &mdash; T&#252;m &#220;r&#252;nleriniz Kontrol Alt&#305;nda</div>
+                    <p class="showcase-info-desc">&#220;r&#252;n y&#246;netimi ekran&#305;nda t&#252;m &#252;r&#252;nlerinizi listeler, arar, filtreler ve y&#246;netirsiniz. Her &#252;r&#252;n i&#231;in ad, kategori, fiyat, stok miktar&#305; ve durum bilgisi g&#246;r&#252;n&#252;r. Tek t&#305;kla yeni &#252;r&#252;n ekler, mevcut &#252;r&#252;nleri d&#252;zenler veya kategoriye g&#246;re filtreleyebilirsiniz. Sayfalama ile binlerce &#252;r&#252;n aras&#305;nda h&#305;zl&#305;ca gezinirsiniz.</p>
+                    <ul class="showcase-features">
+                        <li>Anl&#305;k arama ve filtreleme</li>
+                        <li>Kategoriye g&#246;re grupland&#305;rma</li>
+                        <li>Tek t&#305;kla &#252;r&#252;n ekleme/d&#252;zenleme</li>
+                        <li>Fiyat ve stok miktari g&#246;r&#252;nt&#252;leme</li>
+                        <li>Renk kodlu durum g&#246;stergeleri</li>
+                        <li>Sayfalama ile h&#305;zl&#305; gezinme</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 3: Stok Hareketleri -->
+        <div class="showcase-panel" id="panel-hareket">
+            <div class="showcase-layout">
+                <div class="showcase-screen">
+                    <div class="ss-bar"><div class="ss-dot mk-r"></div><div class="ss-dot mk-y"></div><div class="ss-dot mk-g"></div><div class="ss-title">Alkanl&#305; Stok &mdash; Stok Hareketleri</div></div>
+                    <div class="ss-sidebar-layout">
+                        <div class="ss-sidebar">
+                            <div class="ss-sidebar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Alkanl&#305; Stok</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Ana Panel</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>&#220;r&#252;nler</div>
+                            <div class="ss-menu-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Hareketler</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Raporlar</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alarmlar</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/></svg>Ayarlar</div>
+                        </div>
+                        <div class="ss-main">
+                            <div class="ss-topbar"><div class="ss-page-title">Stok Hareketleri</div><div style="display:flex;gap:6px"><span class="ss-btn-small ss-btn-primary">+ Yeni Hareket</span><span class="ss-btn-small ss-btn-ghost">D&#305;&#351;a Aktar</span></div></div>
+                            <div class="ss-cards-row" style="grid-template-columns:repeat(3,1fr);margin-bottom:18px">
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Bug&#252;n Giri&#351;</div><div class="ss-card-mini-val green">14</div><div class="ss-card-mini-change" style="color:var(--text-dim)">&#252;r&#252;n</div></div>
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Bug&#252;n &#199;&#305;k&#305;&#351;</div><div class="ss-card-mini-val orange">9</div><div class="ss-card-mini-change" style="color:var(--text-dim)">&#252;r&#252;n</div></div>
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Net De&#287;i&#351;im</div><div class="ss-card-mini-val cyan">+5</div><div class="ss-card-mini-change green">&#9650; art&#305;&#351;</div></div>
+                            </div>
+                            <div class="ss-timeline">
+                                <div class="ss-timeline-item in"><div class="ss-tl-top"><span class="ss-tl-product">Ortopedik Yatak 160x200</span><span class="ss-tl-badge in">Giri&#351;</span></div><div class="ss-tl-details"><span>+10 adet</span><span>Tedarik&#231;i: Yatak D&#252;nyas&#305; A.&#350;.</span><span>14:32</span></div></div>
+                                <div class="ss-timeline-item out"><div class="ss-tl-top"><span class="ss-tl-product">3+1 K&#246;&#351;e Koltuk Tak&#305;m&#305;</span><span class="ss-tl-badge out">&#199;&#305;k&#305;&#351;</span></div><div class="ss-tl-details"><span>-2 adet</span><span>M&#252;&#351;teri: Ahmet Y&#305;lmaz</span><span>13:15</span></div></div>
+                                <div class="ss-timeline-item out"><div class="ss-tl-top"><span class="ss-tl-product">TV &#220;nitesi 180cm</span><span class="ss-tl-badge out">&#199;&#305;k&#305;&#351;</span></div><div class="ss-tl-details"><span>-1 adet</span><span>M&#252;&#351;teri: Fatma Demir</span><span>11:48</span></div></div>
+                                <div class="ss-timeline-item in"><div class="ss-tl-top"><span class="ss-tl-product">&#199;al&#305;&#351;ma Masas&#305; 120cm</span><span class="ss-tl-badge in">Giri&#351;</span></div><div class="ss-tl-details"><span>+5 adet</span><span>Tedarik&#231;i: Ofis Mobilya Ltd.</span><span>10:20</span></div></div>
+                                <div class="ss-timeline-item in"><div class="ss-tl-top"><span class="ss-tl-product">Gardrop 6 Kap&#305;</span><span class="ss-tl-badge in">Giri&#351;</span></div><div class="ss-tl-details"><span>+8 adet</span><span>Tedarik&#231;i: Moda Ahşap</span><span>09:05</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-info">
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Stok Hareketleri &mdash; Her Giri&#351; ve &#199;&#305;k&#305;&#351;&#305; Takip Edin</div>
+                    <p class="showcase-info-desc">Stok hareketleri ekran&#305;nda t&#252;m giri&#351; ve &#231;&#305;k&#305;&#351; i&#351;lemlerini zaman &#231;izelgesinde g&#246;r&#252;rs&#252;n&#252;z. Her hareket i&#231;in &#252;r&#252;n ad&#305;, miktar, tedarik&#231;i veya m&#252;&#351;teri bilgisi ve saat kayd&#305; tutulur. G&#252;nl&#252;k &#246;zet kartlar&#305; ile ka&#231; &#252;r&#252;n girdi, ka&#231;&#305; &#231;&#305;kt&#305; ve net de&#287;i&#351;imi an&#305;nda g&#246;r&#252;rs&#252;n&#252;z. T&#252;m verileri d&#305;&#351;a aktarabilirsiniz.</p>
+                    <ul class="showcase-features">
+                        <li>Zaman &#231;izelgesi g&#246;r&#252;n&#252;m&#252;</li>
+                        <li>Giri&#351;/&#199;&#305;k&#305;&#351; renk ayr&#305;m&#305;</li>
+                        <li>Tedarik&#231;i &amp; m&#252;&#351;teri kayd&#305;</li>
+                        <li>G&#252;nl&#252;k &#246;zet istatistikleri</li>
+                        <li>Excel/CSV d&#305;&#351;a aktarma</li>
+                        <li>Tarih aral&#305;&#287;&#305; filtreleme</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 4: Raporlama -->
+        <div class="showcase-panel" id="panel-rapor">
+            <div class="showcase-layout">
+                <div class="showcase-screen">
+                    <div class="ss-bar"><div class="ss-dot mk-r"></div><div class="ss-dot mk-y"></div><div class="ss-dot mk-g"></div><div class="ss-title">Alkanl&#305; Stok &mdash; Raporlama</div></div>
+                    <div class="ss-sidebar-layout">
+                        <div class="ss-sidebar">
+                            <div class="ss-sidebar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>Alkanl&#305; Stok</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Ana Panel</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>&#220;r&#252;nler</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Hareketler</div>
+                            <div class="ss-menu-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Raporlar</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alarmlar</div>
+                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/></svg>Ayarlar</div>
+                        </div>
+                        <div class="ss-main">
+                            <div class="ss-topbar"><div class="ss-page-title">Raporlama</div><div style="display:flex;gap:6px"><span class="ss-btn-small ss-btn-ghost">Bu Ay</span><span class="ss-btn-small ss-btn-primary">Rapor Olu&#351;tur</span></div></div>
+                            <div class="ss-report-grid">
+                                <div class="ss-chart-area">
+                                    <div class="ss-chart-title">Ayl&#305;k Sat&#305;&#351; Trendi <span>2026</span></div>
+                                    <div class="ss-bars" style="height:90px">
+                                        <div class="ss-bar-col" style="height:35%" data-label="Oca"></div>
+                                        <div class="ss-bar-col" style="height:50%" data-label="&#350;ub"></div>
+                                        <div class="ss-bar-col" style="height:65%" data-label="Mar"></div>
+                                        <div class="ss-bar-col" style="height:90%" data-label="Nis"></div>
+                                    </div>
+                                </div>
+                                <div class="ss-donut-wrap">
+                                    <div class="ss-donut"></div>
+                                    <div class="ss-donut-legend">
+                                        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--text-bright);margin-bottom:4px">Kategori Da&#287;&#305;l&#305;m&#305;</div>
+                                        <div class="ss-donut-item"><div class="ss-donut-dot" style="background:var(--green)"></div>Yatak &amp; Baza (%55)</div>
+                                        <div class="ss-donut-item"><div class="ss-donut-dot" style="background:var(--blue)"></div>Koltuk (%22)</div>
+                                        <div class="ss-donut-item"><div class="ss-donut-dot" style="background:var(--orange)"></div>Masa (%14)</div>
+                                        <div class="ss-donut-item"><div class="ss-donut-dot" style="background:var(--red)"></div>Di&#287;er (%9)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ss-cards-row" style="grid-template-columns:repeat(3,1fr)">
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Toplam Sat&#305;&#351;</div><div class="ss-card-mini-val green">&#8378;127.400</div><div class="ss-card-mini-change green">&#9650; %18 ge&#231;en aya g&#246;re</div></div>
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">En &#199;ok Satan</div><div class="ss-card-mini-val cyan" style="font-size:14px">Ortopedik Yatak</div><div class="ss-card-mini-change" style="color:var(--text-dim)">45 adet sat&#305;ld&#305;</div></div>
+                                <div class="ss-card-mini"><div class="ss-card-mini-label">Ortalama Sipari&#351;</div><div class="ss-card-mini-val blue">&#8378;4.750</div><div class="ss-card-mini-change green">&#9650; %5.2</div></div>
+                            </div>
+                            <div class="ss-export-row"><span class="ss-btn-small ss-btn-ghost">&#128196; PDF &#304;ndir</span><span class="ss-btn-small ss-btn-ghost">&#128202; Excel &#304;ndir</span><span class="ss-btn-small ss-btn-ghost">&#128424; Yazd&#305;r</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-info">
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Raporlama &mdash; Verilerinizi Anlamland&#305;r&#305;n</div>
+                    <p class="showcase-info-desc">Raporlama ekran&#305;nda sat&#305;&#351; trendleri, kategori da&#287;&#305;l&#305;mlar&#305; ve &#246;zet istatistikleri g&#246;rsel grafiklerle incelersiniz. Ayl&#305;k sat&#305;&#351; grafi&#287;i ile b&#252;y&#252;menizi takip eder, pasta grafi&#287;i ile hangi kategorinin &#246;ne &#231;&#305;kt&#305;&#287;&#305;n&#305; g&#246;r&#252;rs&#252;n&#252;z. Raporlar&#305;n&#305;z&#305; PDF, Excel olarak indirebilir veya do&#287;rudan yazd&#305;rabilirsiniz.</p>
+                    <ul class="showcase-features">
+                        <li>Ayl&#305;k sat&#305;&#351; trend grafi&#287;i</li>
+                        <li>Kategori da&#287;&#305;l&#305;m pasta grafi&#287;i</li>
+                        <li>En &#231;ok satan &#252;r&#252;n analizi</li>
+                        <li>Ge&#231;mi&#351; d&#246;nem kar&#351;&#305;la&#351;t&#305;rmas&#305;</li>
+                        <li>PDF / Excel d&#305;&#351;a aktarma</li>
+                        <li>Yazd&#305;rma deste&#287;i</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -355,6 +671,9 @@
     // Nav scroll effect
     const nav=document.querySelector('nav');
     addEventListener('scroll',()=>{if(scrollY>100){nav.style.background='rgba(8,8,26,0.85)';nav.style.borderColor='rgba(255,255,255,0.08)'}else{nav.style.background='';nav.style.borderColor=''}});
+
+    // Showcase tabs
+    document.querySelectorAll('.s-tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.showcase-panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.panel).classList.add('active')})});
 
     // Smooth anchor
     document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
