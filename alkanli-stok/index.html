@@ -4,277 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alkanl&#305; Stok &#8212; Ki&#351;iye &#214;zel Stok Takip Sistemi</title>
-    <meta name="description" content="Alkanl&#305; Stok &#8212; &#304;&#351;letmenize &#246;zel, profesyonel stok ve envanter takip yaz&#305;l&#305;m&#305;.">
+    <meta name="description" content="&#304;&#351;letmenize &#246;zel, profesyonel stok ve envanter takip yaz&#305;l&#305;m&#305;.">
     <meta name="author" content="Kaan Alkanl&#305;">
     <meta property="og:title" content="Alkanl&#305; Stok &#8212; Ki&#351;iye &#214;zel Stok Takip Sistemi">
     <meta property="og:description" content="&#304;&#351;letmenize &#246;zel tasarlanan profesyonel stok takip yaz&#305;l&#305;m&#305;.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wilsonbia7.github.io/alkanli-stok/">
-    <meta name="twitter:card" content="summary">
     <meta name="theme-color" content="#050510">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#030308;--bg2:#080812;--text:#b8b8cc;--text-dim:#484860;--text-bright:#e0e0f0;--accent:rgba(100,65,185,1);--card-bg:rgba(255,255,255,0.012);--card-border:rgba(255,255,255,0.035);--card-hover-bg:rgba(255,255,255,0.035);--card-hover-border:rgba(110,70,195,0.18);--ease:cubic-bezier(0.16,1,0.3,1);--green:#34d399;--blue:#60a5fa;--orange:#fb923c;--pink:#f472b6}
+        :root{--bg:#030308;--bg2:#06060f;--text:#b8b8cc;--text-dim:#484860;--text-bright:#e8e8f4;--accent:#7c5ce0;--accent2:#6941c6;--card-bg:rgba(255,255,255,0.015);--card-border:rgba(255,255,255,0.04);--card-hover-bg:rgba(255,255,255,0.04);--card-hover-border:rgba(124,92,224,0.2);--ease:cubic-bezier(0.16,1,0.3,1);--ease-s:cubic-bezier(0.4,0,0.2,1);--green:#34d399;--blue:#60a5fa;--orange:#fb923c;--red:#f87171}
         html{scroll-behavior:smooth}
         body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-        ::selection{background:rgba(100,60,180,0.25);color:#e0e0f0}
-        ::-webkit-scrollbar{width:5px}
-        ::-webkit-scrollbar-track{background:transparent}
-        ::-webkit-scrollbar-thumb{background:rgba(100,60,180,0.12);border-radius:3px}
-
-        .bg-grid{position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(100,65,185,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(100,65,185,0.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at 50% 30%,black 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,black 20%,transparent 70%)}
-        .bg-glow{position:fixed;z-index:0;pointer-events:none;width:800px;height:800px;border-radius:50%;filter:blur(120px);opacity:0.4}
-        .bg-glow.g1{top:-300px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(100,65,185,0.15),transparent 70%)}
-        .bg-glow.g2{bottom:-400px;right:-200px;background:radial-gradient(circle,rgba(30,80,180,0.08),transparent 70%)}
-        .vignette{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(3,3,8,0.6) 80%,rgba(3,3,8,0.95) 100%)}
-
-        nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(3,3,8,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.025)}
-        .nav-brand{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text-bright);text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px}
-        .nav-brand svg{width:22px;height:22px;color:var(--accent)}
-        .nav-back{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:400;color:var(--text-dim);text-decoration:none;letter-spacing:0.5px;transition:color 0.3s ease;display:flex;align-items:center;gap:6px}
-        .nav-back:hover{color:var(--text)}
-
-        .hero{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:160px 32px 80px;text-align:center}
-        .badge{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:500;text-transform:uppercase;letter-spacing:2.5px;color:rgba(100,65,185,0.9);padding:6px 16px;border-radius:20px;border:1px solid rgba(100,65,185,0.15);background:rgba(100,65,185,0.05);margin-bottom:28px;opacity:0;animation:fadeUp 0.8s var(--ease) 0.2s forwards}
-        .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
-        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
-        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,6vw,64px);font-weight:700;letter-spacing:-2.5px;line-height:1.05;margin-bottom:20px;opacity:0;animation:fadeUp 1s var(--ease) 0.35s forwards}
-        .hero h1 .gradient{background:linear-gradient(135deg,#e0e0f0 0%,#a78bfa 50%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .hero h1 .white{color:var(--text-bright)}
-        .hero-sub{font-size:16px;line-height:1.7;color:var(--text);max-width:540px;margin:0 auto 40px;opacity:0;animation:fadeUp 1s var(--ease) 0.5s forwards}
-        .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) 0.65s forwards}
-
-        .btn{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:500;padding:12px 28px;border-radius:12px;border:none;cursor:pointer;text-decoration:none;transition:all 0.4s var(--ease);display:inline-flex;align-items:center;gap:8px}
-        .btn-primary{background:linear-gradient(135deg,rgba(100,65,185,0.9),rgba(120,80,210,0.9));color:#fff;box-shadow:0 4px 20px rgba(100,65,185,0.25),inset 0 1px 0 rgba(255,255,255,0.1)}
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(100,65,185,0.35),inset 0 1px 0 rgba(255,255,255,0.15)}
-        .btn-ghost{background:rgba(255,255,255,0.03);color:var(--text);border:1px solid var(--card-border)}
-        .btn-ghost:hover{background:rgba(255,255,255,0.06);border-color:var(--card-hover-border);color:var(--text-bright);transform:translateY(-2px)}
-
-        .mockup-section{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:0 32px 80px;opacity:0;animation:fadeUp 1.2s var(--ease) 0.8s forwards}
-        .mockup{border-radius:16px;border:1px solid var(--card-border);background:var(--bg2);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.02)}
-        .mockup-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:rgba(255,255,255,0.015);border-bottom:1px solid var(--card-border)}
-        .mockup-dot{width:10px;height:10px;border-radius:50%}
-        .mockup-dot.r{background:rgba(255,95,87,0.6)}
-        .mockup-dot.y{background:rgba(255,189,46,0.6)}
-        .mockup-dot.g{background:rgba(39,201,63,0.6)}
-        .mockup-content{padding:24px}
-        .mockup-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-        .mockup-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text-bright)}
-        .mockup-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-        .stat-card{padding:14px;border-radius:10px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.03)}
-        .stat-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-        .stat-value{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600}
-        .stat-value.green{color:var(--green)}.stat-value.blue{color:var(--blue)}.stat-value.orange{color:var(--orange)}
-        .mockup-table{width:100%;border-collapse:collapse}
-        .mockup-table th{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);text-align:left;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.03);font-weight:500}
-        .mockup-table td{font-size:12.5px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.015);color:var(--text)}
-        .mockup-table tr:last-child td{border-bottom:none}
-        .stock-badge{font-size:10px;font-weight:500;padding:3px 8px;border-radius:6px;display:inline-block}
-        .stock-badge.ok{background:rgba(52,211,153,0.1);color:var(--green)}
-        .stock-badge.low{background:rgba(251,146,60,0.1);color:var(--orange)}
-        .stock-badge.out{background:rgba(244,114,182,0.1);color:var(--pink)}
-
-        .features{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 32px 80px}
-        .section-label{font-family:'Space Grotesk',sans-serif;font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:3.5px;color:#353548;text-align:center;margin-bottom:12px}
-        .section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:700;letter-spacing:-1.5px;color:var(--text-bright);text-align:center;margin-bottom:48px}
-        .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-        .feature-card{padding:24px;border-radius:14px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.5s var(--ease);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-        .feature-card:hover{background:var(--card-hover-bg);border-color:var(--card-hover-border);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.2),0 0 1px rgba(110,70,195,0.15)}
-        .feature-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;background:rgba(100,65,185,0.06);border:1px solid rgba(100,65,185,0.1)}
-        .feature-icon svg{width:18px;height:18px;color:rgba(140,100,220,0.8)}
-        .feature-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text-bright);margin-bottom:8px}
-        .feature-desc{font-size:12.5px;line-height:1.6;color:var(--text-dim)}
-
-        .sectors{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 32px 80px}
-        .sector-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-        .sector-card{display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:12px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.5s var(--ease)}
-        .sector-card:hover{background:var(--card-hover-bg);border-color:var(--card-hover-border);transform:translateY(-2px)}
-        .sector-emoji{font-size:22px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);border-radius:10px;flex-shrink:0}
-        .sector-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--text)}
-        .sector-sub{font-size:10.5px;color:var(--text-dim);margin-top:2px}
-
-        .pricing{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 32px 80px}
-        .pricing-card{max-width:420px;margin:0 auto;padding:32px;border-radius:16px;border:1px solid var(--card-hover-border);background:linear-gradient(180deg,rgba(100,65,185,0.04) 0%,var(--card-bg) 100%);text-align:center;position:relative;overflow:hidden}
-        .pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(120,80,210,0.4),transparent)}
-        .pricing-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:rgba(140,100,220,0.7);margin-bottom:8px}
-        .pricing-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text-bright);letter-spacing:-0.5px;margin-bottom:12px}
-        .pricing-desc{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:24px}
-        .pricing-features{list-style:none;text-align:left;margin-bottom:28px}
-        .pricing-features li{font-size:12.5px;color:var(--text);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;gap:10px}
-        .pricing-features li:last-child{border-bottom:none}
-        .check-icon{width:16px;height:16px;border-radius:50%;background:rgba(52,211,153,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .check-icon svg{width:10px;height:10px;color:var(--green)}
-
-        .cta{position:relative;z-index:1;max-width:600px;margin:0 auto;padding:0 32px 80px;text-align:center}
-        .cta-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(20px,3.5vw,28px);font-weight:700;letter-spacing:-1px;color:var(--text-bright);margin-bottom:12px}
-        .cta-desc{font-size:13px;color:var(--text-dim);margin-bottom:24px;line-height:1.6}
-        .cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-        .cta-link{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;padding:10px 18px;border-radius:10px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.4s var(--ease)}
-        .cta-link:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg);color:var(--text-bright);transform:translateY(-2px)}
-        .cta-link svg{width:14px;height:14px;color:#656580}
-
-        footer{position:relative;z-index:1;text-align:center;padding:24px 32px;border-top:1px solid rgba(255,255,255,0.02);font-family:'Inter',sans-serif;font-size:10.5px;color:#1e1e2c;font-weight:300;letter-spacing:0.8px}
-        footer a{color:#353548;text-decoration:none;transition:color 0.3s ease}
-        footer a:hover{color:var(--text-dim)}
-
-        @keyframes fadeUp{from{opacity:0;transform:translateY(25px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-        .reveal{opacity:0;transform:translateY(25px);transition:opacity 0.8s var(--ease),transform 0.8s var(--ease),filter 0.8s var(--ease);filter:blur(4px)}
+        ::selection{background:rgba(124,92,224,0.3);color:#fff}
+        ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(124,92,224,0.15);border-radius:4px}
+        .bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(124,92,224,0.06) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(59,130,246,0.03) 0%,transparent 50%),radial-gradient(ellipse 50% 40% at 10% 60%,rgba(168,85,247,0.03) 0%,transparent 50%)}
+        .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(124,92,224,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(124,92,224,0.02) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at 50% 0%,rgba(0,0,0,0.6) 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,rgba(0,0,0,0.6) 0%,transparent 70%)}
+        .bg-noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.015;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px}
+        #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+        nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(3,3,8,0.6);backdrop-filter:blur(24px) saturate(1.2);-webkit-backdrop-filter:blur(24px) saturate(1.2);border-bottom:1px solid rgba(255,255,255,0.03);transition:all 0.4s var(--ease-s)}
+        nav.scrolled{background:rgba(3,3,8,0.85);box-shadow:0 4px 30px rgba(0,0,0,0.3)}
+        .nav-brand{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text-bright);text-decoration:none;letter-spacing:-0.3px;display:flex;align-items:center;gap:10px;transition:opacity 0.3s ease}
+        .nav-brand:hover{opacity:0.8}.nav-brand svg{width:20px;height:20px;color:var(--accent)}
+        .nav-links{display:flex;align-items:center;gap:6px}
+        .nav-link{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:400;color:var(--text-dim);text-decoration:none;padding:6px 14px;border-radius:8px;transition:all 0.3s ease;letter-spacing:0.3px}
+        .nav-link:hover{color:var(--text);background:rgba(255,255,255,0.03)}
+        .nav-cta{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;color:#fff;text-decoration:none;padding:7px 18px;border-radius:8px;background:var(--accent);transition:all 0.3s ease;margin-left:6px}
+        .nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
+        .hero{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:180px 40px 100px;text-align:center}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--accent);padding:8px 20px;border-radius:100px;border:1px solid rgba(124,92,224,0.15);background:rgba(124,92,224,0.04);margin-bottom:32px;opacity:0;animation:fadeIn 0.8s var(--ease) 0.1s forwards}
+        .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2.5s ease-in-out infinite}
+        @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 8px var(--green)}50%{opacity:0.4;box-shadow:0 0 2px var(--green)}}
+        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:700;letter-spacing:-3px;line-height:1.0;margin-bottom:24px;opacity:0;animation:fadeSlideUp 1s var(--ease) 0.2s forwards}
+        .hero h1 .line1{color:var(--text-bright);display:block}
+        .hero h1 .line2{display:block;background:linear-gradient(135deg,#c4b5fd 0%,#a78bfa 30%,#7c3aed 70%,#6d28d9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-desc{font-size:17px;line-height:1.7;color:var(--text);max-width:520px;margin:0 auto 44px;font-weight:300;opacity:0;animation:fadeSlideUp 1s var(--ease) 0.35s forwards}
+        .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeSlideUp 1s var(--ease) 0.5s forwards}
+        .btn{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;text-decoration:none;transition:all 0.4s var(--ease);display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
+        .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 24px rgba(124,92,224,0.3),0 0 0 1px rgba(124,92,224,0.1)}
+        .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent 60%);opacity:0;transition:opacity 0.4s ease}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,92,224,0.4)}
+        .btn-primary:hover::before{opacity:1}
+        .btn-outline{background:transparent;color:var(--text);border:1px solid var(--card-border);backdrop-filter:blur(8px)}
+        .btn-outline:hover{border-color:var(--card-hover-border);background:rgba(255,255,255,0.03);color:var(--text-bright);transform:translateY(-2px)}
+        .btn svg{width:16px;height:16px}
+        .mockup-wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:0 40px 100px;opacity:0;animation:fadeSlideUp 1.2s var(--ease) 0.7s forwards}
+        .mockup-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,224,0.08),transparent 70%);filter:blur(60px);pointer-events:none}
+        .mockup{position:relative;border-radius:20px;border:1px solid rgba(255,255,255,0.06);background:var(--bg2);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.03)}
+        .mockup-bar{display:flex;align-items:center;gap:6px;padding:14px 18px;background:rgba(255,255,255,0.01);border-bottom:1px solid rgba(255,255,255,0.04)}
+        .mockup-dot{width:10px;height:10px;border-radius:50%}.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+        .mockup-toolbar{margin-left:16px;flex:1;display:flex;align-items:center;gap:8px}
+        .mockup-tab{font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:500;color:var(--text-dim);padding:4px 12px;border-radius:6px}
+        .mockup-tab.active{color:var(--text-bright);background:rgba(255,255,255,0.04)}
+        .mockup-body{padding:20px}
+        .mockup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+        .m-stat{padding:16px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);transition:all 0.3s ease}
+        .m-stat:hover{background:rgba(255,255,255,0.035)}
+        .m-stat-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+        .m-stat-value{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;letter-spacing:-1px}
+        .m-stat-change{font-size:10px;margin-top:4px;font-weight:500}
+        .green{color:var(--green)}.blue{color:var(--blue)}.orange{color:var(--orange)}.red{color:var(--red)}
+        .m-table{width:100%;border-collapse:collapse}
+        .m-table th{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);text-align:left;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.04);font-weight:500}
+        .m-table td{font-size:12.5px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.02);color:var(--text)}
+        .m-table tr:last-child td{border-bottom:none}.m-table tbody tr{transition:background 0.2s ease}.m-table tbody tr:hover{background:rgba(255,255,255,0.015)}
+        .badge-s{font-size:10px;font-weight:600;padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:4px}
+        .badge-s::before{content:'';width:5px;height:5px;border-radius:50%}
+        .badge-s.ok{background:rgba(52,211,153,0.08);color:var(--green)}.badge-s.ok::before{background:var(--green)}
+        .badge-s.low{background:rgba(251,146,60,0.08);color:var(--orange)}.badge-s.low::before{background:var(--orange)}
+        .badge-s.out{background:rgba(248,113,113,0.08);color:var(--red)}.badge-s.out::before{background:var(--red)}
+        .sec{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:80px 40px}
+        .sec-header{text-align:center;margin-bottom:56px}
+        .sec-tag{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:4px;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:12px}
+        .sec-tag::before,.sec-tag::after{content:'';width:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(124,92,224,0.3))}
+        .sec-tag::after{background:linear-gradient(90deg,rgba(124,92,224,0.3),transparent)}
+        .sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-1.8px;color:var(--text-bright);margin-bottom:14px}
+        .sec-desc{font-size:15px;color:var(--text-dim);max-width:480px;margin:0 auto;line-height:1.6}
+        .f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+        .f-card{padding:28px 24px;border-radius:16px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.5s var(--ease);position:relative;overflow:hidden}
+        .f-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(124,92,224,0),transparent);transition:background 0.5s ease}
+        .f-card:hover{background:var(--card-hover-bg);border-color:var(--card-hover-border);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+        .f-card:hover::before{background:linear-gradient(90deg,transparent,rgba(124,92,224,0.3),transparent)}
+        .f-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:rgba(124,92,224,0.06);border:1px solid rgba(124,92,224,0.08);transition:all 0.4s ease}
+        .f-card:hover .f-icon{background:rgba(124,92,224,0.1);transform:scale(1.05)}
+        .f-icon svg{width:18px;height:18px;color:var(--accent)}
+        .f-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text-bright);margin-bottom:8px}
+        .f-desc{font-size:13px;line-height:1.65;color:var(--text-dim)}
+        .s-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+        .s-card{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:14px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.4s var(--ease);cursor:default}
+        .s-card:hover{background:var(--card-hover-bg);border-color:var(--card-hover-border);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+        .s-emoji{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);border-radius:12px;flex-shrink:0;transition:transform 0.3s ease}
+        .s-card:hover .s-emoji{transform:scale(1.1)}
+        .s-name{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:500;color:var(--text)}
+        .s-sub{font-size:11px;color:var(--text-dim);margin-top:2px}
+        .p-card{max-width:440px;margin:0 auto;padding:40px;border-radius:20px;border:1px solid var(--card-hover-border);background:linear-gradient(180deg,rgba(124,92,224,0.03) 0%,rgba(3,3,8,0.5) 100%);text-align:center;position:relative;overflow:hidden}
+        .p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 10%,rgba(124,92,224,0.5) 50%,transparent 90%)}
+        .p-card::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(124,92,224,0.02) 60deg,transparent 120deg);animation:pRotate 15s linear infinite;pointer-events:none}
+        @keyframes pRotate{to{transform:rotate(360deg)}}
+        .p-label,.p-title,.p-desc,.p-list,.p-list+a{position:relative;z-index:1}
+        .p-label{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:10px}
+        .p-title{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--text-bright);letter-spacing:-0.5px;margin-bottom:12px}
+        .p-desc{font-size:13.5px;color:var(--text-dim);line-height:1.6;margin-bottom:28px}
+        .p-list{list-style:none;text-align:left;margin-bottom:32px}
+        .p-list li{font-size:13px;color:var(--text);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.025);display:flex;align-items:center;gap:12px}
+        .p-list li:last-child{border-bottom:none}
+        .p-check{width:18px;height:18px;border-radius:50%;background:rgba(52,211,153,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .p-check svg{width:10px;height:10px;color:var(--green)}
+        .cta-section{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:60px 40px 100px;text-align:center}
+        .cta-box{padding:48px 40px;border-radius:20px;border:1px solid var(--card-border);background:var(--card-bg);position:relative;overflow:hidden}
+        .cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(124,92,224,0.04),transparent 60%);pointer-events:none}
+        .cta-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,3.5vw,30px);font-weight:700;letter-spacing:-1px;color:var(--text-bright);margin-bottom:12px;position:relative}
+        .cta-desc{font-size:14px;color:var(--text-dim);margin-bottom:28px;line-height:1.6;position:relative}
+        .cta-contacts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative}
+        .cta-link{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;padding:11px 20px;border-radius:10px;border:1px solid var(--card-border);background:rgba(255,255,255,0.01);transition:all 0.4s var(--ease)}
+        .cta-link:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg);color:var(--text-bright);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+        .cta-link svg{width:14px;height:14px;color:var(--text-dim)}
+        footer{position:relative;z-index:1;text-align:center;padding:20px 40px;border-top:1px solid rgba(255,255,255,0.025);font-size:11px;color:#1e1e30;font-weight:300;letter-spacing:0.6px}
+        footer a{color:#2e2e45;text-decoration:none;transition:color 0.3s ease}footer a:hover{color:var(--text-dim)}
+        .sec-divider{max-width:1000px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+        .sec-divider hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(124,92,224,0.1),transparent)}
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+        .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.9s var(--ease),transform 0.9s var(--ease),filter 0.9s var(--ease);filter:blur(6px)}
         .reveal.visible{opacity:1;transform:translateY(0);filter:blur(0)}
-
-        @media(max-width:768px){nav{padding:14px 20px}.hero{padding:140px 24px 60px}.mockup-section,.features,.sectors,.pricing,.cta{padding-left:20px;padding-right:20px}.mockup-stats{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr}.sector-grid{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:480px){.hero h1{letter-spacing:-1.5px}.hero-actions{flex-direction:column;align-items:center}.btn{width:100%;justify-content:center}.sector-grid{grid-template-columns:1fr}.mockup-table th:nth-child(3),.mockup-table td:nth-child(3){display:none}}
+        .reveal-child > *{opacity:0;transform:translateY(20px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
+        .reveal-child.visible > *{opacity:1;transform:translateY(0)}
+        .reveal-child.visible > *:nth-child(1){transition-delay:0s}.reveal-child.visible > *:nth-child(2){transition-delay:0.06s}.reveal-child.visible > *:nth-child(3){transition-delay:0.12s}.reveal-child.visible > *:nth-child(4){transition-delay:0.18s}.reveal-child.visible > *:nth-child(5){transition-delay:0.24s}.reveal-child.visible > *:nth-child(6){transition-delay:0.3s}.reveal-child.visible > *:nth-child(7){transition-delay:0.36s}.reveal-child.visible > *:nth-child(8){transition-delay:0.42s}
+        @media(max-width:768px){nav{padding:0 20px}.hero{padding:140px 24px 60px}.mockup-wrap,.sec,.cta-section{padding-left:20px;padding-right:20px}.mockup-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.s-grid{grid-template-columns:repeat(2,1fr)}.nav-link{display:none}.mockup-toolbar{display:none}}
+        @media(max-width:480px){.hero h1{letter-spacing:-1.5px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.s-grid{grid-template-columns:1fr}.m-table th:nth-child(3),.m-table td:nth-child(3){display:none}.cta-contacts{flex-direction:column;align-items:stretch}.cta-link{justify-content:center}.p-card{padding:28px 20px}}
     </style>
 </head>
 <body>
+    <div class="bg-mesh" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
-    <div class="bg-glow g1" aria-hidden="true"></div>
-    <div class="bg-glow g2" aria-hidden="true"></div>
-    <div class="vignette" aria-hidden="true"></div>
-
-    <nav>
-        <a href="./" class="nav-brand">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4"/><path d="M2 12h20"/></svg>
-            Alkanl&#305; Stok
-        </a>
-        <a href="../" class="nav-back">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M19 12H5m0 0l7 7m-7-7l7-7"/></svg>
-            Ana Sayfa
-        </a>
+    <div class="bg-noise" aria-hidden="true"></div>
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <nav id="nav">
+        <a href="./" class="nav-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4"/><path d="M2 12h20"/></svg> Alkanl&#305; Stok</a>
+        <div class="nav-links"><a href="#ozellikler" class="nav-link">&#214;zellikler</a><a href="#sektorler" class="nav-link">Sekt&#246;rler</a><a href="#fiyat" class="nav-link">Fiyat</a><a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok" class="nav-cta">&#304;leti&#351;im</a></div>
     </nav>
-
     <section class="hero">
-        <div class="badge"><span class="badge-dot"></span> Sipari&#351; Al&#305;nmaktad&#305;r</div>
-        <h1><span class="white">Her Sekt&#246;re Uygun</span><br><span class="gradient">Stok Takip Sistemi</span></h1>
-        <p class="hero-sub">&#304;&#351;letmenize &#246;zel tasarlanan profesyonel envanter ve stok y&#246;netim yaz&#305;l&#305;m&#305;. Telefon par&#231;a, mobilya, market &#8212; hangi sekt&#246;rde olursan&#305;z olun, size &#246;zel yap&#305;land&#305;r&#305;yoruz.</p>
+        <div class="hero-badge"><span class="hero-badge-dot"></span> Sipari&#351; Al&#305;nmaktad&#305;r</div>
+        <h1><span class="line1">Her Sekt&#246;re Uygun</span><span class="line2">Stok Takip Sistemi</span></h1>
+        <p class="hero-desc">&#304;&#351;letmenize &#246;zel tasarlanan profesyonel envanter ve stok y&#246;netim yaz&#305;l&#305;m&#305;. Hangi sekt&#246;rde olursan&#305;z olun, size &#246;zel yap&#305;land&#305;r&#305;yoruz.</p>
         <div class="hero-actions">
-            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20%E2%80%94%20Bilgi%20Almak%20%C4%B0stiyorum" class="btn btn-primary">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
-                &#304;leti&#351;ime Ge&#231;
-            </a>
-            <a href="#ozellikler" class="btn btn-ghost">&#214;zellikleri G&#246;r <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg></a>
+            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20%E2%80%94%20Bilgi" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg> &#304;leti&#351;ime Ge&#231;</a>
+            <a href="#ozellikler" class="btn btn-outline">Ke&#351;fet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
         </div>
     </section>
-
-    <section class="mockup-section">
+    <section class="mockup-wrap">
+        <div class="mockup-glow"></div>
         <div class="mockup">
-            <div class="mockup-bar"><div class="mockup-dot r"></div><div class="mockup-dot y"></div><div class="mockup-dot g"></div></div>
-            <div class="mockup-content">
-                <div class="mockup-header"><div class="mockup-title">Stok Durumu</div></div>
-                <div class="mockup-stats">
-                    <div class="stat-card"><div class="stat-label">Toplam &#220;r&#252;n</div><div class="stat-value green">1,247</div></div>
-                    <div class="stat-card"><div class="stat-label">Stokta</div><div class="stat-value blue">1,089</div></div>
-                    <div class="stat-card"><div class="stat-label">Kritik Seviye</div><div class="stat-value orange">23</div></div>
+            <div class="mockup-bar"><div class="mockup-dot dot-r"></div><div class="mockup-dot dot-y"></div><div class="mockup-dot dot-g"></div><div class="mockup-toolbar"><span class="mockup-tab active">Stok Durumu</span><span class="mockup-tab">Hareketler</span><span class="mockup-tab">Raporlar</span></div></div>
+            <div class="mockup-body">
+                <div class="mockup-grid">
+                    <div class="m-stat"><div class="m-stat-label">Toplam &#220;r&#252;n</div><div class="m-stat-value green">842</div><div class="m-stat-change green">&#9650; 12 bu hafta</div></div>
+                    <div class="m-stat"><div class="m-stat-label">Stokta</div><div class="m-stat-value blue">756</div><div class="m-stat-change blue">%89.8 doluluk</div></div>
+                    <div class="m-stat"><div class="m-stat-label">Kritik Seviye</div><div class="m-stat-value orange">14</div><div class="m-stat-change red">&#9660; Sipari&#351; gerekli</div></div>
                 </div>
-                <table class="mockup-table">
+                <table class="m-table">
                     <thead><tr><th>&#220;r&#252;n</th><th>Kategori</th><th>Miktar</th><th>Durum</th></tr></thead>
                     <tbody>
-                        <tr><td>iPhone 15 Pro Ekran</td><td>Telefon Par&#231;a</td><td>48</td><td><span class="stock-badge ok">Stokta</span></td></tr>
-                        <tr><td>Samsung A54 Batarya</td><td>Telefon Par&#231;a</td><td>5</td><td><span class="stock-badge low">Az</span></td></tr>
-                        <tr><td>USB-C &#350;arj Kablosu</td><td>Aksesuar</td><td>0</td><td><span class="stock-badge out">T&#252;kendi</span></td></tr>
-                        <tr><td>Temperli Cam iPhone 14</td><td>Aksesuar</td><td>124</td><td><span class="stock-badge ok">Stokta</span></td></tr>
+                        <tr><td>&#199;ift Ki&#351;ilik Baza</td><td>Yatak &amp; Baza</td><td>32</td><td><span class="badge-s ok">Stokta</span></td></tr>
+                        <tr><td>Ortopedik Yatak 160x200</td><td>Yatak</td><td>18</td><td><span class="badge-s ok">Stokta</span></td></tr>
+                        <tr><td>3+1 K&#246;&#351;e Koltuk Tak&#305;m&#305;</td><td>Koltuk</td><td>4</td><td><span class="badge-s low">Az</span></td></tr>
+                        <tr><td>Yemek Masas&#305; 6 Ki&#351;ilik</td><td>Masa</td><td>0</td><td><span class="badge-s out">T&#252;kendi</span></td></tr>
+                        <tr><td>TV &#220;nitesi 180cm</td><td>&#220;nite</td><td>11</td><td><span class="badge-s ok">Stokta</span></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
-
-    <section class="features reveal" id="ozellikler">
-        <div class="section-label">&#214;zellikler</div>
-        <h2 class="section-title">&#304;&#351;letmeniz &#304;&#231;in Her &#350;ey</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
-                <div class="feature-title">Ki&#351;iye &#214;zel Yap&#305;land&#305;rma</div>
-                <div class="feature-desc">Sekt&#246;r&#252;n&#252;ze ve ihtiya&#231;lar&#305;n&#305;za g&#246;re &#246;zelle&#351;tirilmi&#351; &#252;r&#252;n kategorileri, alanlar ve i&#351; ak&#305;&#351;lar&#305;.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
-                <div class="feature-title">Stok Alarmlar&#305;</div>
-                <div class="feature-desc">Kritik stok seviyelerine d&#252;&#351;&#252;ld&#252;&#287;&#252;nde otomatik uyar&#305;lar. Hi&#231; bir &#252;r&#252;n t&#252;kenmeden haberiniz olsun.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                <div class="feature-title">Masa&#252;st&#252; Uygulamas&#305;</div>
-                <div class="feature-desc">Windows &#252;zerinde &#231;al&#305;&#351;an, h&#305;zl&#305; ve g&#252;venilir masa&#252;st&#252; uygulamas&#305;. &#304;nternet ba&#287;lant&#305;s&#305; gerektirmez.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
-                <div class="feature-title">Veri Yedekleme</div>
-                <div class="feature-desc">Verileriniz yerel veritaban&#305;nda g&#252;venle saklan&#305;r. Yedekleme ve geri y&#252;kleme deste&#287;i.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-                <div class="feature-title">Raporlama</div>
-                <div class="feature-desc">Detayl&#305; stok raporlar&#305;, giri&#351;-&#231;&#305;k&#305;&#351; hareketleri ve envanter &#246;zeti tek t&#305;kla elinizde.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                <div class="feature-title">G&#252;venli &amp; H&#305;zl&#305;</div>
-                <div class="feature-desc">Yerel veritaban&#305; ile verileriniz sadece sizde. Hafif ve performansl&#305; altyap&#305;.</div>
-            </div>
+    <div class="sec-divider"><hr></div>
+    <section class="sec reveal" id="ozellikler">
+        <div class="sec-header"><div class="sec-tag">&#214;zellikler</div><h2 class="sec-title">&#304;&#351;letmeniz &#304;&#231;in Her &#350;ey</h2><p class="sec-desc">Stok y&#246;netiminizi kolayla&#351;t&#305;ran, i&#351;inizi h&#305;zland&#305;ran &#246;zellikler.</p></div>
+        <div class="f-grid reveal-child">
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><div class="f-title">Ki&#351;iye &#214;zel Yap&#305;land&#305;rma</div><div class="f-desc">Sekt&#246;r&#252;n&#252;ze &#246;zel &#252;r&#252;n kategorileri, alanlar ve i&#351; ak&#305;&#351;lar&#305; ile tam uyum.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div><div class="f-title">Stok Alarmlar&#305;</div><div class="f-desc">Kritik seviyeye d&#252;&#351;en &#252;r&#252;nler i&#231;in anl&#305;k uyar&#305;lar. &#220;r&#252;n t&#252;kenmeden &#246;nlem al&#305;n.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="f-title">Masa&#252;st&#252; Uygulamas&#305;</div><div class="f-desc">Windows&#8217;ta &#231;al&#305;&#351;an h&#305;zl&#305; uygulama. &#304;nternet ba&#287;lant&#305;s&#305; gerekmez.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="f-title">Veri G&#252;venli&#287;i</div><div class="f-desc">Verileriniz yerel veritaban&#305;nda g&#252;venle saklan&#305;r. Yedekleme ve geri y&#252;kleme deste&#287;i.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="f-title">Detayl&#305; Raporlama</div><div class="f-desc">Stok raporlar&#305;, giri&#351;-&#231;&#305;k&#305;&#351; hareketleri ve envanter &#246;zeti tek t&#305;kla.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="f-title">Y&#252;ksek Performans</div><div class="f-desc">Hafif ve optimize altyap&#305;. Binlerce &#252;r&#252;nle bile h&#305;zl&#305; &#231;al&#305;&#351;&#305;r.</div></div>
         </div>
     </section>
-
-    <section class="sectors reveal">
-        <div class="section-label">Sekt&#246;rler</div>
-        <h2 class="section-title">Her &#304;&#351;letmeye Uygun</h2>
-        <div class="sector-grid">
-            <div class="sector-card"><div class="sector-emoji">&#128241;</div><div><div class="sector-name">Telefon &amp; Par&#231;a</div><div class="sector-sub">Ekran, batarya, aksesuar</div></div></div>
-            <div class="sector-card"><div class="sector-emoji">&#128722;</div><div><div class="sector-name">Market &amp; Bakkal</div><div class="sector-sub">G&#305;da, i&#231;ecek, temizlik</div></div></div>
-            <div class="sector-card"><div class="sector-emoji">&#128715;</div><div><div class="sector-name">Mobilya</div><div class="sector-sub">Yatak, koltuk, masa</div></div></div>
-            <div class="sector-card"><div class="sector-emoji">&#128295;</div><div><div class="sector-name">H&#305;rdavat &amp; Nalburiye</div><div class="sector-sub">Alet, vida, boya</div></div></div>
-            <div class="sector-card"><div class="sector-emoji">&#128090;</div><div><div class="sector-name">Giyim &amp; Tekstil</div><div class="sector-sub">K&#305;yafet, ayakkab&#305;, &#231;anta</div></div></div>
-            <div class="sector-card"><div class="sector-emoji">&#128187;</div><div><div class="sector-name">Elektronik</div><div class="sector-sub">Bilgisayar, tablet, kablo</div></div></div>
-            <div class="sector-card"><div class="sector-emoji">&#128138;</div><div><div class="sector-name">Eczane &amp; Medikal</div><div class="sector-sub">&#304;la&#231;, malzeme, cihaz</div></div></div>
-            <div class="sector-card"><div class="sector-emoji">&#9881;&#65039;</div><div><div class="sector-name">Di&#287;er Sekt&#246;rler</div><div class="sector-sub">Size &#246;zel yap&#305;land&#305;r&#305;l&#305;r</div></div></div>
+    <div class="sec-divider"><hr></div>
+    <section class="sec reveal" id="sektorler">
+        <div class="sec-header"><div class="sec-tag">Sekt&#246;rler</div><h2 class="sec-title">Her &#304;&#351;letmeye Uygun</h2><p class="sec-desc">Farkl&#305; sekt&#246;rlerin ihtiya&#231;lar&#305;na g&#246;re &#246;zelle&#351;tiriyoruz.</p></div>
+        <div class="s-grid reveal-child">
+            <div class="s-card"><div class="s-emoji">&#128241;</div><div><div class="s-name">Telefon &amp; Par&#231;a</div><div class="s-sub">Ekran, batarya, aksesuar</div></div></div>
+            <div class="s-card"><div class="s-emoji">&#128722;</div><div><div class="s-name">Market &amp; Bakkal</div><div class="s-sub">G&#305;da, i&#231;ecek, temizlik</div></div></div>
+            <div class="s-card"><div class="s-emoji">&#128715;</div><div><div class="s-name">Mobilya</div><div class="s-sub">Yatak, koltuk, masa</div></div></div>
+            <div class="s-card"><div class="s-emoji">&#128295;</div><div><div class="s-name">H&#305;rdavat</div><div class="s-sub">Alet, vida, boya</div></div></div>
+            <div class="s-card"><div class="s-emoji">&#128090;</div><div><div class="s-name">Giyim &amp; Tekstil</div><div class="s-sub">K&#305;yafet, ayakkab&#305;</div></div></div>
+            <div class="s-card"><div class="s-emoji">&#128187;</div><div><div class="s-name">Elektronik</div><div class="s-sub">Bilgisayar, tablet</div></div></div>
+            <div class="s-card"><div class="s-emoji">&#128138;</div><div><div class="s-name">Eczane &amp; Medikal</div><div class="s-sub">&#304;la&#231;, malzeme</div></div></div>
+            <div class="s-card"><div class="s-emoji">&#9881;&#65039;</div><div><div class="s-name">Di&#287;er Sekt&#246;rler</div><div class="s-sub">Size &#246;zel &#231;&#246;z&#252;m</div></div></div>
         </div>
     </section>
-
-    <section class="pricing reveal">
-        <div class="section-label">Fiyatland&#305;rma</div>
-        <h2 class="section-title">&#304;&#351;letmenize &#214;zel Teklif</h2>
-        <div class="pricing-card">
-            <div class="pricing-label">Ki&#351;iye &#214;zel</div>
-            <div class="pricing-title">&#304;&#351;letmenize &#214;zel Fiyat</div>
-            <div class="pricing-desc">Her i&#351;letmenin ihtiyac&#305; farkl&#305;d&#305;r. Sekt&#246;r&#252;n&#252;ze ve isteklerinize g&#246;re &#246;zel fiyat teklifi haz&#305;rl&#305;yoruz.</div>
-            <ul class="pricing-features">
-                <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Sekt&#246;r&#252;n&#252;ze &#246;zel &#252;r&#252;n kategorileri</li>
-                <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> S&#305;n&#305;rs&#305;z &#252;r&#252;n ekleme</li>
-                <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Stok alarm sistemi</li>
-                <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Detayl&#305; raporlama</li>
-                <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Kurulum &amp; e&#287;itim deste&#287;i</li>
-                <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Teknik destek &amp; g&#252;ncelleme</li>
+    <div class="sec-divider"><hr></div>
+    <section class="sec reveal" id="fiyat">
+        <div class="sec-header"><div class="sec-tag">Fiyatland&#305;rma</div><h2 class="sec-title">&#304;&#351;letmenize &#214;zel Teklif</h2></div>
+        <div class="p-card">
+            <div class="p-label">Ki&#351;iye &#214;zel</div>
+            <div class="p-title">&#304;&#351;letmenize &#214;zel Fiyat</div>
+            <div class="p-desc">Her i&#351;letmenin ihtiyac&#305; farkl&#305;d&#305;r. Sekt&#246;r&#252;n&#252;ze g&#246;re &#246;zel fiyat teklifi haz&#305;rl&#305;yoruz.</div>
+            <ul class="p-list">
+                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Sekt&#246;r&#252;n&#252;ze &#246;zel &#252;r&#252;n kategorileri</li>
+                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> S&#305;n&#305;rs&#305;z &#252;r&#252;n ekleme</li>
+                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Stok alarm sistemi</li>
+                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Detayl&#305; raporlama</li>
+                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Kurulum &amp; e&#287;itim deste&#287;i</li>
+                <li><span class="p-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Teknik destek &amp; g&#252;ncelleme</li>
             </ul>
-            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20%E2%80%94%20Fiyat%20Teklifi" class="btn btn-primary" style="width:100%;justify-content:center;">Fiyat Teklifi Al</a>
+            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20%E2%80%94%20Fiyat%20Teklifi" class="btn btn-primary" style="width:100%;justify-content:center;position:relative;z-index:1;">Fiyat Teklifi Al</a>
         </div>
     </section>
-
-    <section class="cta reveal">
-        <h2 class="cta-title">Sorular&#305;n&#305;z m&#305; Var?</h2>
-        <p class="cta-desc">&#304;&#351;letmeniz i&#231;in en uygun &#231;&#246;z&#252;m&#252; birlikte belirleyelim. Bize ula&#351;man&#305;z yeterli.</p>
-        <div class="cta-links">
-            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20Hakk%C4%B1nda" class="cta-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>
-                kaanalkanlic48@gmail.com
-            </a>
-            <a href="https://github.com/wilsonbia7" target="_blank" rel="noopener noreferrer" class="cta-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-            </a>
+    <section class="cta-section reveal">
+        <div class="cta-box">
+            <h2 class="cta-title">Hemen Ba&#351;lay&#305;n</h2>
+            <p class="cta-desc">&#304;&#351;letmeniz i&#231;in en uygun &#231;&#246;z&#252;m&#252; birlikte belirleyelim.</p>
+            <div class="cta-contacts">
+                <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok" class="cta-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg> kaanalkanlic48@gmail.com</a>
+                <a href="mailto:kaanalkanlic@outlook.com?subject=Alkanl%C4%B1%20Stok" class="cta-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg> kaanalkanlic@outlook.com</a>
+                <a href="https://github.com/wilsonbia7" target="_blank" rel="noopener noreferrer" class="cta-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a>
+            </div>
         </div>
     </section>
-
     <footer>&copy; 2026 <a href="../">Kaan Alkanl&#305;</a> &mdash; Alkanl&#305; Stok</footer>
-
     <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
+    (()=>{const c=document.getElementById('particles'),ctx=c.getContext('2d');let W,H;const P=[];function resize(){W=c.width=innerWidth;H=c.height=innerHeight}resize();addEventListener('resize',resize);for(let i=0;i<50;i++)P.push({x:Math.random()*2e3,y:Math.random()*2e3,vx:(Math.random()-0.5)*0.15,vy:(Math.random()-0.5)*0.1,r:Math.random()*1.5+0.3,o:Math.random()*0.15+0.03,ph:Math.random()*6.28});function draw(){ctx.clearRect(0,0,W,H);P.forEach(p=>{p.x+=p.vx+Math.sin(p.ph)*0.02;p.y+=p.vy+Math.cos(p.ph*0.7)*0.015;p.ph+=0.003;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fillStyle='rgba(124,92,224,'+p.o+')';ctx.fill()});for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){ctx.beginPath();ctx.moveTo(P[i].x,P[i].y);ctx.lineTo(P[j].x,P[j].y);ctx.strokeStyle='rgba(124,92,224,'+(0.02*(1-d/150))+')';ctx.lineWidth=0.5;ctx.stroke()}}requestAnimationFrame(draw)}draw()})();
+    const nav=document.getElementById('nav');addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60)});
+    const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal,.reveal-child').forEach(el=>obs.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
     </script>
 </body>
 </html>
