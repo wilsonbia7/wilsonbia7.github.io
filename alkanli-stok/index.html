@@ -154,6 +154,19 @@
         .rc.vis > *{opacity:1;transform:translateY(0)}
         .rc.vis > *:nth-child(1){transition-delay:0s}.rc.vis > *:nth-child(2){transition-delay:0.07s}.rc.vis > *:nth-child(3){transition-delay:0.14s}.rc.vis > *:nth-child(4){transition-delay:0.21s}.rc.vis > *:nth-child(5){transition-delay:0.28s}.rc.vis > *:nth-child(6){transition-delay:0.35s}
 
+        /* STATS COUNTER */
+        .stat-row{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:80px;opacity:0;animation:fadeUp 1s var(--ease) 0.8s forwards}
+        .stat-item{text-align:center}
+        .stat-num{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--text-bright);letter-spacing:-1px}
+        .stat-num .stat-suffix{font-size:0.6em;color:var(--accent);font-weight:500}
+        .stat-label{font-size:12px;color:var(--text-dim);margin-top:4px;letter-spacing:0.5px}
+
+        /* BACK TO TOP */
+        .back-top{position:fixed;bottom:28px;right:28px;z-index:40;width:44px;height:44px;border-radius:14px;border:1px solid var(--card-border);background:var(--glass);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(12px);transition:all 0.4s var(--ease)}
+        .back-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+        .back-top:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg);transform:translateY(-2px)}
+        .back-top svg{width:18px;height:18px;color:var(--text-dim)}
+
         /* APP SHOWCASE */
         .showcase-tabs{display:flex;justify-content:center;gap:6px;margin-bottom:40px;flex-wrap:wrap}
         .s-tab{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--text-dim);padding:10px 22px;border-radius:12px;border:1px solid var(--card-border);background:var(--card-bg);cursor:pointer;transition:all 0.3s ease;display:flex;align-items:center;gap:8px}
@@ -174,8 +187,9 @@
         .showcase-features li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
         .dual-screens{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 
-        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.nav-brand{padding:0 10px;font-size:13px}.hero{padding:140px 24px 70px}.hero-desc{font-size:16px}.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.sec{padding-top:80px;padding-bottom:80px}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:32px}.steps::before{display:none}.nav-link{display:none}.showcase-tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.showcase-tabs::-webkit-scrollbar{display:none}.showcase-features{grid-template-columns:1fr}.dual-screens{grid-template-columns:1fr}.showcase-info{padding:20px}.showcase-info-title{font-size:17px}.showcase-info-desc{font-size:13px}.showcase-screen{border-radius:14px}.mockup-border{border-radius:16px}.mockup{border-radius:15px}.marquee-wrap{margin:0 -20px}.sec-title{letter-spacing:-1.5px}.sec-desc{font-size:14px}.p-card{padding:32px 24px}.p-t{font-size:22px}.cta-box{padding:36px 24px}.cta-t{letter-spacing:-0.8px}}
-        @media(max-width:480px){.hero h1{letter-spacing:-2px;font-size:36px}.hero-badge{font-size:10px;letter-spacing:2px;padding:6px 16px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center;padding:14px 24px}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:24px 16px}.showcase-tabs{gap:4px;margin-bottom:24px}.s-tab{font-size:11px;padding:8px 12px;flex-shrink:0}.s-tab span{display:none}.f-card{padding:24px 20px}.step-desc{font-size:12px}.p-t{font-size:20px}.p-d{font-size:13px}.p-list li{font-size:13px;padding:9px 0}}
+        @media(max-width:1024px){.f-grid{grid-template-columns:repeat(2,1fr)}.stat-row{gap:32px}}
+        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.nav-brand{padding:0 10px;font-size:13px}.nav-sep{display:none}.hero{padding:130px 24px 60px}.hero-desc{font-size:16px}.mockup-wrap{margin-top:48px}.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.sec{padding-top:72px;padding-bottom:72px}.sec-header{margin-bottom:40px}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:28px}.steps::before{display:none}.nav-link{display:none}.showcase-tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.showcase-tabs::-webkit-scrollbar{display:none}.showcase-features{grid-template-columns:1fr}.dual-screens{grid-template-columns:1fr}.showcase-info{padding:20px}.showcase-info-title{font-size:17px}.showcase-info-desc{font-size:13px}.showcase-screen{border-radius:14px}.mockup-border{border-radius:16px}.mockup{border-radius:15px}.marquee-wrap{margin:0 -20px}.sec-title{letter-spacing:-1.5px}.sec-desc{font-size:14px}.p-card{padding:32px 24px}.p-t{font-size:22px}.cta-box{padding:36px 24px}.cta-t{letter-spacing:-0.8px}.stat-row{gap:24px;margin-top:48px}.stat-num{font-size:28px}.back-top{bottom:20px;right:20px;width:40px;height:40px;border-radius:12px}footer{padding:20px 24px}}
+        @media(max-width:480px){.hero h1{letter-spacing:-2px;font-size:36px}.hero-badge{font-size:10px;letter-spacing:2px;padding:6px 16px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center;padding:14px 24px}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:24px 16px}.showcase-tabs{gap:4px;margin-bottom:24px}.s-tab{font-size:11px;padding:8px 12px;flex-shrink:0}.s-tab span{display:none}.f-card{padding:24px 20px}.step-desc{font-size:12px}.p-t{font-size:20px}.p-d{font-size:13px}.p-list li{font-size:13px;padding:9px 0}.stat-row{gap:20px}.stat-item{min-width:80px}}
     </style>
 </head>
 <body>
@@ -201,13 +215,18 @@
             <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20Bilgi" class="btn btn-p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>&#304;leti&#351;ime Ge&#231;</a>
             <a href="#nasil" class="btn btn-o">Nas&#305;l &#199;al&#305;&#351;&#305;r? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
         </div>
+        <div class="stat-row">
+            <div class="stat-item"><div class="stat-num" data-target="9">0<span class="stat-suffix">+</span></div><div class="stat-label">Temel &#214;zellik</div></div>
+            <div class="stat-item"><div class="stat-num" data-target="6">0</div><div class="stat-label">Farkl&#305; Ekran</div></div>
+            <div class="stat-item"><div class="stat-num" data-target="0" data-symbol="&#8734;">&#8734;</div><div class="stat-label">S&#305;n&#305;rs&#305;z &#220;r&#252;n</div></div>
+            <div class="stat-item"><div class="stat-num" data-target="7">0<span class="stat-suffix">/24</span></div><div class="stat-label">Teknik Destek</div></div>
+        </div>
     </section>
-
 
     <section class="mockup-wrap reveal">
         <div class="mockup-border">
             <div class="mockup">
-                <img src="img/dashboard.png" alt="Alkanlı Stok - Kontrol Paneli" loading="lazy">
+                <img src="img/dashboard.png" alt="Alkanlı Stok - Kontrol Paneli" loading="eager">
             </div>
         </div>
     </section>
@@ -432,6 +451,8 @@
         </div>
     </section>
 
+    <button class="back-top" id="back-top" aria-label="Yukar&#305; git"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg></button>
+
     <footer>&copy; 2026 <a href="../">Kaan Alkanl&#305;</a> &mdash; Alkanl&#305; Stok</footer>
 
     <script>
@@ -456,6 +477,17 @@
 
     // Smooth anchor
     document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+    // Back to top
+    const btt=document.getElementById('back-top');
+    addEventListener('scroll',()=>{if(scrollY>600)btt.classList.add('show');else btt.classList.remove('show')});
+    btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    // Stat counter animation (delayed to sync with fadeUp)
+    let statDone=false;
+    function runCounters(){document.querySelectorAll('.stat-num[data-target]').forEach(el=>{const t=parseInt(el.dataset.target);if(t===0)return;const suffix=el.querySelector('.stat-suffix');const suffixHTML=suffix?suffix.outerHTML:'';let c=0;const step=Math.max(1,Math.floor(t/30));const iv=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(iv)}el.innerHTML=c+suffixHTML},40)})}
+    const statObs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting&&!statDone){statDone=true;setTimeout(runCounters,1200)}})},{threshold:0.3});
+    document.querySelectorAll('.stat-row').forEach(el=>statObs.observe(el));
     </script>
 </body>
 </html>
