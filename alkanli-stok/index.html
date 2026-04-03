@@ -65,38 +65,12 @@
         .btn svg{width:16px;height:16px}
 
         /* MOCKUP */
-        .mockup-wrap{position:relative;z-index:1;max-width:900px;margin:80px auto 0;padding:0 48px}
+        .mockup-wrap{position:relative;z-index:1;max-width:1000px;margin:80px auto 0;padding:0 48px}
         .mockup-border{padding:1px;border-radius:22px;background:linear-gradient(135deg,rgba(139,92,246,0.3),rgba(59,130,246,0.1),rgba(139,92,246,0.05),rgba(168,85,247,0.2));animation:borderRotate 8s linear infinite;background-size:300% 300%}
         @keyframes borderRotate{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        .mockup{border-radius:21px;background:var(--bg2);overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.04)}
-        .mk-bar{display:flex;align-items:center;gap:6px;padding:14px 20px;background:rgba(255,255,255,0.01);border-bottom:1px solid rgba(255,255,255,0.04)}
-        .mk-dot{width:10px;height:10px;border-radius:50%}.mk-r{background:#ff5f57}.mk-y{background:#febc2e}.mk-g{background:#28c840}
-        .mk-tabs{margin-left:20px;display:flex;gap:2px}
-        .mk-tab{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:var(--text-dim);padding:4px 14px;border-radius:8px;transition:all 0.2s}
-        .mk-tab.on{color:var(--text-bright);background:rgba(255,255,255,0.05)}
-        .mk-body{padding:24px}
-        .mk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-        .mk-stat{padding:18px;border-radius:14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);transition:all 0.3s ease;position:relative;overflow:hidden}
-        .mk-stat:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.06)}
-        .mk-stat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;border-radius:0 0 14px 14px}
-        .mk-stat:nth-child(1)::after{background:linear-gradient(90deg,var(--green),transparent)}
-        .mk-stat:nth-child(2)::after{background:linear-gradient(90deg,var(--blue),transparent)}
-        .mk-stat:nth-child(3)::after{background:linear-gradient(90deg,var(--orange),transparent)}
-        .mk-sl{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;font-weight:500}
-        .mk-sv{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-1px}
-        .mk-sc{font-size:10px;margin-top:6px;font-weight:500;display:flex;align-items:center;gap:4px}
+        .mockup{border-radius:21px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.5)}
+        .mockup img{width:100%;height:auto;display:block}
         .green{color:var(--green)}.blue{color:var(--blue)}.orange{color:var(--orange)}.red{color:var(--red)}.cyan{color:var(--cyan)}
-        .mk-table{width:100%;border-collapse:separate;border-spacing:0 2px}
-        .mk-table th{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);text-align:left;padding:10px 16px;font-weight:500}
-        .mk-table td{font-size:13px;padding:14px 16px;color:var(--text);background:rgba(255,255,255,0.01);transition:background 0.2s}
-        .mk-table tr td:first-child{border-radius:10px 0 0 10px;font-weight:500;color:var(--text-bright)}
-        .mk-table tr td:last-child{border-radius:0 10px 10px 0}
-        .mk-table tbody tr:hover td{background:rgba(255,255,255,0.03)}
-        .sb{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;padding:4px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:5px;letter-spacing:0.5px;text-transform:uppercase}
-        .sb::before{content:'';width:5px;height:5px;border-radius:50%}
-        .sb.ok{background:rgba(52,211,153,0.06);color:var(--green);border:1px solid rgba(52,211,153,0.1)}.sb.ok::before{background:var(--green)}
-        .sb.low{background:rgba(251,146,60,0.06);color:var(--orange);border:1px solid rgba(251,146,60,0.1)}.sb.low::before{background:var(--orange)}
-        .sb.out{background:rgba(248,113,113,0.06);color:var(--red);border:1px solid rgba(248,113,113,0.1)}.sb.out::before{background:var(--red)}
 
         /* SECTIONS */
         .sec{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 48px}
@@ -189,46 +163,8 @@
         .showcase-panel{display:none;animation:fadeUp 0.5s var(--ease)}
         .showcase-panel.active{display:block}
         .showcase-layout{display:grid;grid-template-columns:1fr;gap:32px}
-        .showcase-screen{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);background:var(--bg2);box-shadow:0 24px 64px rgba(0,0,0,0.4)}
-        .ss-bar{display:flex;align-items:center;gap:6px;padding:12px 18px;background:rgba(255,255,255,0.015);border-bottom:1px solid rgba(255,255,255,0.04)}
-        .ss-dot{width:9px;height:9px;border-radius:50%}
-        .ss-title{margin-left:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:0.5px}
-        .ss-body{padding:20px}
-        .ss-sidebar-layout{display:grid;grid-template-columns:220px 1fr;gap:0;min-height:380px}
-        .ss-sidebar{padding:16px;border-right:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.008)}
-        .ss-sidebar-logo{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--accent);margin-bottom:20px;padding:8px 12px;display:flex;align-items:center;gap:8px}
-        .ss-sidebar-logo svg{width:18px;height:18px}
-        .ss-menu-item{font-family:'Inter',sans-serif;font-size:12px;color:var(--text-dim);padding:9px 12px;border-radius:8px;margin-bottom:2px;display:flex;align-items:center;gap:10px;transition:all 0.2s}
-        .ss-menu-item.active{background:rgba(139,92,246,0.08);color:var(--accent)}
-        .ss-menu-item svg{width:15px;height:15px;opacity:0.5}
-        .ss-menu-item.active svg{opacity:1}
-        .ss-main{padding:20px 24px}
-        .ss-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-        .ss-page-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text-bright)}
-        .ss-btn-small{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:500;padding:6px 14px;border-radius:8px;border:none;cursor:default;display:inline-flex;align-items:center;gap:5px}
-        .ss-btn-primary{background:var(--accent);color:#fff}
-        .ss-btn-ghost{background:rgba(255,255,255,0.03);color:var(--text-dim);border:1px solid rgba(255,255,255,0.05)}
-        .ss-cards-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-        .ss-card-mini{padding:14px;border-radius:10px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.03)}
-        .ss-card-mini-label{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);margin-bottom:6px;font-weight:500}
-        .ss-card-mini-val{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.5px}
-        .ss-card-mini-change{font-size:9px;margin-top:4px;font-weight:500}
-        .ss-table-mini{width:100%;border-collapse:separate;border-spacing:0 2px}
-        .ss-table-mini th{font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);text-align:left;padding:8px 12px;font-weight:500}
-        .ss-table-mini td{font-size:11px;padding:10px 12px;color:var(--text);background:rgba(255,255,255,0.008);transition:background 0.2s}
-        .ss-table-mini tr td:first-child{border-radius:8px 0 0 8px;font-weight:500;color:var(--text-bright)}
-        .ss-table-mini tr td:last-child{border-radius:0 8px 8px 0}
-        .ss-table-mini tbody tr:hover td{background:rgba(255,255,255,0.025)}
-        .ss-chart-area{border-radius:12px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.03);padding:16px;margin-bottom:16px}
-        .ss-chart-title{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--text-bright);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
-        .ss-chart-title span{font-size:9px;color:var(--text-dim);font-weight:400;text-transform:uppercase;letter-spacing:1px}
-        .ss-bars{display:flex;align-items:flex-end;gap:6px;height:100px}
-        .ss-bar-col{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--accent),rgba(139,92,246,0.3));transition:height 0.8s var(--ease);position:relative}
-        .ss-bar-col::after{content:attr(data-label);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:7px;color:var(--text-dim);white-space:nowrap}
-        .ss-form-group{margin-bottom:14px}
-        .ss-form-label{font-size:10px;font-weight:500;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:block}
-        .ss-form-input{width:100%;font-size:11px;padding:9px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);color:var(--text-bright);font-family:'Inter',sans-serif}
-        .ss-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .showcase-screen{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);box-shadow:0 24px 64px rgba(0,0,0,0.4)}
+        .showcase-screen img{width:100%;height:auto;display:block}
         .showcase-info{padding:28px 32px;border-radius:18px;border:1px solid var(--card-border);background:var(--card-bg);backdrop-filter:blur(8px)}
         .showcase-info-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text-bright);margin-bottom:12px;display:flex;align-items:center;gap:12px}
         .showcase-info-title svg{width:22px;height:22px;color:var(--accent)}
@@ -236,9 +172,10 @@
         .showcase-features{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
         .showcase-features li{font-size:12.5px;color:var(--text-dim);display:flex;align-items:center;gap:8px;padding:6px 0}
         .showcase-features li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+        .dual-screens{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 
-        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.hero{padding:160px 24px 80px}.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.mk-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:32px}.steps::before{display:none}.nav-link{display:none}.mk-tabs{display:none}.ss-sidebar-layout{grid-template-columns:1fr}.ss-sidebar{display:none}.ss-cards-row{grid-template-columns:repeat(2,1fr)}.showcase-features{grid-template-columns:1fr}.ss-form-row{grid-template-columns:1fr}}
-        @media(max-width:480px){.hero h1{letter-spacing:-2px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.mk-table th:nth-child(3),.mk-table td:nth-child(3){display:none}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:28px 20px}.ss-cards-row{grid-template-columns:1fr}.showcase-tabs{gap:4px}.s-tab{font-size:11px;padding:8px 14px}.s-tab span{display:none}}
+        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.hero{padding:160px 24px 80px}.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:32px}.steps::before{display:none}.nav-link{display:none}.showcase-features{grid-template-columns:1fr}.dual-screens{grid-template-columns:1fr}}
+        @media(max-width:480px){.hero h1{letter-spacing:-2px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:28px 20px}.showcase-tabs{gap:4px}.s-tab{font-size:11px;padding:8px 14px}.s-tab span{display:none}}
     </style>
 </head>
 <body>
@@ -270,24 +207,7 @@
     <section class="mockup-wrap reveal">
         <div class="mockup-border">
             <div class="mockup">
-                <div class="mk-bar"><div class="mk-dot mk-r"></div><div class="mk-dot mk-y"></div><div class="mk-dot mk-g"></div><div class="mk-tabs"><span class="mk-tab on">Dashboard</span><span class="mk-tab">&#220;r&#252;nler</span><span class="mk-tab">Hareketler</span></div></div>
-                <div class="mk-body">
-                    <div class="mk-grid">
-                        <div class="mk-stat"><div class="mk-sl">&#220;r&#252;n &#199;e&#351;idi</div><div class="mk-sv blue">148</div><div class="mk-sc green">&#9650; 5 bu hafta</div></div>
-                        <div class="mk-stat"><div class="mk-sl">Toplam Stok</div><div class="mk-sv green">2.460</div><div class="mk-sc green">&#9650; 84 yeni giri&#351;</div></div>
-                        <div class="mk-stat"><div class="mk-sl">D&#252;&#351;&#252;k Stok</div><div class="mk-sv orange">7</div><div class="mk-sc red">&#9660; Sipari&#351; gerekli</div></div>
-                    </div>
-                    <table class="mk-table">
-                        <thead><tr><th>Stok Kodu</th><th>Kategori</th><th>&#214;l&#231;&#252;</th><th>Durum</th></tr></thead>
-                        <tbody>
-                            <tr><td>ZENTBZ-160X200</td><td>Baza</td><td>160x200</td><td><span class="sb ok">Stokta</span></td></tr>
-                            <tr><td>ZENTYT-90X200</td><td>Yatak</td><td>90x200</td><td><span class="sb ok">Stokta</span></td></tr>
-                            <tr><td>ARVBZ-140X200</td><td>Baza</td><td>140x200</td><td><span class="sb low">Az</span></td></tr>
-                            <tr><td>PRELBSL-180X200</td><td>Ba&#351;l&#305;k</td><td>180x200</td><td><span class="sb out">T&#252;kendi</span></td></tr>
-                            <tr><td>ZENTYT-160X200</td><td>Yatak</td><td>160x200</td><td><span class="sb ok">Stokta</span></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <img src="img/dashboard.png" alt="Alkanlı Stok - Kontrol Paneli" loading="lazy">
             </div>
         </div>
     </section>
@@ -306,227 +226,132 @@
     <div class="divider"><hr></div>
 
     <section class="sec reveal" id="ekran-goruntuleri">
-        <div class="sec-header"><div class="sec-tag">Uygulama &#304;&#231;i</div><h2 class="sec-title">Ekran G&#246;r&#252;nt&#252;leri</h2><p class="sec-desc">Uygulaman&#305;n ger&#231;ek aray&#252;z&#252; ve t&#252;m ekranlar.</p></div>
+        <div class="sec-header"><div class="sec-tag">Uygulama &#304;&#231;i</div><h2 class="sec-title">Ger&#231;ek Ekran G&#246;r&#252;nt&#252;leri</h2><p class="sec-desc">A&#351;a&#287;&#305;daki g&#246;rseller uygulamadan birebir al&#305;nm&#305;&#351;t&#305;r.</p></div>
 
         <div class="showcase-tabs">
             <button class="s-tab active" data-panel="panel-dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Dashboard</span></button>
-            <button class="s-tab" data-panel="panel-stok-op"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><span>Stok Giri&#351; / &#199;&#305;k&#305;&#351;</span></button>
             <button class="s-tab" data-panel="panel-urun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>&#220;r&#252;nler</span></button>
-            <button class="s-tab" data-panel="panel-hareket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg><span>Hareketler</span></button>
+            <button class="s-tab" data-panel="panel-stok-op"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><span>Stok &#304;&#351;lemleri</span></button>
+            <button class="s-tab" data-panel="panel-hareket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Hareketler</span></button>
+            <button class="s-tab" data-panel="panel-sayim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg><span>Stok Say&#305;m</span></button>
+            <button class="s-tab" data-panel="panel-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span>Dark Mode</span></button>
         </div>
 
-        <!-- PANEL 1: Dashboard -->
+        <!-- Dashboard -->
         <div class="showcase-panel active" id="panel-dashboard">
             <div class="showcase-layout">
-                <div class="showcase-screen">
-                    <div class="ss-bar"><div class="ss-dot mk-r"></div><div class="ss-dot mk-y"></div><div class="ss-dot mk-g"></div><div class="ss-title">Alkanl&#305; Stok &mdash; Dashboard</div></div>
-                    <div class="ss-sidebar-layout">
-                        <div class="ss-sidebar">
-                            <div class="ss-sidebar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>Alkanl&#305; Stok</div>
-                            <div class="ss-menu-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>Stok Giri&#351; / &#199;&#305;k&#305;&#351;</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;nler</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>Hareketler</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>Yeni &#220;r&#252;n</div>
-                        </div>
-                        <div class="ss-main">
-                            <div class="ss-topbar"><div class="ss-page-title">Dashboard</div><div style="display:flex;gap:6px"><span class="ss-btn-small ss-btn-ghost" style="font-size:9px">Stok durumu ve son hareketler</span></div></div>
-                            <div class="ss-cards-row">
-                                <div class="ss-card-mini"><div class="ss-card-mini-label">&#220;r&#252;n &#199;e&#351;idi</div><div class="ss-card-mini-val blue">148</div><div class="ss-card-mini-change green">&#9650; 5 yeni eklendi</div></div>
-                                <div class="ss-card-mini"><div class="ss-card-mini-label">Toplam Stok</div><div class="ss-card-mini-val green">2.460</div><div class="ss-card-mini-change green">&#9650; 84 yeni giri&#351;</div></div>
-                                <div class="ss-card-mini"><div class="ss-card-mini-label">D&#252;&#351;&#252;k Stok</div><div class="ss-card-mini-val orange">7</div><div class="ss-card-mini-change orange">5 adet alt&#305;</div></div>
-                                <div class="ss-card-mini"><div class="ss-card-mini-label">T&#252;kenen</div><div class="ss-card-mini-val red">3</div><div class="ss-card-mini-change red">&#9660; Sipari&#351; gerekli</div></div>
-                            </div>
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-                                <div class="ss-chart-area">
-                                    <div class="ss-chart-title">Kategori Da&#287;&#305;l&#305;m&#305;</div>
-                                    <div style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
-                                        <div style="display:flex;align-items:center;gap:8px;font-size:10px"><span style="color:var(--text-dim);width:40px">Yatak</span><div style="flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,0.03)"><div style="width:55%;height:100%;border-radius:4px;background:var(--green)"></div></div><span style="color:var(--text-dim)">82</span></div>
-                                        <div style="display:flex;align-items:center;gap:8px;font-size:10px"><span style="color:var(--text-dim);width:40px">Baza</span><div style="flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,0.03)"><div style="width:35%;height:100%;border-radius:4px;background:var(--blue)"></div></div><span style="color:var(--text-dim)">48</span></div>
-                                        <div style="display:flex;align-items:center;gap:8px;font-size:10px"><span style="color:var(--text-dim);width:40px">Ba&#351;l&#305;k</span><div style="flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,0.03)"><div style="width:13%;height:100%;border-radius:4px;background:var(--orange)"></div></div><span style="color:var(--text-dim)">18</span></div>
-                                    </div>
-                                </div>
-                                <div class="ss-chart-area">
-                                    <div class="ss-chart-title">Son Hareketler</div>
-                                    <table class="ss-table-mini" style="margin:0">
-                                        <tbody>
-                                            <tr><td style="font-size:10px">ZENTBZ-160X200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td style="font-size:10px">+12</td></tr>
-                                            <tr><td style="font-size:10px">ARVYT-90X200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td style="font-size:10px">-4</td></tr>
-                                            <tr><td style="font-size:10px">PRELBSL-180X200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td style="font-size:10px">+8</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="showcase-screen"><img src="img/dashboard.png" alt="Kontrol Paneli" loading="lazy"></div>
                 <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard &mdash; Stok Durumuna Genel Bak&#305;&#351;</div>
-                    <p class="showcase-info-desc">Dashboard ekran&#305;nda &#252;r&#252;n &#231;e&#351;idi, toplam stok, d&#252;&#351;&#252;k stok ve t&#252;kenen &#252;r&#252;nleri tek bak&#305;&#351;ta g&#246;r&#252;rs&#252;n&#252;z. Kategori da&#287;&#305;l&#305;m&#305; grafi&#287;i ile hangi kategoride ne kadar stok oldu&#287;unu, son hareketler listesiyle yap&#305;lan giri&#351; ve &#231;&#305;k&#305;&#351;lar&#305; an&#305;nda takip edersiniz.</p>
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Kontrol Paneli</div>
+                    <p class="showcase-info-desc">&#220;r&#252;n &#231;e&#351;idi, toplam stok, d&#252;&#351;&#252;k stok ve t&#252;kenen &#252;r&#252;nleri tek bak&#305;&#351;ta g&#246;r&#252;n. Bug&#252;nk&#252; giri&#351;/&#231;&#305;k&#305;&#351; &#246;zeti, stok de&#287;eri, 30 g&#252;nl&#252;k hareket grafi&#287;i, kategori da&#287;&#305;l&#305;m&#305;, d&#252;&#351;&#252;k stok uyar&#305;lar&#305; ve en &#231;ok hareket g&#246;ren &#252;r&#252;nler &mdash; hepsi tek ekranda.</p>
                     <ul class="showcase-features">
-                        <li>&#220;r&#252;n &#231;e&#351;idi, toplam stok, d&#252;&#351;&#252;k stok, t&#252;kenen &#246;zet kartlar&#305;</li>
-                        <li>Kategori baz&#305;nda stok da&#287;&#305;l&#305;m grafi&#287;i</li>
-                        <li>Son giri&#351; ve &#231;&#305;k&#305;&#351; hareketleri listesi</li>
-                        <li>Renk kodlu durum g&#246;stergeleri</li>
-                        <li>Yan men&#252;den h&#305;zl&#305; sayfa ge&#231;i&#351;i</li>
-                        <li>Anl&#305;k g&#252;ncellenen veriler</li>
+                        <li>4 &#246;zet kart: &#252;r&#252;n, stok, d&#252;&#351;&#252;k, t&#252;kenen</li>
+                        <li>Bug&#252;n&#252;n giri&#351;/&#231;&#305;k&#305;&#351; &#246;zeti</li>
+                        <li>Al&#305;&#351; ve sat&#305;&#351; stok de&#287;eri</li>
+                        <li>30 g&#252;nl&#252;k SVG hareket grafi&#287;i</li>
+                        <li>Kategori da&#287;&#305;l&#305;m&#305; donut grafi&#287;i</li>
+                        <li>D&#252;&#351;&#252;k stok uyar&#305;lar&#305; ve en &#231;ok hareket g&#246;ren &#252;r&#252;nler</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- PANEL 2: Stok Giriş / Çıkış -->
-        <div class="showcase-panel" id="panel-stok-op">
-            <div class="showcase-layout">
-                <div class="showcase-screen">
-                    <div class="ss-bar"><div class="ss-dot mk-r"></div><div class="ss-dot mk-y"></div><div class="ss-dot mk-g"></div><div class="ss-title">Alkanl&#305; Stok &mdash; Stok Giri&#351; / &#199;&#305;k&#305;&#351;</div></div>
-                    <div class="ss-sidebar-layout">
-                        <div class="ss-sidebar">
-                            <div class="ss-sidebar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>Alkanl&#305; Stok</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
-                            <div class="ss-menu-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>Stok Giri&#351; / &#199;&#305;k&#305;&#351;</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;nler</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>Hareketler</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>Yeni &#220;r&#252;n</div>
-                        </div>
-                        <div class="ss-main">
-                            <div class="ss-topbar"><div class="ss-page-title">Stok Giri&#351; / &#199;&#305;k&#305;&#351;</div><div style="font-size:10px;color:var(--text-dim)">&#220;r&#252;n&#252; se&#231;erek stok i&#351;lemi yap&#305;n</div></div>
-                            <div style="max-width:360px;margin:0 auto">
-                                <div style="background:rgba(139,92,246,0.04);border:1px solid rgba(139,92,246,0.1);border-radius:10px;padding:14px 16px;margin-bottom:16px">
-                                    <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span style="width:20px;height:20px;border-radius:6px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px">1</span> &#220;r&#252;n Se&#231;imi</div>
-                                    <div class="ss-form-group"><div class="ss-form-label">Kategori</div><div class="ss-form-input" style="display:flex;justify-content:space-between;align-items:center"><span>Yatak</span><span style="color:var(--text-dim);font-size:9px">&#9660;</span></div></div>
-                                    <div class="ss-form-group"><div class="ss-form-label">&#220;r&#252;n Ad&#305;</div><div class="ss-form-input" style="display:flex;justify-content:space-between;align-items:center"><span>ZENTRO</span><span style="color:var(--text-dim);font-size:9px">&#9660;</span></div></div>
-                                    <div class="ss-form-group"><div class="ss-form-label">&#214;l&#231;&#252;</div><div class="ss-form-input" style="display:flex;justify-content:space-between;align-items:center"><span>160x200</span><span style="color:var(--text-dim);font-size:9px">&#9660;</span></div></div>
-                                    <div style="background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.12);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;margin-top:10px">
-                                        <div style="color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
-                                        <div><div style="font-size:11px;font-weight:600;color:var(--text-bright)">ZENTYT-160X200</div><div style="font-size:9px;color:var(--text-dim)">Yatak &middot; 160x200 &middot; Stok: 24</div></div>
-                                    </div>
-                                </div>
-                                <div style="background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:14px 16px">
-                                    <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--text-bright);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span style="width:20px;height:20px;border-radius:6px;background:rgba(255,255,255,0.08);color:var(--text);display:flex;align-items:center;justify-content:center;font-size:10px">2</span> &#304;&#351;lem Bilgileri</div>
-                                    <div class="ss-form-row">
-                                        <div class="ss-form-group"><div class="ss-form-label">Miktar</div><div class="ss-form-input">5</div></div>
-                                        <div class="ss-form-group"><div class="ss-form-label">Not (opsiyonel)</div><div class="ss-form-input" style="color:var(--text-dim)">Sipari&#351; no, a&#231;&#305;klama...</div></div>
-                                    </div>
-                                    <div style="display:flex;gap:8px;margin-top:10px">
-                                        <span class="ss-btn-small ss-btn-primary" style="flex:1;justify-content:center;padding:8px 0;font-size:10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg> Stok Giri&#351;i</span>
-                                        <span class="ss-btn-small" style="flex:1;justify-content:center;padding:8px 0;font-size:10px;background:rgba(248,113,113,0.08);color:var(--red);border:1px solid rgba(248,113,113,0.15)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/></svg> Stok &#199;&#305;k&#305;&#351;&#305;</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>Stok Giri&#351; / &#199;&#305;k&#305;&#351; &mdash; H&#305;zl&#305; Stok &#304;&#351;lemi</div>
-                    <p class="showcase-info-desc">Kademelendirilmi&#351; se&#231;im sistemi ile &#246;nce kategori, sonra &#252;r&#252;n ad&#305;, son olarak &#246;l&#231;&#252; se&#231;ersiniz. &#220;r&#252;n otomatik olarak tan&#305;mlan&#305;r, mevcut stok g&#246;sterilir. Miktar ve opsiyonel not girerek tek tu&#351;la giri&#351; veya &#231;&#305;k&#305;&#351; i&#351;lemi yapars&#305;n&#305;z.</p>
-                    <ul class="showcase-features">
-                        <li>Kategori &#8594; &#220;r&#252;n &#8594; &#214;l&#231;&#252; kademeli se&#231;im</li>
-                        <li>Se&#231;ilen &#252;r&#252;n anl&#305;k onay g&#246;sterimi</li>
-                        <li>Stok giri&#351; ve &#231;&#305;k&#305;&#351; tek ekranda</li>
-                        <li>Opsiyonel not alan&#305; (sipari&#351; no vb.)</li>
-                        <li>&#304;&#351;lem sonras&#305; anl&#305;k stok g&#252;ncellemesi</li>
-                        <li>Hatal&#305; i&#351;lem kontrolleri</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- PANEL 3: Ürün Listesi -->
+        <!-- &#220;r&#252;nler -->
         <div class="showcase-panel" id="panel-urun">
             <div class="showcase-layout">
-                <div class="showcase-screen">
-                    <div class="ss-bar"><div class="ss-dot mk-r"></div><div class="ss-dot mk-y"></div><div class="ss-dot mk-g"></div><div class="ss-title">Alkanl&#305; Stok &mdash; &#220;r&#252;n Listesi</div></div>
-                    <div class="ss-sidebar-layout">
-                        <div class="ss-sidebar">
-                            <div class="ss-sidebar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>Alkanl&#305; Stok</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>Stok Giri&#351; / &#199;&#305;k&#305;&#351;</div>
-                            <div class="ss-menu-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;nler</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>Hareketler</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>Yeni &#220;r&#252;n</div>
-                        </div>
-                        <div class="ss-main">
-                            <div class="ss-topbar"><div class="ss-page-title">&#220;r&#252;n Listesi</div><div style="font-size:10px;color:var(--text-dim)">148 &#252;r&#252;n &#231;e&#351;idi</div></div>
-                            <div style="margin-bottom:14px;display:flex;gap:8px">
-                                <div class="ss-form-input" style="width:220px;display:flex;align-items:center;gap:6px;color:var(--text-dim);font-size:10px">Kod, isim veya boyut ara...</div>
-                                <span class="ss-btn-small ss-btn-ghost">Kategori: T&#252;m&#252;</span>
-                                <span class="ss-btn-small ss-btn-ghost"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> CSV</span>
-                            </div>
-                            <table class="ss-table-mini">
-                                <thead><tr><th>Stok Kodu</th><th>Kategori</th><th>&#220;r&#252;n Ad&#305;</th><th>&#214;l&#231;&#252;</th><th>Stok</th><th>Durum</th></tr></thead>
-                                <tbody>
-                                    <tr><td>ZENTYT-160X200</td><td>Yatak</td><td>ZENTRO</td><td>160x200</td><td>24</td><td><span class="sb ok">Stokta</span></td></tr>
-                                    <tr><td>ZENTBZ-160X200</td><td>Baza</td><td>ZENTRO</td><td>160x200</td><td>18</td><td><span class="sb ok">Stokta</span></td></tr>
-                                    <tr><td>ARVYT-90X200</td><td>Yatak</td><td>ARVON</td><td>90x200</td><td>3</td><td><span class="sb low">Az</span></td></tr>
-                                    <tr><td>PRELBSL-180X200</td><td>Ba&#351;l&#305;k</td><td>PRELUX</td><td>180x200</td><td>0</td><td><span class="sb out">T&#252;kendi</span></td></tr>
-                                    <tr><td>ARVBZ-140X200</td><td>Baza</td><td>ARVON</td><td>140x200</td><td>2</td><td><span class="sb low">Az</span></td></tr>
-                                    <tr><td>ZENTYT-90X200</td><td>Yatak</td><td>ZENTRO</td><td>90x200</td><td>31</td><td><span class="sb ok">Stokta</span></td></tr>
-                                </tbody>
-                            </table>
-                            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:10px;color:var(--text-dim)"><span>6 / 148 &#252;r&#252;n g&#246;steriliyor</span></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="showcase-screen"><img src="img/products.png" alt="&#220;r&#252;n Listesi" loading="lazy"></div>
                 <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;n Listesi &mdash; T&#252;m Envanteriniz Tek Ekranda</div>
-                    <p class="showcase-info-desc">&#220;r&#252;n listesi ekran&#305;nda t&#252;m &#252;r&#252;nlerinizi stok kodu, kategori, ad, &#246;l&#231;&#252; ve stok miktar&#305; ile g&#246;r&#252;rs&#252;n&#252;z. Arama &#231;ubu&#287;undan kod, isim veya &#246;l&#231;&#252;ye g&#246;re arayabilir, kategori filtresi ile daraltabilirsiniz. Renk kodlu durum etiketleri ile hangi &#252;r&#252;n&#252;n t&#252;kendi&#287;ini veya az kald&#305;&#287;&#305;n&#305; an&#305;nda fark edersiniz. T&#252;m listeyi CSV olarak d&#305;&#351;a aktarabilirsiniz.</p>
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;n Listesi</div>
+                    <p class="showcase-info-desc">T&#252;m &#252;r&#252;nleriniz kategori, stok kodu, ad, &#246;l&#231;&#252;, tedarik&#231;i, al&#305;&#351;/sat&#305;&#351; fiyat&#305; ve stok miktar&#305; ile listelenir. Arama, kategori filtresi, s&#305;ralanabilir s&#252;tunlar. Her &#252;r&#252;nde barkod etiketi, kopyalama, ge&#231;mi&#351;, d&#252;zenleme ve silme butonlar&#305;.</p>
                     <ul class="showcase-features">
-                        <li>Stok kodu, isim veya &#246;l&#231;&#252;ye g&#246;re arama</li>
-                        <li>Kategori filtresi (Yatak, Baza, Ba&#351;l&#305;k)</li>
-                        <li>Renk kodlu stok durumu (Stokta, Az, T&#252;kendi)</li>
-                        <li>Tek t&#305;kla CSV d&#305;&#351;a aktarma</li>
-                        <li>&#220;r&#252;n d&#252;zenleme ve silme i&#351;lemleri</li>
-                        <li>Norm kodu g&#246;r&#252;nt&#252;leme</li>
+                        <li>9 s&#252;tunlu detayl&#305; &#252;r&#252;n tablosu</li>
+                        <li>Al&#305;&#351; ve sat&#305;&#351; fiyat&#305; takibi</li>
+                        <li>Tedarik&#231;i bilgisi</li>
+                        <li>Barkod etiketi olu&#351;turma ve yazd&#305;rma</li>
+                        <li>Tek t&#305;kla &#252;r&#252;n kopyalama</li>
+                        <li>&#220;r&#252;n hareket ge&#231;mi&#351;i g&#246;r&#252;nt&#252;leme</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- PANEL 4: Stok Hareketleri -->
-        <div class="showcase-panel" id="panel-hareket">
+        <!-- Stok &#304;&#351;lemleri -->
+        <div class="showcase-panel" id="panel-stok-op">
             <div class="showcase-layout">
-                <div class="showcase-screen">
-                    <div class="ss-bar"><div class="ss-dot mk-r"></div><div class="ss-dot mk-y"></div><div class="ss-dot mk-g"></div><div class="ss-title">Alkanl&#305; Stok &mdash; Stok Hareketleri</div></div>
-                    <div class="ss-sidebar-layout">
-                        <div class="ss-sidebar">
-                            <div class="ss-sidebar-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>Alkanl&#305; Stok</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>Stok Giri&#351; / &#199;&#305;k&#305;&#351;</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;nler</div>
-                            <div class="ss-menu-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>Hareketler</div>
-                            <div class="ss-menu-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>Yeni &#220;r&#252;n</div>
-                        </div>
-                        <div class="ss-main">
-                            <div class="ss-topbar"><div class="ss-page-title">Stok Hareketleri</div><div style="font-size:10px;color:var(--text-dim)">T&#252;m giri&#351; ve &#231;&#305;k&#305;&#351; kay&#305;tlar&#305;</div></div>
-                            <div style="margin-bottom:14px;display:flex;gap:8px">
-                                <div class="ss-form-input" style="width:220px;display:flex;align-items:center;gap:6px;color:var(--text-dim);font-size:10px">Stok koduna g&#246;re filtrele...</div>
-                                <span class="ss-btn-small ss-btn-ghost">T&#252;r: T&#252;m&#252;</span>
-                                <span class="ss-btn-small ss-btn-ghost"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> CSV</span>
-                            </div>
-                            <table class="ss-table-mini">
-                                <thead><tr><th>Tarih</th><th>Stok Kodu</th><th>&#220;r&#252;n</th><th>&#214;l&#231;&#252;</th><th>T&#252;r</th><th>Miktar</th><th>Not</th></tr></thead>
-                                <tbody>
-                                    <tr><td style="font-size:9px">02.04.2026 14:32</td><td>ZENTYT-160X200</td><td>ZENTRO</td><td>160x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+12</td><td style="font-size:9px;color:var(--text-dim)">Fabrika sevk</td></tr>
-                                    <tr><td style="font-size:9px">02.04.2026 13:15</td><td>ARVYT-90X200</td><td>ARVON</td><td>90x200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td>-4</td><td style="font-size:9px;color:var(--text-dim)">Ma&#287;aza teslimat</td></tr>
-                                    <tr><td style="font-size:9px">02.04.2026 11:48</td><td>ZENTBZ-160X200</td><td>ZENTRO</td><td>160x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+8</td><td style="font-size:9px;color:var(--text-dim)"></td></tr>
-                                    <tr><td style="font-size:9px">01.04.2026 16:20</td><td>PRELBSL-180X200</td><td>PRELUX</td><td>180x200</td><td><span class="sb out" style="font-size:7px">&#199;&#305;k&#305;&#351;</span></td><td>-2</td><td style="font-size:9px;color:var(--text-dim)">Sipari&#351; #1042</td></tr>
-                                    <tr><td style="font-size:9px">01.04.2026 10:05</td><td>ARVBZ-140X200</td><td>ARVON</td><td>140x200</td><td><span class="sb ok" style="font-size:7px">Giri&#351;</span></td><td>+6</td><td style="font-size:9px;color:var(--text-dim)">Depo transferi</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="dual-screens">
+                    <div class="showcase-screen"><img src="img/stock-op.png" alt="Stok Giri&#351;/&#199;&#305;k&#305;&#351;" loading="lazy"></div>
+                    <div class="showcase-screen"><img src="img/add-product.png" alt="Yeni &#220;r&#252;n Ekle" loading="lazy"></div>
                 </div>
                 <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>Stok Hareketleri &mdash; T&#252;m Giri&#351; ve &#199;&#305;k&#305;&#351; Kay&#305;tlar&#305;</div>
-                    <p class="showcase-info-desc">Stok hareketleri ekran&#305;nda yap&#305;lan t&#252;m giri&#351; ve &#231;&#305;k&#305;&#351; i&#351;lemlerini tarih, stok kodu, &#252;r&#252;n ad&#305;, &#246;l&#231;&#252;, t&#252;r, miktar ve not bilgisi ile g&#246;r&#252;rs&#252;n&#252;z. Stok koduna g&#246;re filtreleyebilir, hareket t&#252;r&#252;ne g&#246;re ayırabilir ve t&#252;m verileri CSV olarak d&#305;&#351;a aktarabilirsiniz.</p>
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>Stok Giri&#351;/&#199;&#305;k&#305;&#351; &amp; Yeni &#220;r&#252;n</div>
+                    <p class="showcase-info-desc">Sol ekran: &#220;r&#252;n arama ile h&#305;zl&#305; &#252;r&#252;n se&#231;imi, miktar ve not girerek tek tu&#351;la giri&#351; veya &#231;&#305;k&#305;&#351;. Sa&#287; ekran: Yeni &#252;r&#252;n eklerken kategori, stok kodu, ad, &#246;l&#231;&#252;, tedarik&#231;i, fiyatlar ve d&#252;&#351;&#252;k stok e&#351;i&#287;i girebilirsiniz.</p>
                     <ul class="showcase-features">
-                        <li>Tarih, stok kodu, miktar ve not ile detayl&#305; kay&#305;t</li>
-                        <li>Giri&#351;/&#199;&#305;k&#305;&#351; t&#252;r&#252;ne g&#246;re filtreleme</li>
-                        <li>Stok koduna g&#246;re arama</li>
-                        <li>Renk kodlu giri&#351;/&#231;&#305;k&#305;&#351; ayr&#305;m&#305;</li>
+                        <li>Ak&#305;ll&#305; &#252;r&#252;n arama ve se&#231;imi</li>
+                        <li>Anl&#305;k &#252;r&#252;n onay g&#246;sterimi</li>
+                        <li>Stok giri&#351; ve &#231;&#305;k&#305;&#351; tek ekranda</li>
+                        <li>&#304;&#351;lem sonras&#305; g&#246;rsel sonu&#231; modallar&#305;</li>
+                        <li>Son i&#351;lemi geri alma (Undo)</li>
+                        <li>&#220;r&#252;n ba&#351;&#305;na &#246;zel d&#252;&#351;&#252;k stok e&#351;i&#287;i</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hareketler -->
+        <div class="showcase-panel" id="panel-hareket">
+            <div class="showcase-layout">
+                <div class="showcase-screen"><img src="img/movements.png" alt="Stok Hareketleri" loading="lazy"></div>
+                <div class="showcase-info">
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Stok Hareketleri</div>
+                    <p class="showcase-info-desc">T&#252;m giri&#351; ve &#231;&#305;k&#305;&#351; i&#351;lemlerini tarih, kategori, &#252;r&#252;n ad&#305;, &#246;l&#231;&#252;, t&#252;r, miktar ve not bilgisi ile g&#246;r&#252;n. Stok koduna g&#246;re arama, hareket t&#252;r&#252;ne g&#246;re filtreleme, tarih aral&#305;&#287;&#305; se&#231;imi ve CSV d&#305;&#351;a aktarma.</p>
+                    <ul class="showcase-features">
+                        <li>Tarih, kategori, miktar ve not ile detayl&#305; kay&#305;t</li>
+                        <li>Giri&#351;/&#199;&#305;k&#305;&#351; t&#252;r&#252; filtreleme</li>
+                        <li>Tarih aral&#305;&#287;&#305;na g&#246;re filtreleme</li>
+                        <li>Renk kodlu giri&#351;/&#231;&#305;k&#305;&#351; g&#246;stergesi</li>
                         <li>CSV d&#305;&#351;a aktarma</li>
                         <li>Kronolojik s&#305;ralama</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stok Say&#305;m -->
+        <div class="showcase-panel" id="panel-sayim">
+            <div class="showcase-layout">
+                <div class="showcase-screen"><img src="img/stock-count.png" alt="Stok Say&#305;m" loading="lazy"></div>
+                <div class="showcase-info">
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>Stok Say&#305;m Modu</div>
+                    <p class="showcase-info-desc">Fiziksel envanter say&#305;m&#305; i&#231;in &#246;zel ekran. T&#252;m &#252;r&#252;nleri listeler, ger&#231;ek say&#305;mlar&#305; girersiniz. Sistem otomatik olarak farklar&#305; hesaplar, eksik ve fazla miktarlar&#305; renk kodlar&#305;yla g&#246;sterir. Kaydetti&#287;inizde otomatik giri&#351;/&#231;&#305;k&#305;&#351; hareketleri olu&#351;turulur.</p>
+                    <ul class="showcase-features">
+                        <li>T&#252;m &#252;r&#252;nleri tek ekranda g&#246;rme</li>
+                        <li>Sistem stok ve say&#305;lan miktar kar&#351;&#305;la&#351;t&#305;rmas&#305;</li>
+                        <li>Otomatik fark hesaplama</li>
+                        <li>Renk kodlu fark g&#246;stergesi</li>
+                        <li>Kategori filtresi ve arama</li>
+                        <li>Tek tu&#351;la toplu g&#252;ncelleme</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark Mode -->
+        <div class="showcase-panel" id="panel-dark">
+            <div class="showcase-layout">
+                <div class="dual-screens">
+                    <div class="showcase-screen"><img src="img/dashboard-dark.png" alt="Dashboard - Dark Mode" loading="lazy"></div>
+                    <div class="showcase-screen"><img src="img/products-dark.png" alt="&#220;r&#252;nler - Dark Mode" loading="lazy"></div>
+                </div>
+                <div class="showcase-info">
+                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>Karanl&#305;k Tema</div>
+                    <p class="showcase-info-desc">G&#246;z yormayan karanl&#305;k tema ile gece veya loş ortamlarda rahat&#231;a &#231;al&#305;&#351;&#305;n. Tek tu&#351;la (Alt+D) veya yan men&#252;den tema de&#287;i&#351;tirin. Tercih otomatik kaydedilir, bir sonraki a&#231;&#305;l&#305;&#351;ta hat&#305;rlan&#305;r.</p>
+                    <ul class="showcase-features">
+                        <li>T&#252;m ekranlar dark mode destekli</li>
+                        <li>G&#246;z yormayan renk paleti</li>
+                        <li>Tek tu&#351;la tema de&#287;i&#351;imi</li>
+                        <li>Tercih otomatik kaydedilir</li>
+                        <li>Grafikler ve tablolar dark mode uyumlu</li>
+                        <li>Klavye k&#305;sayolu: Alt+D</li>
                     </ul>
                 </div>
             </div>
@@ -538,12 +363,15 @@
     <section class="sec reveal" id="ozellikler">
         <div class="sec-header"><div class="sec-tag">&#214;zellikler</div><h2 class="sec-title">&#304;&#351;letmeniz &#304;&#231;in Her &#350;ey</h2><p class="sec-desc">Stok y&#246;netiminizi kolayla&#351;t&#305;ran, i&#351;inizi h&#305;zland&#305;ran &#246;zellikler.</p></div>
         <div class="f-grid rc">
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><div class="f-title">Ki&#351;iye &#214;zel Yap&#305;land&#305;rma</div><div class="f-desc">Sekt&#246;r&#252;n&#252;ze &#246;zel &#252;r&#252;n kategorileri, stok kodlar&#305; ve &#246;l&#231;&#252; se&#231;enekleri ile tam uyum.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="f-title">D&#252;&#351;&#252;k Stok Uyar&#305;s&#305;</div><div class="f-desc">Stok seviyesi kritik e&#351;i&#287;in alt&#305;na d&#252;&#351;en &#252;r&#252;nler renk kodlar&#305; ile an&#305;nda g&#246;r&#252;n&#252;r.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="f-title">Canl&#305; Dashboard</div><div class="f-desc">&#214;zet kartlar, 30 g&#252;nl&#252;k hareket grafi&#287;i, kategori donut grafi&#287;i, bug&#252;nk&#252; i&#351;lemler ve stok de&#287;eri tek ekranda.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="f-title">D&#252;&#351;&#252;k Stok Uyar&#305;s&#305;</div><div class="f-desc">Her &#252;r&#252;ne &#246;zel e&#351;ik de&#287;eri. Kritik seviyeye d&#252;&#351;en &#252;r&#252;nler renk kodlar&#305;yla an&#305;nda g&#246;r&#252;n&#252;r.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><div class="f-title">Karanl&#305;k Tema</div><div class="f-desc">G&#246;z yormayan dark mode. Tek tu&#351;la tema de&#287;i&#351;tir, tercih otomatik hat&#305;rlan&#305;r.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div><div class="f-title">Stok Say&#305;m Modu</div><div class="f-desc">Fiziksel envanter say&#305;m&#305;. Ger&#231;ek de&#287;erleri girin, farklar otomatik hesaplans&#305;n, toplu g&#252;ncelleyin.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M7 12h.01M7 17h.01M12 7h.01M17 7h.01"/></svg></div><div class="f-title">Barkod &amp; Etiket</div><div class="f-desc">Her &#252;r&#252;n i&#231;in barkod etiketi olu&#351;turun ve do&#287;rudan yazd&#305;r&#305;n. Ad, &#246;l&#231;&#252;, kod ve fiyat bilgisi.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div class="f-title">CSV &#304;&#231;e/D&#305;&#351;a Aktarma</div><div class="f-desc">CSV dosyas&#305;ndan toplu &#252;r&#252;n i&#231;e aktar&#305;n. &#220;r&#252;n ve hareketleri CSV olarak d&#305;&#351;a aktar&#305;n.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></div><div class="f-title">Geri Alma (Undo)</div><div class="f-desc">Son stok i&#351;lemini tek tu&#351;la geri al&#305;n. Yanl&#305;&#351; giri&#351; veya &#231;&#305;k&#305;&#351;lar an&#305;nda d&#252;zelir.</div></div>
             <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="f-title">Masa&#252;st&#252; Uygulamas&#305;</div><div class="f-desc">Windows&#8217;ta &#231;al&#305;&#351;an yerel uygulama. &#304;nternet ba&#287;lant&#305;s&#305; gerekmez, an&#305;nda a&#231;&#305;l&#305;r.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="f-title">Yerel Veritaban&#305;</div><div class="f-desc">T&#252;m verileriniz bilgisayar&#305;n&#305;zdaki SQLite veritaban&#305;nda saklan&#305;r. Buluta veri g&#246;nderilmez.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><div class="f-title">CSV D&#305;&#351;a Aktarma</div><div class="f-desc">&#220;r&#252;n listesini ve stok hareketlerini tek t&#305;kla CSV dosyas&#305; olarak indirin.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="f-title">H&#305;zl&#305; Stok &#304;&#351;lemi</div><div class="f-desc">Kademeli se&#231;im ile &#252;r&#252;n&#252; bul, miktar gir, tek tu&#351;la giri&#351; veya &#231;&#305;k&#305;&#351; yap.</div></div>
+            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="f-title">Yerel &amp; G&#252;venli</div><div class="f-desc">T&#252;m veriler bilgisayar&#305;n&#305;zda. Buluta veri g&#246;nderilmez. Tek t&#305;kla veritaban&#305; yede&#287;i al&#305;n.</div></div>
         </div>
     </section>
 
@@ -582,12 +410,12 @@
             <div class="p-t">&#304;&#351;letmenize &#214;zel Fiyat</div>
             <div class="p-d">Her i&#351;letmenin ihtiyac&#305; farkl&#305;d&#305;r. Sekt&#246;r&#252;n&#252;ze g&#246;re &#246;zel fiyat teklifi haz&#305;rl&#305;yoruz.</div>
             <ul class="p-list">
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Sekt&#246;r&#252;n&#252;ze &#246;zel &#252;r&#252;n kategorileri ve stok kodlar&#305;</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>S&#305;n&#305;rs&#305;z &#252;r&#252;n ekleme</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Stok giri&#351;/&#231;&#305;k&#305;&#351; takibi ve hareket ge&#231;mi&#351;i</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>D&#252;&#351;&#252;k stok ve t&#252;kenen &#252;r&#252;n uyar&#305;lar&#305;</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>CSV d&#305;&#351;a aktarma</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurulum &amp; e&#287;itim deste&#287;i</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>S&#305;n&#305;rs&#305;z &#252;r&#252;n, stok giri&#351;/&#231;&#305;k&#305;&#351; ve hareket kayd&#305;</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Dashboard: grafikler, uyar&#305;lar, bug&#252;n &#246;zeti</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Dark mode, barkod/etiket, stok say&#305;m modu</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>CSV i&#231;e/d&#305;&#351;a aktarma, geri alma, &#252;r&#252;n kopyalama</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Al&#305;&#351;/sat&#305;&#351; fiyat&#305;, tedarik&#231;i takibi</li>
+                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurulum, e&#287;itim ve destek</li>
             </ul>
             <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanl%C4%B1%20Stok%20Fiyat%20Teklifi" class="btn btn-p" style="width:100%;justify-content:center;position:relative;z-index:1;">Fiyat Teklifi Al</a>
         </div>
