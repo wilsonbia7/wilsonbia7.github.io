@@ -22,6 +22,17 @@
         ::selection{background:rgba(139,92,246,0.35);color:#fff}
         ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(139,92,246,0.2);border-radius:10px}
 
+        /* INTRO */
+        .intro{position:fixed;inset:0;z-index:100;pointer-events:none}
+        .intro-overlay{position:absolute;inset:0;background:linear-gradient(180deg,#020208 0%,#08081e 50%,#020208 100%);animation:introReveal 2.6s cubic-bezier(0.83,0,0.17,1) 0.7s forwards}
+        .intro-spark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:0;height:2px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(200,170,255,0.9),rgba(139,92,246,0.4),transparent);filter:blur(1px);animation:sparkExpand 0.7s var(--ease) 0.15s forwards}
+        @keyframes sparkExpand{0%{width:0;opacity:0;filter:blur(0)}20%{opacity:1}100%{width:60vw;opacity:0;filter:blur(6px)}}
+        .intro-line{position:absolute;left:0;right:0;top:0;height:1px;opacity:0;animation:lineSweep 2.6s cubic-bezier(0.83,0,0.17,1) 0.7s forwards}
+        .intro-line::before{content:'';position:absolute;left:-5%;right:-5%;top:-60px;bottom:-60px;background:linear-gradient(180deg,transparent 0%,rgba(100,60,200,0.02) 25%,rgba(139,92,246,0.07) 45%,rgba(160,120,246,0.10) 50%,rgba(139,92,246,0.07) 55%,rgba(100,60,200,0.02) 75%,transparent 100%);filter:blur(12px)}
+        .intro-line::after{content:'';position:absolute;left:8%;right:8%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(160,130,240,0.5) 20%,rgba(210,190,255,0.85) 45%,rgba(230,220,255,1) 50%,rgba(210,190,255,0.85) 55%,rgba(160,130,240,0.5) 80%,transparent);box-shadow:0 0 8px 2px rgba(139,92,246,0.35),0 0 25px 5px rgba(124,58,237,0.15),0 0 50px 10px rgba(109,40,217,0.06)}
+        @keyframes introReveal{from{clip-path:inset(0 0 0 0)}to{clip-path:inset(100% 0 0 0)}}
+        @keyframes lineSweep{0%{top:-1px;opacity:0}2%{opacity:1}88%{opacity:0.9}100%{top:100%;opacity:0}}
+
         /* BG */
         .bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
         .orb{position:absolute;border-radius:50%;filter:blur(100px);animation:orbFloat 20s ease-in-out infinite}
@@ -193,6 +204,7 @@
     </style>
 </head>
 <body>
+    <div class="intro" aria-hidden="true"><div class="intro-overlay"></div><div class="intro-spark"></div><div class="intro-line"></div></div>
     <div class="bg-orbs" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
     <div class="bg-grid" aria-hidden="true"></div>
     <div id="cursor-glow"></div>
