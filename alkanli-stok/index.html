@@ -148,7 +148,11 @@ nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.08);box-s
 .c-track{display:flex;transition:transform .7s var(--ease)}
 .c-slide{flex:0 0 100%;width:100%;position:relative;opacity:.35;transform:scale(.94);transition:opacity .65s ease,transform .65s ease}
 .c-slide.active{opacity:1;transform:scale(1)}
-.c-slide img{width:100%;display:block;cursor:zoom-in}
+.c-slide img{width:100%;display:block;cursor:zoom-in;transition:filter .4s var(--ease),transform .4s var(--ease)}
+.c-slide.active img:hover{filter:brightness(1.12) contrast(1.02);transform:scale(1.015)}
+.c-slide .c-zoom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:56px;height:56px;border-radius:50%;background:rgba(139,92,246,.7);backdrop-filter:blur(12px);display:grid;place-items:center;pointer-events:none;transition:transform .4s var(--ease),opacity .3s;opacity:0;z-index:3}
+.c-slide .c-zoom svg{width:22px;height:22px;color:#fff}
+.c-slide.active:hover .c-zoom{transform:translate(-50%,-50%) scale(1);opacity:1}
 .c-info{padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center}
 .c-title{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--br)}
 .c-desc{font-size:.82rem;color:var(--dm)}
@@ -529,8 +533,12 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
   document.getElementById('c-prev').addEventListener('click', prevSlide);
   document.getElementById('c-next').addEventListener('click', nextSlide);
 
-  // Image clicks → lightbox
+  // Add zoom indicator + click → lightbox
   slides.forEach(function(slide) {
+    var zoom = document.createElement('div');
+    zoom.className = 'c-zoom';
+    zoom.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>';
+    slide.insertBefore(zoom, slide.querySelector('.c-info'));
     var img = slide.querySelector('img');
     img.addEventListener('click', function() { lbOpen(parseInt(this.getAttribute('data-i'), 10)); });
   });
