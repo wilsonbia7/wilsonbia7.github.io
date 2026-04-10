@@ -18,7 +18,7 @@
   --bg:#030308;--bg2:#08081a;
   --sf:rgba(255,255,255,.025);--sfh:rgba(255,255,255,.05);
   --bd:rgba(255,255,255,.06);--bdh:rgba(139,92,246,.3);
-  --tx:#a0a0bc;--dm:#606078;--br:#ececf8;
+  --tx:#b0b0c8;--dm:#707088;--br:#f0f0ff;
   --ac:#8b5cf6;--ac2:#7c3aed;--acl:#a78bfa;--gn:#34d399;
   --ff:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
   --fd:'Space Grotesk',sans-serif;
@@ -65,7 +65,7 @@ nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.08);box-s
 /* ── Typography ── */
 .tag{font-family:var(--fm);font-size:.64rem;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--ac);margin-bottom:1.6rem;display:flex;align-items:center;gap:14px}
 .tag::before{content:'';width:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.5))}
-.tit{font-family:var(--fd);font-size:clamp(1.8rem,4.5vw,3rem);font-weight:700;letter-spacing:-2.5px;color:var(--br);margin-bottom:1rem;line-height:1.05}
+.tit{font-family:var(--fd);font-size:clamp(1.8rem,4.5vw,3rem);font-weight:700;letter-spacing:-2.5px;margin-bottom:1rem;line-height:1.05;background:linear-gradient(135deg,#f0f0ff 30%,var(--acl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .desc{font-size:1rem;color:var(--dm);max-width:480px;line-height:1.75}
 .divider{max-width:200px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent);position:relative;z-index:1}
 
@@ -111,17 +111,17 @@ nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.08);box-s
 .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(8,8,26,.85);backdrop-filter:blur(24px);border:1px solid var(--bd);border-radius:20px;padding:6px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
 .stat{text-align:center;padding:1.5rem .75rem;border-radius:16px;transition:background .3s}
 .stat:hover{background:rgba(255,255,255,.03)}
-.stat-val{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-1.5px;color:var(--br)}
+.stat-val{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-1.5px;background:linear-gradient(135deg,#f0f0ff,var(--acl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .stat-label{font-size:.65rem;color:var(--dm);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
 
 /* ── Bento Features ── */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:3rem}
 .bento-card{padding:2rem;border-radius:18px;border:1px solid var(--bd);background:var(--sf);transition:all .5s var(--ease);position:relative;overflow:hidden}
 .bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,transparent);transition:background .5s}
-.bento-card:hover{background:var(--sfh);border-color:var(--bdh);transform:translateY(-6px);box-shadow:0 24px 64px rgba(0,0,0,.25)}
+.bento-card:hover{background:var(--sfh);border-color:var(--bdh);transform:translateY(-6px);box-shadow:0 24px 64px rgba(0,0,0,.25),0 0 40px rgba(139,92,246,.04)}
 .bento-card:hover::before{background:linear-gradient(90deg,transparent,rgba(139,92,246,.35),transparent)}
 .bento-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:1.25rem;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.08);transition:all .4s}
-.bento-card:hover .bento-icon{background:rgba(139,92,246,.12);transform:scale(1.08) rotate(-2deg)}
+.bento-card:hover .bento-icon{background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(59,130,246,.08));border-color:rgba(139,92,246,.2);transform:scale(1.08) rotate(-2deg);box-shadow:0 4px 16px rgba(139,92,246,.1)}
 .bento-icon svg{width:20px;height:20px;color:var(--ac)}
 .bento-card h3{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--br);margin-bottom:.5rem}
 .bento-card p{font-size:.84rem;line-height:1.7;color:var(--dm)}
@@ -144,7 +144,7 @@ nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.08);box-s
 .c-tab:hover{color:var(--tx);background:var(--sf)}
 .c-tab.active{color:var(--br);border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.06);box-shadow:0 0 24px rgba(139,92,246,.08)}
 
-.c-viewport{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--bd);background:var(--bg2);box-shadow:0 40px 100px rgba(0,0,0,.4)}
+.c-viewport{position:relative;overflow:hidden;border-radius:20px;border:1px solid rgba(139,92,246,.1);background:var(--bg2);box-shadow:0 40px 100px rgba(0,0,0,.4),0 0 80px rgba(139,92,246,.06),inset 0 1px 0 rgba(255,255,255,.04)}
 .c-track{display:flex;transition:transform .7s var(--ease)}
 .c-slide{flex:0 0 100%;width:100%;position:relative;opacity:.35;transform:scale(.94);transition:opacity .65s ease,transform .65s ease}
 .c-slide.active{opacity:1;transform:scale(1)}
@@ -152,12 +152,20 @@ nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.08);box-s
 .c-slide.active img:hover{filter:brightness(1.06)}
 
 /* Magnifier Lens — follows cursor, shows zoomed area */
-.c-lens{position:absolute;width:180px;height:180px;border-radius:50%;border:2px solid rgba(139,92,246,.2);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 24px rgba(139,92,246,.1),inset 0 0 0 1px rgba(255,255,255,.05);pointer-events:none;z-index:10;opacity:0;transform:scale(.65);transition:opacity .2s ease,transform .25s var(--ease);background-repeat:no-repeat;will-change:left,top,background-position}
+.c-lens{position:absolute;width:200px;height:200px;border-radius:50%;border:2px solid rgba(139,92,246,.2);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 24px rgba(139,92,246,.1),inset 0 0 0 1px rgba(255,255,255,.05);pointer-events:none;z-index:10;opacity:0;transform:scale(.65);transition:opacity .2s ease,transform .25s var(--ease);background-repeat:no-repeat;will-change:left,top,background-position}
 .c-lens.visible{opacity:1;transform:scale(1)}
 @media(hover:none){.c-lens{display:none!important}}
 .c-info{padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center}
 .c-title{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--br)}
 .c-desc{font-size:.82rem;color:var(--dm)}
+
+/* Viewport Overlay Arrows */
+.c-vp-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:14px;background:rgba(8,8,26,.65);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;cursor:pointer;z-index:8;color:rgba(255,255,255,.5);transition:all .3s var(--ease);opacity:0}
+.c-viewport:hover .c-vp-arrow{opacity:1}
+.c-vp-arrow:hover{background:rgba(139,92,246,.3);color:#fff;border-color:rgba(139,92,246,.25);box-shadow:0 4px 20px rgba(139,92,246,.2);transform:translateY(-50%) scale(1.08)}
+.c-vp-arrow svg{width:18px;height:18px}
+.c-vp-prev{left:16px}
+.c-vp-next{right:16px}
 
 /* Carousel Controls */
 .c-controls{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:1.5rem}
@@ -189,7 +197,7 @@ nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.08);box-s
 /* ── Pricing ── */
 .pricing-card{max-width:460px;margin:3rem auto 0;padding:2.5rem;border-radius:24px;border:1px solid rgba(139,92,246,.18);background:linear-gradient(180deg,rgba(139,92,246,.04),rgba(3,3,8,.9));text-align:center;position:relative;overflow:hidden}
 .pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.5),transparent)}
-.pricing-title{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--br);margin-bottom:.6rem;position:relative;z-index:1}
+.pricing-title{font-family:var(--fd);font-size:1.4rem;font-weight:700;margin-bottom:.6rem;position:relative;z-index:1;background:linear-gradient(135deg,#f0f0ff,var(--acl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .pricing-desc{font-size:.88rem;color:var(--dm);line-height:1.65;margin-bottom:2rem;position:relative;z-index:1}
 .pricing-list{list-style:none;text-align:left;margin-bottom:2rem;position:relative;z-index:1}
 .pricing-list li{font-size:.86rem;color:var(--br);padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:12px}
@@ -201,8 +209,9 @@ nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.08);box-s
 .pricing-title,.pricing-desc,.pricing-list,.pricing-card>.btn{position:relative;z-index:2}
 
 /* ── CTA ── */
-.cta-box{max-width:680px;margin:0 auto;padding:3.5rem;border-radius:24px;border:1px solid var(--bd);background:var(--sf);text-align:center}
-.cta-title{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--br);margin-bottom:.75rem}
+.cta-box{max-width:680px;margin:0 auto;padding:3.5rem;border-radius:24px;border:1px solid rgba(139,92,246,.12);background:linear-gradient(180deg,rgba(139,92,246,.03),var(--sf));text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2),0 0 40px rgba(139,92,246,.04);position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.4),transparent)}
+.cta-title{font-family:var(--fd);font-size:1.6rem;font-weight:700;margin-bottom:.75rem;background:linear-gradient(135deg,#f0f0ff,var(--acl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .cta-desc{font-size:.92rem;color:var(--dm);margin-bottom:2rem;line-height:1.75}
 .cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
 .cta-link{font-size:.78rem;color:var(--dm);display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:10px;border:1px solid var(--bd);transition:all .25s}
@@ -229,6 +238,8 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
   .bento-wide{grid-column:span 1}
   .stats-inner{grid-template-columns:repeat(2,1fr)}
   .c-info{flex-direction:column;gap:6px;align-items:flex-start}
+  .c-vp-arrow{opacity:1;width:38px;height:38px;border-radius:10px}
+  .c-vp-prev{left:8px}.c-vp-next{right:8px}
   .lb-arrow{width:40px;height:40px}
   .lb-prev{left:10px}.lb-next{right:10px}
 }
@@ -375,6 +386,8 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
         <div class="c-slide"><img src="img/dashboard-dark.png" alt="Karanlık Tema" data-i="6"><div class="c-info"><div><div class="c-title">Karanlık Tema</div><div class="c-desc">Göz yormayan karanlık arayüz. Tüm ekranlar desteklenir.</div></div></div></div>
       </div>
       <div class="c-progress" id="c-progress"></div>
+      <div class="c-vp-arrow c-vp-prev" id="c-vp-prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+      <div class="c-vp-arrow c-vp-next" id="c-vp-next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
     </div>
     <div class="c-controls">
       <div class="c-arrow" id="c-prev" aria-label="Önceki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
@@ -534,10 +547,12 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
   // Arrow clicks
   document.getElementById('c-prev').addEventListener('click', prevSlide);
   document.getElementById('c-next').addEventListener('click', nextSlide);
+  document.getElementById('c-vp-prev').addEventListener('click', function(e) { e.stopPropagation(); prevSlide(); });
+  document.getElementById('c-vp-next').addEventListener('click', function(e) { e.stopPropagation(); nextSlide(); });
 
   // Magnifier lens — follows cursor, shows 2.5x zoomed area
-  var ZOOM = 2.5;
-  var LENS_R = 90; // half of 180px
+  var ZOOM = 1.5;
+  var LENS_R = 100; // half of 200px
   slides.forEach(function(slide) {
     var lens = document.createElement('div');
     lens.className = 'c-lens';
