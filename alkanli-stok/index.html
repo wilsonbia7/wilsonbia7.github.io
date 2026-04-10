@@ -3,282 +3,589 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alkanli Finans — Kurumsal Stok, POS ve Finans Yonetim Sistemi</title>
-<meta name="description" content="Stok takibi, POS satis, e-fatura ve muhasebe yonetimini tek platformda birlestirin.">
+<title>Alkanlı Finans — Kurumsal Stok, POS ve Finans Yönetim Sistemi</title>
+<meta name="description" content="Stok takibi, POS satış, e-fatura ve muhasebe yönetimini tek platformda birleştirin. Masaüstünden buluta ölçeklenebilir.">
 <meta name="theme-color" content="#8b5cf6">
+<meta property="og:title" content="Alkanlı Finans — Kurumsal İşletme Yönetim Sistemi">
+<meta property="og:description" content="Stok, POS, fatura ve muhasebe yönetimini tek platformda birleştirin.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ── Reset & Custom Properties ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#030308;--bg2:#08081a;--sf:rgba(255,255,255,.025);--sfh:rgba(255,255,255,.05);--bd:rgba(255,255,255,.06);--bdh:rgba(139,92,246,.3);--tx:#c0c0d8;--dm:#505068;--br:#ececf8;--ac:#8b5cf6;--ac2:#7c3aed;--acl:#a78bfa;--gn:#34d399;--ff:'Inter',-apple-system,sans-serif;--fd:'Space Grotesk',sans-serif;--fm:'JetBrains Mono',monospace;--e:cubic-bezier(.16,1,.3,1)}
+:root{
+  --bg:#030308;--bg2:#08081a;
+  --sf:rgba(255,255,255,.025);--sfh:rgba(255,255,255,.05);
+  --bd:rgba(255,255,255,.06);--bdh:rgba(139,92,246,.3);
+  --tx:#a0a0bc;--dm:#606078;--br:#ececf8;
+  --ac:#8b5cf6;--ac2:#7c3aed;--acl:#a78bfa;--gn:#34d399;
+  --ff:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --fd:'Space Grotesk',sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
 html{scroll-behavior:smooth}
 body{font-family:var(--ff);background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:rgba(139,92,246,.3);color:#fff}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(139,92,246,.15);border-radius:4px}
-a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(139,92,246,.15);border-radius:4px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
 
-/* Ambient */
-.amb{position:fixed;inset:0;z-index:0;pointer-events:none}.ob{position:absolute;border-radius:50%;filter:blur(150px)}.ob:nth-child(1){width:800px;height:800px;background:rgba(139,92,246,.05);top:-25%;left:-15%;animation:fl 28s ease-in-out infinite}.ob:nth-child(2){width:600px;height:600px;background:rgba(59,130,246,.03);bottom:-15%;right:-10%;animation:fl 35s ease-in-out infinite reverse}@keyframes fl{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-50px)}}
-.grd{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(139,92,246,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.012) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 50% 35% at 50% 0%,#000,transparent)}
+/* ── Scroll Progress ── */
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--ac),var(--acl));z-index:200;transition:width .08s linear;pointer-events:none}
 
-/* Nav */
-nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:3px;padding:5px 7px;background:rgba(8,8,26,.75);backdrop-filter:blur(28px) saturate(1.5);border:1px solid var(--bd);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
-.nb{display:flex;align-items:center;gap:8px;padding:0 14px;font-family:var(--fd);font-size:.84rem;font-weight:600;color:var(--br);white-space:nowrap}
-.ni{width:26px;height:26px;background:linear-gradient(135deg,var(--acl),var(--ac2));border-radius:7px;display:grid;place-items:center;font-size:.7rem;font-weight:700;color:#fff}
-.ns{width:1px;height:18px;background:var(--bd);margin:0 3px}
-.nl{font-family:var(--fd);font-size:.73rem;color:var(--dm);padding:7px 13px;border-radius:10px;transition:all .25s}.nl:hover{color:var(--tx);background:var(--sf)}
-.nc{font-family:var(--fd);font-size:.73rem;font-weight:500;color:#fff;padding:7px 16px;border-radius:10px;background:var(--ac);transition:all .25s;white-space:nowrap}.nc:hover{background:var(--ac2);box-shadow:0 4px 16px rgba(139,92,246,.3)}
+/* ── Grain Overlay ── */
+body::after{content:'';position:fixed;inset:0;z-index:150;pointer-events:none;opacity:.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* Section spacing */
-.sec{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:clamp(100px,14vh,160px) clamp(1.5rem,4vw,3rem)}
-.sec-sm{padding-top:clamp(60px,8vh,100px);padding-bottom:clamp(60px,8vh,100px)}
+/* ── Ambient Background ── */
+.amb{position:fixed;inset:0;z-index:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(160px)}
+.orb:nth-child(1){width:850px;height:850px;background:rgba(139,92,246,.045);top:-25%;left:-15%;animation:drift 30s ease-in-out infinite}
+.orb:nth-child(2){width:650px;height:650px;background:rgba(59,130,246,.025);bottom:-15%;right:-10%;animation:drift 38s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(45px,-55px)}}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(139,92,246,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.01) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 55% 40% at 50% 0%,#000,transparent)}
 
-/* Labels */
-.tag{font-family:var(--fm);font-size:.64rem;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--ac);margin-bottom:1.5rem;display:flex;align-items:center;gap:14px}
+/* ── Navigation ── */
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:3px;padding:5px 7px;background:rgba(8,8,26,.7);backdrop-filter:blur(28px) saturate(1.5);border:1px solid var(--bd);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.45);transition:all .4s}
+nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.08);box-shadow:0 4px 24px rgba(0,0,0,.6)}
+.nav-brand{display:flex;align-items:center;gap:8px;padding:0 14px;font-family:var(--fd);font-size:.84rem;font-weight:600;color:var(--br);white-space:nowrap}
+.nav-icon{width:26px;height:26px;background:linear-gradient(135deg,var(--acl),var(--ac2));border-radius:7px;display:grid;place-items:center;font-size:.7rem;font-weight:700;color:#fff}
+.nav-sep{width:1px;height:18px;background:var(--bd);margin:0 3px}
+.nav-link{font-family:var(--fd);font-size:.73rem;color:var(--dm);padding:7px 13px;border-radius:10px;transition:all .25s}
+.nav-link:hover{color:var(--tx);background:var(--sf)}
+.nav-cta{font-family:var(--fd);font-size:.73rem;font-weight:500;color:#fff;padding:7px 16px;border-radius:10px;background:var(--ac);transition:all .25s;white-space:nowrap}
+.nav-cta:hover{background:var(--ac2);box-shadow:0 4px 16px rgba(139,92,246,.3)}
+
+/* ── Section Spacing ── */
+.sec{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:clamp(110px,15vh,180px) clamp(1.5rem,4vw,3rem)}
+
+/* ── Typography ── */
+.tag{font-family:var(--fm);font-size:.64rem;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--ac);margin-bottom:1.6rem;display:flex;align-items:center;gap:14px}
 .tag::before{content:'';width:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.5))}
 .tit{font-family:var(--fd);font-size:clamp(1.8rem,4.5vw,3rem);font-weight:700;letter-spacing:-2.5px;color:var(--br);margin-bottom:1rem;line-height:1.05}
 .desc{font-size:1rem;color:var(--dm);max-width:480px;line-height:1.75}
-.dv{max-width:200px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent)}
+.divider{max-width:200px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent);position:relative;z-index:1}
 
-/* Buttons */
-.btn{font-family:var(--fd);font-size:.84rem;font-weight:500;padding:14px 30px;border-radius:14px;display:inline-flex;align-items:center;gap:9px;transition:all .4s var(--e);cursor:pointer;border:none;position:relative;overflow:hidden}
-.btn svg{width:15px;height:15px}
-.bp{background:var(--ac);color:#fff;box-shadow:0 0 0 1px rgba(139,92,246,.3),0 6px 24px rgba(139,92,246,.25)}
-.bp::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent 50%);opacity:0;transition:opacity .3s}
-.bp:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(139,92,246,.4),0 12px 36px rgba(139,92,246,.35)}.bp:hover::after{opacity:1}
-.bo{background:rgba(12,12,34,.6);color:var(--tx);border:1px solid var(--bd);backdrop-filter:blur(12px)}
-.bo:hover{border-color:var(--bdh);color:var(--br);transform:translateY(-3px)}
+/* ── Buttons ── */
+.btn{font-family:var(--fd);font-size:.84rem;font-weight:500;padding:14px 30px;border-radius:14px;display:inline-flex;align-items:center;gap:9px;transition:all .4s var(--ease);cursor:pointer;border:none;position:relative;overflow:hidden}
+.btn svg{width:15px;height:15px;flex-shrink:0}
+.btn-primary{background:var(--ac);color:#fff;box-shadow:0 0 0 1px rgba(139,92,246,.3),0 6px 24px rgba(139,92,246,.25)}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent 50%);opacity:0;transition:opacity .3s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(139,92,246,.4),0 12px 36px rgba(139,92,246,.35)}
+.btn-primary:hover::after{opacity:1}
+.btn-outline{background:rgba(12,12,34,.6);color:var(--tx);border:1px solid var(--bd);backdrop-filter:blur(12px)}
+.btn-outline:hover{border-color:var(--bdh);color:var(--br);transform:translateY(-3px)}
 
-/* ═══ HERO ═══ */
+/* ── Hero ── */
 .hero{text-align:center;padding-top:clamp(160px,22vh,240px);padding-bottom:100px}
-.ht{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.68rem;text-transform:uppercase;letter-spacing:2.5px;color:var(--ac);padding:7px 18px;border-radius:100px;border:1px solid rgba(139,92,246,.12);background:rgba(139,92,246,.04);margin-bottom:2.5rem;opacity:0;animation:fi .8s var(--e) .2s forwards}
-.hd{width:6px;height:6px;border-radius:50%;background:var(--gn);box-shadow:0 0 12px rgba(52,211,153,.5);animation:bk 2s ease-in-out infinite}
-@keyframes bk{0%,100%{opacity:1}50%{opacity:.25}}
-@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.hero h1{font-family:var(--fd);font-size:clamp(2.8rem,8vw,5.5rem);font-weight:700;letter-spacing:-4px;line-height:.93;margin-bottom:2rem;opacity:0;animation:hi 1s var(--e) .3s forwards}
-.hero h1 .l1{display:block;color:var(--br);margin-bottom:6px}
-.hero h1 .l2{display:block;background:linear-gradient(135deg,#e0e7ff,#c4b5fd,#a78bfa,#7c3aed,#5b21b6);background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gr 7s ease infinite}
-@keyframes gr{0%,100%{background-position:0% center}50%{background-position:100% center}}
-@keyframes hi{from{opacity:0;transform:translateY(40px) scale(.97);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
-.hs{font-size:clamp(1.05rem,2vw,1.2rem);line-height:1.8;color:var(--tx);max-width:520px;margin:0 auto 3rem;font-weight:300;opacity:0;animation:fi 1s var(--e) .5s forwards}
-.hb{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fi 1s var(--e) .65s forwards}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.68rem;text-transform:uppercase;letter-spacing:2.5px;color:var(--ac);padding:7px 18px;border-radius:100px;border:1px solid rgba(139,92,246,.12);background:rgba(139,92,246,.04);margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s var(--ease) .2s forwards}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--gn);box-shadow:0 0 12px rgba(52,211,153,.5);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
-/* Hero mockup */
-.mkw{max-width:960px;margin:5rem auto 0;position:relative;opacity:0;animation:fi 1.2s var(--e) .8s forwards}
-.mkg{position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,rgba(139,92,246,.4),rgba(59,130,246,.1),rgba(168,85,247,.3));animation:bg 6s ease infinite;background-size:300% 300%;filter:blur(1px)}
-@keyframes bg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.mk{position:relative;z-index:1;border-radius:21px;overflow:hidden;background:var(--bg2);box-shadow:0 50px 120px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04)}
-.mkb{display:flex;align-items:center;gap:6px;padding:12px 18px;background:rgba(255,255,255,.01);border-bottom:1px solid rgba(255,255,255,.04)}
-.md{width:10px;height:10px;border-radius:50%}.mr{background:#ff5f57}.my{background:#febc2e}.mg{background:#28c840}
+.hero h1{font-family:var(--fd);font-size:clamp(2.8rem,8vw,5.5rem);font-weight:700;letter-spacing:-4px;line-height:.93;margin-bottom:2rem;opacity:0;animation:heroIn 1s var(--ease) .3s forwards}
+.hero h1 .line1{display:block;color:var(--br);margin-bottom:6px}
+.hero h1 .line2{display:block;background:linear-gradient(135deg,#e0e7ff,#c4b5fd,#a78bfa,#7c3aed,#5b21b6);background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 7s ease infinite}
+@keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
+@keyframes heroIn{from{opacity:0;transform:translateY(40px) scale(.97);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
 
-/* Stats */
-.sts{position:relative;z-index:2;max-width:880px;margin:-30px auto 0;opacity:0;animation:fi 1s var(--e) 1s forwards}
-.si{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(8,8,26,.85);backdrop-filter:blur(24px);border:1px solid var(--bd);border-radius:20px;padding:6px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-.st{text-align:center;padding:1.5rem .75rem;border-radius:16px;transition:background .3s}.st:hover{background:rgba(255,255,255,.03)}
-.sv{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-1.5px;color:var(--br)}
-.sl{font-size:.65rem;color:var(--dm);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+.hero-sub{font-size:clamp(1.05rem,2vw,1.2rem);line-height:1.8;color:var(--tx);max-width:520px;margin:0 auto 3rem;font-weight:300;opacity:0;animation:fadeUp 1s var(--ease) .5s forwards}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) .65s forwards}
 
-/* ═══ BENTO FEATURES ═══ */
+/* Hero Mockup */
+.mockup-wrap{max-width:960px;margin:5rem auto 0;position:relative;opacity:0;animation:fadeUp 1.2s var(--ease) .8s forwards}
+.mockup-glow{position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,rgba(139,92,246,.4),rgba(59,130,246,.1),rgba(168,85,247,.3));animation:glowShift 6s ease infinite;background-size:300% 300%;filter:blur(1px)}
+@keyframes glowShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.mockup{position:relative;z-index:1;border-radius:21px;overflow:hidden;background:var(--bg2);box-shadow:0 50px 120px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04)}
+.mockup-bar{display:flex;align-items:center;gap:6px;padding:12px 18px;background:rgba(255,255,255,.01);border-bottom:1px solid rgba(255,255,255,.04)}
+.dot{width:10px;height:10px;border-radius:50%}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+
+/* ── Stats ── */
+.stats-bar{position:relative;z-index:2;max-width:920px;margin:-30px auto 0;opacity:0;animation:fadeUp 1s var(--ease) 1s forwards}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(8,8,26,.85);backdrop-filter:blur(24px);border:1px solid var(--bd);border-radius:20px;padding:6px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.stat{text-align:center;padding:1.5rem .75rem;border-radius:16px;transition:background .3s}
+.stat:hover{background:rgba(255,255,255,.03)}
+.stat-val{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-1.5px;color:var(--br)}
+.stat-label{font-size:.65rem;color:var(--dm);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+
+/* ── Bento Features ── */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:3rem}
-.bc{padding:2rem;border-radius:18px;border:1px solid var(--bd);background:var(--sf);transition:all .5s var(--e);position:relative;overflow:hidden}
-.bc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,transparent);transition:background .5s}
-.bc:hover{background:var(--sfh);border-color:var(--bdh);transform:translateY(-6px);box-shadow:0 24px 64px rgba(0,0,0,.25)}
-.bc:hover::before{background:linear-gradient(90deg,transparent,rgba(139,92,246,.35),transparent)}
-.bi{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:1.25rem;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.08);transition:all .4s}
-.bc:hover .bi{background:rgba(139,92,246,.12);transform:scale(1.08) rotate(-2deg)}
-.bi svg{width:20px;height:20px;color:var(--ac)}
-.bc h3{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--br);margin-bottom:.5rem}
-.bc p{font-size:.84rem;line-height:1.7;color:var(--dm)}
-.bl{grid-column:span 2}
+.bento-card{padding:2rem;border-radius:18px;border:1px solid var(--bd);background:var(--sf);transition:all .5s var(--ease);position:relative;overflow:hidden}
+.bento-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,transparent);transition:background .5s}
+.bento-card:hover{background:var(--sfh);border-color:var(--bdh);transform:translateY(-6px);box-shadow:0 24px 64px rgba(0,0,0,.25)}
+.bento-card:hover::before{background:linear-gradient(90deg,transparent,rgba(139,92,246,.35),transparent)}
+.bento-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:1.25rem;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.08);transition:all .4s}
+.bento-card:hover .bento-icon{background:rgba(139,92,246,.12);transform:scale(1.08) rotate(-2deg)}
+.bento-icon svg{width:20px;height:20px;color:var(--ac)}
+.bento-card h3{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--br);margin-bottom:.5rem}
+.bento-card p{font-size:.84rem;line-height:1.7;color:var(--dm)}
+.bento-wide{grid-column:span 2}
 
-/* ═══ SCREENSHOT CAROUSEL — Tek tek, buyuk, animasyonlu ═══ */
+/* ── Tech Marquee ── */
+.marquee-wrap{overflow:hidden;padding:2.5rem 0;position:relative;z-index:1;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:3.5rem;animation:marquee 35s linear infinite;width:max-content}
+.marquee-track span{font-family:var(--fm);font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--dm);white-space:nowrap;opacity:.6}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── Screenshot Carousel ── */
 .carousel{position:relative;margin-top:3rem}
-.c-nav{display:flex;gap:6px;justify-content:center;margin-bottom:2rem;flex-wrap:wrap}
-.c-btn{font-family:var(--fd);font-size:.78rem;font-weight:500;color:var(--dm);padding:10px 20px;border-radius:12px;border:1px solid var(--bd);background:transparent;cursor:pointer;transition:all .3s var(--e)}
-.c-btn:hover{color:var(--tx);background:var(--sf)}
-.c-btn.on{color:var(--br);border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.06)}
 
-.c-stage{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--bd);background:var(--bg2);box-shadow:0 40px 100px rgba(0,0,0,.4)}
-.c-slide{display:none;animation:slideIn .6s var(--e)}
-.c-slide.on{display:block}
-@keyframes slideIn{from{opacity:0;transform:scale(.96) translateY(12px)}to{opacity:1;transform:none}}
+.c-tabs{display:flex;gap:6px;justify-content:center;margin-bottom:2rem;flex-wrap:wrap}
+.c-tab{font-family:var(--fd);font-size:.78rem;font-weight:500;color:var(--dm);padding:10px 20px;border-radius:12px;border:1px solid var(--bd);background:transparent;cursor:pointer;transition:all .3s var(--ease)}
+.c-tab:hover{color:var(--tx);background:var(--sf)}
+.c-tab.active{color:var(--br);border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.06)}
+
+.c-viewport{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--bd);background:var(--bg2);box-shadow:0 40px 100px rgba(0,0,0,.4)}
+.c-track{display:flex;transition:transform .7s var(--ease)}
+.c-slide{flex:0 0 100%;width:100%;position:relative}
 .c-slide img{width:100%;display:block;cursor:zoom-in}
 .c-info{padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center}
 .c-title{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--br)}
 .c-desc{font-size:.82rem;color:var(--dm)}
 
-/* Lightbox */
-.lb{position:fixed;inset:0;z-index:200;background:rgba(3,3,8,.95);backdrop-filter:blur(32px);display:none;place-items:center;cursor:zoom-out;opacity:0;transition:opacity .35s ease}
-.lb.on{display:grid;opacity:1}
-.lb img{max-width:94vw;max-height:90vh;border-radius:16px;box-shadow:0 40px 100px rgba(0,0,0,.6);transform:scale(.9);transition:transform .5s var(--e)}
-.lb.on img{transform:scale(1)}
-.lb-x{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;color:var(--tx);cursor:pointer;font-size:1.2rem;transition:all .2s}
-.lb-x:hover{background:rgba(255,255,255,.1);color:#fff}
+/* Carousel Controls */
+.c-controls{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:1.5rem}
+.c-arrow{width:44px;height:44px;border-radius:14px;background:var(--sf);border:1px solid var(--bd);display:grid;place-items:center;cursor:pointer;transition:all .3s var(--ease);color:var(--dm)}
+.c-arrow:hover{background:var(--sfh);border-color:var(--bdh);color:var(--br);transform:scale(1.05)}
+.c-arrow svg{width:16px;height:16px}
+.c-dots{display:flex;gap:8px;align-items:center}
+.c-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.1);cursor:pointer;transition:all .3s}
+.c-dot.active{background:var(--ac);box-shadow:0 0 10px rgba(139,92,246,.4);transform:scale(1.2)}
 
-/* Tech */
-.tech{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;padding:2rem 0}
-.tech span{font-family:var(--fm);font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--dm)}
+/* ── Lightbox ── */
+.lightbox{position:fixed;inset:0;z-index:300;background:rgba(3,3,8,.96);backdrop-filter:blur(32px);display:none;place-items:center;opacity:0;transition:opacity .35s ease}
+.lightbox.open{display:grid;opacity:1}
+.lightbox img{max-width:92vw;max-height:85vh;border-radius:16px;box-shadow:0 40px 100px rgba(0,0,0,.6);transform:scale(.92);transition:transform .5s var(--ease);user-select:none}
+.lightbox.open img{transform:scale(1)}
+.lb-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;color:var(--tx);cursor:pointer;font-size:1.2rem;transition:all .2s}
+.lb-close:hover{background:rgba(255,255,255,.1);color:#fff}
+.lb-arrow{position:absolute;top:50%;width:50px;height:50px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;color:var(--tx);cursor:pointer;transition:all .25s;transform:translateY(-50%)}
+.lb-arrow:hover{background:rgba(255,255,255,.12);color:#fff}
+.lb-arrow svg{width:18px;height:18px}
+.lb-prev{left:20px}
+.lb-next{right:20px}
+.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--fm);font-size:.72rem;color:var(--dm);letter-spacing:1px;background:rgba(8,8,26,.8);padding:6px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.06)}
 
-/* Pricing */
-.pc{max-width:460px;margin:3rem auto 0;padding:2.5rem;border-radius:24px;border:1px solid rgba(139,92,246,.18);background:linear-gradient(180deg,rgba(139,92,246,.04),rgba(3,3,8,.9));text-align:center;position:relative;overflow:hidden}
-.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.5),transparent)}
-.pch{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--br);margin-bottom:.6rem;position:relative;z-index:1}
-.pcd{font-size:.88rem;color:var(--dm);line-height:1.65;margin-bottom:2rem;position:relative;z-index:1}
-.pl{list-style:none;text-align:left;margin-bottom:2rem;position:relative;z-index:1}
-.pl li{font-size:.86rem;color:var(--br);padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:12px}
-.pl li:last-child{border:none}
-.pk{width:18px;height:18px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.1);display:grid;place-items:center;flex-shrink:0}
-.pk svg{width:10px;height:10px;color:var(--gn)}
+/* ── Pricing ── */
+.pricing-card{max-width:460px;margin:3rem auto 0;padding:2.5rem;border-radius:24px;border:1px solid rgba(139,92,246,.18);background:linear-gradient(180deg,rgba(139,92,246,.04),rgba(3,3,8,.9));text-align:center;position:relative;overflow:hidden}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.5),transparent)}
+.pricing-title{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--br);margin-bottom:.6rem;position:relative;z-index:1}
+.pricing-desc{font-size:.88rem;color:var(--dm);line-height:1.65;margin-bottom:2rem;position:relative;z-index:1}
+.pricing-list{list-style:none;text-align:left;margin-bottom:2rem;position:relative;z-index:1}
+.pricing-list li{font-size:.86rem;color:var(--br);padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:center;gap:12px}
+.pricing-list li:last-child{border:none}
+.check-icon{width:18px;height:18px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.1);display:grid;place-items:center;flex-shrink:0}
+.check-icon svg{width:10px;height:10px;color:var(--gn)}
 
-/* CTA */
-.cta{max-width:680px;margin:0 auto;padding:3.5rem;border-radius:24px;border:1px solid var(--bd);background:var(--sf);text-align:center}
-.ctt{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--br);margin-bottom:.75rem}
-.ctd{font-size:.92rem;color:var(--dm);margin-bottom:2rem;line-height:1.75}
-.ctl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
-.ca{font-size:.78rem;color:var(--dm);display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:10px;border:1px solid var(--bd);transition:all .25s}
-.ca:hover{border-color:var(--bdh);color:var(--br)}
-.ca svg{width:13px;height:13px}
+/* ── CTA ── */
+.cta-box{max-width:680px;margin:0 auto;padding:3.5rem;border-radius:24px;border:1px solid var(--bd);background:var(--sf);text-align:center}
+.cta-title{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--br);margin-bottom:.75rem}
+.cta-desc{font-size:.92rem;color:var(--dm);margin-bottom:2rem;line-height:1.75}
+.cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+.cta-link{font-size:.78rem;color:var(--dm);display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:10px;border:1px solid var(--bd);transition:all .25s}
+.cta-link:hover{border-color:var(--bdh);color:var(--br)}
+.cta-link svg{width:13px;height:13px}
 
+/* ── Footer ── */
 footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7rem;color:var(--dm);border-top:1px solid rgba(255,255,255,.03)}
 
-/* Reveal */
-.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--e),transform .9s var(--e)}.rv.v{opacity:1;transform:none}
+/* ── Reveal Animation ── */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.visible{opacity:1;transform:none}
+.rv-delay-1{transition-delay:.1s}
+.rv-delay-2{transition-delay:.2s}
+.rv-delay-3{transition-delay:.3s}
+.rv-delay-4{transition-delay:.4s}
+.rv-delay-5{transition-delay:.5s}
 
-/* Responsive */
-@media(max-width:768px){nav{top:10px;padding:4px 6px}.nl,.ns{display:none}.bento{grid-template-columns:1fr}.bl{grid-column:span 1}.si{grid-template-columns:repeat(2,1fr)}.c-info{flex-direction:column;gap:6px;align-items:flex-start}}
-@media(max-width:480px){.hero h1{font-size:2.4rem;letter-spacing:-2px}.hb,.ctl{flex-direction:column;align-items:stretch}.btn,.ca{justify-content:center}.c-nav{gap:4px}.c-btn{font-size:.72rem;padding:8px 14px}}
+/* ── Responsive ── */
+@media(max-width:768px){
+  nav{top:10px;padding:4px 6px}
+  .nav-link,.nav-sep{display:none}
+  .bento{grid-template-columns:1fr}
+  .bento-wide{grid-column:span 1}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .c-info{flex-direction:column;gap:6px;align-items:flex-start}
+  .lb-arrow{width:40px;height:40px}
+  .lb-prev{left:10px}.lb-next{right:10px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:2.4rem;letter-spacing:-2px}
+  .hero-btns,.cta-links{flex-direction:column;align-items:stretch}
+  .btn,.cta-link{justify-content:center}
+  .c-tabs{gap:4px}
+  .c-tab{font-size:.72rem;padding:8px 14px}
+  .c-controls{gap:1rem}
+}
 </style>
 </head>
 <body>
-<div class="amb"><div class="ob"></div><div class="ob"></div></div>
-<div class="grd"></div>
-<div class="lb" id="lb" onclick="clb()"><img id="li" src="" alt=""><div class="lb-x" onclick="clb()">&#10005;</div></div>
 
-<nav>
-<a href="./" class="nb"><div class="ni">A</div>Alkanli Finans</a><div class="ns"></div>
-<a href="#ozellikler" class="nl">Ozellikler</a><a href="#ekranlar" class="nl">Ekranlar</a><a href="#fiyat" class="nl">Fiyat</a>
-<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans Hakkinda&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak istiyorum.%0A%0ASaygilarimla." class="nc">Iletisime Gecin</a>
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+
+<!-- Background -->
+<div class="amb"><div class="orb"></div><div class="orb"></div></div>
+<div class="grid-bg"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lb-img" src="" alt="">
+  <div class="lb-close" onclick="lbClose()" aria-label="Kapat">&#10005;</div>
+  <div class="lb-arrow lb-prev" onclick="lbPrev()" aria-label="Önceki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+  <div class="lb-arrow lb-next" onclick="lbNext()" aria-label="Sonraki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="./" class="nav-brand"><div class="nav-icon">A</div>Alkanlı Finans</a>
+  <div class="nav-sep"></div>
+  <a href="#ozellikler" class="nav-link">Özellikler</a>
+  <a href="#ekranlar" class="nav-link">Ekranlar</a>
+  <a href="#fiyat" class="nav-link">Fiyat</a>
+  <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans Hakkında&amp;body=Merhaba,%0A%0AAlkanlı Finans hakkında bilgi almak istiyorum.%0A%0ASaygılarımla." class="nav-cta">İletişime Geçin</a>
 </nav>
 
+<!-- Hero -->
 <div class="sec hero">
-<div class="ht"><span class="hd"></span>v5.12 &#8212; 1.113 Test ile Dogrulanmis</div>
-<h1><span class="l1">Profesyonel</span><span class="l2">Isletme Yonetim Sistemi</span></h1>
-<p class="hs">Stok takibi, POS satis, e-fatura, muhasebe ve musteri yonetimini tek platformda birlestirin. Masaustunden buluta olceklenebilir.</p>
-<div class="hb">
-<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans — Demo Talebi&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak ve demo gorusmesi yapmak istiyorum.%0A%0ASirket Adi:%0AIletisim No:%0AE-posta:%0A%0ASaygilarimla." class="btn bp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>Iletisime Gecin</a>
-<a href="#ekranlar" class="btn bo">Ekranlari Goruntuleyin</a>
-</div>
-<div class="mkw"><div class="mkg"></div><div class="mk"><div class="mkb"><span class="md mr"></span><span class="md my"></span><span class="md mg"></span></div><img src="img/dashboard.png" alt="Kontrol Paneli" loading="eager"></div></div>
+  <div class="hero-tag"><span class="hero-dot"></span>v5.12 — 1.113 Test ile Doğrulanmış</div>
+  <h1><span class="line1">Profesyonel</span><span class="line2">İşletme Yönetim Sistemi</span></h1>
+  <p class="hero-sub">Stok takibi, POS satış, e-fatura, muhasebe ve müşteri yönetimini tek platformda birleştirin. Masaüstünden buluta ölçeklenebilir.</p>
+  <div class="hero-btns">
+    <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans — Demo Talebi&amp;body=Merhaba,%0A%0AAlkanlı Finans hakkında bilgi almak ve demo görüşmesi yapmak istiyorum.%0A%0AŞirket Adı:%0Aİletişim No:%0AE-posta:%0A%0ASaygılarımla." class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>İletişime Geçin</a>
+    <a href="#ekranlar" class="btn btn-outline">Ekranları Görüntüleyin</a>
+  </div>
+  <div class="mockup-wrap">
+    <div class="mockup-glow"></div>
+    <div class="mockup">
+      <div class="mockup-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+      <img src="img/dashboard.png" alt="Alkanlı Finans Kontrol Paneli" loading="eager">
+    </div>
+  </div>
 </div>
 
-<div class="sts"><div class="si">
-<div class="st"><div class="sv">1.113+</div><div class="sl">Otomatik Test</div></div>
-<div class="st"><div class="sv">79+</div><div class="sl">Servis Modulu</div></div>
-<div class="st"><div class="sv">200+</div><div class="sl">API Uc Noktasi</div></div>
-<div class="st"><div class="sv">4</div><div class="sl">Muhasebe Formati</div></div>
-</div></div>
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-val" data-count="1113">0</div><div class="stat-label">Otomatik Test</div></div>
+    <div class="stat"><div class="stat-val" data-count="79">0</div><div class="stat-label">Servis Modülü</div></div>
+    <div class="stat"><div class="stat-val" data-count="200">0</div><div class="stat-label">API Uç Noktası</div></div>
+    <div class="stat"><div class="stat-val" data-count="4">0</div><div class="stat-label">Muhasebe Formatı</div></div>
+  </div>
+</div>
 
+<!-- Features -->
 <div class="sec rv" id="ozellikler">
-<div class="tag">Ozellikler</div>
-<h2 class="tit">Isletmeniz Icin<br>Her Sey Tek Yerde</h2>
-<p class="desc">Kucuk magazadan kurumsal zincire kadar her olcekte profesyonel yonetim.</p>
-<div class="bento">
-<div class="bc bl"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><h3>Kapsamli Stok Yonetimi</h3><p>Barkod tarama, seri numarasi takibi, urun varyantlari, toplu fiyat guncelleme, stok tahmin motoru ve otomatik yeniden siparis onerisi. 100.000+ urun kapasitesi.</p></div>
-<div class="bc"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg></div><h3>POS &#8212; Hizli Satis</h3><p>Nakit, kart, bolunmus odeme, veresiye. Z raporu, kismi iade, termal yazici entegrasyonu.</p></div>
-<div class="bc"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>e-Fatura ve Faturalama</h3><p>UBL-TR XML, GIB entegrasyonu, profesyonel PDF, KDV beyanname disa aktarimi.</p></div>
-<div class="bc"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Finans ve Muhasebe</h3><p>Gelir/gider takibi, veresiye defteri, taksitli odeme, mali donem kapanisi. Parasut, Logo, Mikro aktarim.</p></div>
-<div class="bc bl"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div><h3>Raporlar, Analiz ve Musteri Portali</h3><p>Kar analizi, ABC siniflandirmasi, stok devir hizi, banka uzlasmasi. Tum raporlar tek tikla PDF. Musteri portali ile musterileriniz fatura ve bakiye bilgilerine erisebilir.</p></div>
-</div>
+  <div class="tag">Özellikler</div>
+  <h2 class="tit">İşletmeniz İçin<br>Her Şey Tek Yerde</h2>
+  <p class="desc">Küçük mağazadan kurumsal zincire kadar her ölçekte profesyonel yönetim.</p>
+  <div class="bento">
+    <div class="bento-card bento-wide rv rv-delay-1">
+      <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <h3>Kapsamlı Stok Yönetimi</h3>
+      <p>Barkod tarama, seri numarası takibi, ürün varyantları (beden/renk), toplu fiyat güncelleme, stok tahmin motoru ve otomatik yeniden sipariş önerisi. 100.000+ ürün kapasitesi.</p>
+    </div>
+    <div class="bento-card rv rv-delay-2">
+      <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg></div>
+      <h3>POS — Hızlı Satış</h3>
+      <p>Nakit, kart, bölünmüş ödeme, veresiye. Z raporu, kısmi iade, termal yazıcı entegrasyonu.</p>
+    </div>
+    <div class="bento-card rv rv-delay-3">
+      <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+      <h3>e-Fatura ve Faturalama</h3>
+      <p>UBL-TR XML, GİB entegrasyonu, profesyonel PDF çıktı, KDV beyanname dışa aktarımı.</p>
+    </div>
+    <div class="bento-card rv rv-delay-1">
+      <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <h3>Finans ve Muhasebe</h3>
+      <p>Gelir/gider takibi, veresiye defteri, taksitli ödeme, mali dönem kapanışı.</p>
+    </div>
+    <div class="bento-card bento-wide rv rv-delay-2">
+      <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
+      <h3>Raporlar ve Analiz</h3>
+      <p>Kâr analizi, ABC sınıflandırması, stok devir hızı, banka uzlaşması. Tüm raporlar tek tıkla PDF. Paraşüt, Logo, Mikro muhasebe aktarımı.</p>
+    </div>
+    <div class="bento-card rv rv-delay-3">
+      <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3>Müşteri Portalı</h3>
+      <p>Token tabanlı erişim, fatura görüntüleme, bakiye sorgulama, ödeme hatırlatma.</p>
+    </div>
+  </div>
 </div>
 
-<div class="dv"></div>
-<div class="tech rv"><span>Python</span><span>Flask</span><span>SQLite</span><span>PostgreSQL</span><span>Redis</span><span>Electron</span><span>Docker</span></div>
-<div class="dv"></div>
+<div class="divider"></div>
 
+<!-- Tech Marquee -->
+<div class="marquee-wrap rv">
+  <div class="marquee-track" id="marquee">
+    <span>Python 3.12</span><span>Flask</span><span>SQLite</span><span>PostgreSQL</span><span>Redis</span><span>Electron</span><span>Docker</span><span>WebSocket</span><span>esbuild</span><span>Playwright</span><span>GitHub Actions</span><span>HMAC-SHA256</span><span>AES-256-GCM</span><span>UBL-TR XML</span>
+    <span>Python 3.12</span><span>Flask</span><span>SQLite</span><span>PostgreSQL</span><span>Redis</span><span>Electron</span><span>Docker</span><span>WebSocket</span><span>esbuild</span><span>Playwright</span><span>GitHub Actions</span><span>HMAC-SHA256</span><span>AES-256-GCM</span><span>UBL-TR XML</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Screenshots -->
 <div class="sec rv" id="ekranlar">
-<div class="tag">Ekran Goruntuleri</div>
-<h2 class="tit">Profesyonel Tasarim,<br>Kolay Kullanim</h2>
-<p class="desc">Aydinlik ve karanlik tema destegi. Her ekran tiklanarak buyuk goruntulenir.</p>
-<div class="carousel">
-<div class="c-nav">
-<button class="c-btn on" onclick="cs(0)">Kontrol Paneli</button>
-<button class="c-btn" onclick="cs(1)">Urun Katalogu</button>
-<button class="c-btn" onclick="cs(2)">Gelir / Gider</button>
-<button class="c-btn" onclick="cs(3)">Raporlar</button>
-<button class="c-btn" onclick="cs(4)">Cari Hesaplar</button>
-<button class="c-btn" onclick="cs(5)">Karanlik Tema</button>
-</div>
-<div class="c-stage">
-<div class="c-slide on" data-i="0"><img src="img/dashboard.png" alt="Kontrol Paneli" onclick="olb('img/dashboard.png')"><div class="c-info"><div><div class="c-title">Kontrol Paneli</div><div class="c-desc">Anlik istatistikler, grafikler, stok degeri ve son hareketler.</div></div></div></div>
-<div class="c-slide" data-i="1"><img src="img/products.png" alt="Urun Katalogu" onclick="olb('img/products.png')"><div class="c-info"><div><div class="c-title">Urun Katalogu</div><div class="c-desc">Kategori, fiyat, stok seviyeleri ve detayli urun yonetimi.</div></div></div></div>
-<div class="c-slide" data-i="2"><img src="img/finance.png" alt="Gelir ve Gider" onclick="olb('img/finance.png')"><div class="c-info"><div><div class="c-title">Gelir ve Gider Takibi</div><div class="c-desc">Aylik ozet, kategori bazli analiz ve tekrarlayan kayitlar.</div></div></div></div>
-<div class="c-slide" data-i="3"><img src="img/reports.png" alt="Raporlar" onclick="olb('img/reports.png')"><div class="c-info"><div><div class="c-title">Raporlar ve Analiz</div><div class="c-desc">Kar analizi, ABC siniflandirmasi, stok degerleme ve PDF cikti.</div></div></div></div>
-<div class="c-slide" data-i="4"><img src="img/customers.png" alt="Cari Hesaplar" onclick="olb('img/customers.png')"><div class="c-info"><div><div class="c-title">Cari Hesaplar</div><div class="c-desc">Musteri listesi, bakiye takibi, veresiye defteri ve odeme planlari.</div></div></div></div>
-<div class="c-slide" data-i="5"><img src="img/dashboard-dark.png" alt="Karanlik Tema" onclick="olb('img/dashboard-dark.png')"><div class="c-info"><div><div class="c-title">Karanlik Tema</div><div class="c-desc">Goz yormayan karanlik arayuz. Tum ekranlar desteklenir.</div></div></div></div>
-</div>
-</div>
+  <div class="tag">Ekran Görüntüleri</div>
+  <h2 class="tit">Profesyonel Tasarım,<br>Kolay Kullanım</h2>
+  <p class="desc">Aydınlık ve karanlık tema desteği. Her ekranı tıklayarak büyük görüntüleyebilirsiniz.</p>
+  <div class="carousel">
+    <div class="c-tabs" id="c-tabs">
+      <button class="c-tab active" data-i="0">Kontrol Paneli</button>
+      <button class="c-tab" data-i="1">Ürün Kataloğu</button>
+      <button class="c-tab" data-i="2">POS Satış</button>
+      <button class="c-tab" data-i="3">Gelir / Gider</button>
+      <button class="c-tab" data-i="4">Raporlar</button>
+      <button class="c-tab" data-i="5">Cari Hesaplar</button>
+      <button class="c-tab" data-i="6">Karanlık Tema</button>
+    </div>
+    <div class="c-viewport" id="c-viewport">
+      <div class="c-track" id="c-track">
+        <div class="c-slide"><img src="img/dashboard.png" alt="Kontrol Paneli" data-i="0"><div class="c-info"><div><div class="c-title">Kontrol Paneli</div><div class="c-desc">Anlık istatistikler, grafikler, stok değeri ve son hareketler.</div></div></div></div>
+        <div class="c-slide"><img src="img/products.png" alt="Ürün Kataloğu" data-i="1"><div class="c-info"><div><div class="c-title">Ürün Kataloğu</div><div class="c-desc">Kategori, fiyat, stok seviyeleri ve detaylı ürün yönetimi.</div></div></div></div>
+        <div class="c-slide"><img src="img/pos.png" alt="POS Satış" data-i="2"><div class="c-info"><div><div class="c-title">POS Satış Ekranı</div><div class="c-desc">Hızlı barkod tarama, sepet yönetimi, nakit ve kart ödeme.</div></div></div></div>
+        <div class="c-slide"><img src="img/finance.png" alt="Gelir ve Gider" data-i="3"><div class="c-info"><div><div class="c-title">Gelir ve Gider Takibi</div><div class="c-desc">Aylık özet, kategori bazlı analiz ve tekrarlayan kayıtlar.</div></div></div></div>
+        <div class="c-slide"><img src="img/reports.png" alt="Raporlar" data-i="4"><div class="c-info"><div><div class="c-title">Raporlar ve Analiz</div><div class="c-desc">Kâr analizi, ABC sınıflandırması, stok değerleme ve PDF çıktı.</div></div></div></div>
+        <div class="c-slide"><img src="img/customers.png" alt="Cari Hesaplar" data-i="5"><div class="c-info"><div><div class="c-title">Cari Hesaplar</div><div class="c-desc">Müşteri listesi, bakiye takibi, veresiye defteri ve ödeme planları.</div></div></div></div>
+        <div class="c-slide"><img src="img/dashboard-dark.png" alt="Karanlık Tema" data-i="6"><div class="c-info"><div><div class="c-title">Karanlık Tema</div><div class="c-desc">Göz yormayan karanlık arayüz. Tüm ekranlar desteklenir.</div></div></div></div>
+      </div>
+    </div>
+    <div class="c-controls">
+      <div class="c-arrow" id="c-prev" aria-label="Önceki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+      <div class="c-dots" id="c-dots"></div>
+      <div class="c-arrow" id="c-next" aria-label="Sonraki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
 </div>
 
-<div class="dv"></div>
+<div class="divider"></div>
 
+<!-- Pricing -->
 <div class="sec rv" id="fiyat">
-<div style="text-align:center"><div class="tag" style="justify-content:center">Fiyatlandirma</div><h2 class="tit" style="text-align:center">Isletmenize Ozel Teklif</h2></div>
-<div class="pc">
-<div class="pch">Ihtiyaclariniza Gore Fiyatlandirma</div>
-<div class="pcd">Isletmenizin buyuklugune ve ihtiyaclarina gore yapilandirilmis, anahtar teslim cozum.</div>
-<ul class="pl">
-<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Tum moduller dahil &#8212; stok, POS, fatura, muhasebe</li>
-<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kontrol paneli, grafikler, bildirimler ve raporlar</li>
-<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>e-Fatura, KDV beyanname ve muhasebe disa aktarimi</li>
-<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Coklu depo, barkod tarama ve toplu islemler</li>
-<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurumsal guvenlik, denetim kaydi ve yedekleme</li>
-<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurulum, egitim ve teknik destek dahil</li>
-</ul>
-<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans — Fiyat Teklifi&amp;body=Merhaba,%0A%0AAlkanli Finans icin fiyat teklifi almak istiyorum.%0A%0ASirket Adi:%0ASektor:%0AIletisim No:%0AE-posta:%0AMagaza Sayisi:%0ATahmini Urun Sayisi:%0A%0ASaygilarimla." class="btn bp" style="width:100%;justify-content:center;position:relative;z-index:1">Fiyat Teklifi Alin</a>
-</div>
-</div>
-
-<div class="dv"></div>
-
-<div class="sec sec-sm rv">
-<div class="cta">
-<h2 class="ctt">Iletisime Gecin</h2>
-<p class="ctd">Isletmeniz icin en uygun cozumu birlikte belirleyelim. Size ozel demo hazirlayalim.</p>
-<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans — Demo Talebi&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak ve demo gorusmesi yapmak istiyorum.%0A%0ASirket Adi:%0AIletisim No:%0AE-posta:%0A%0ASaygilarimla." class="btn bp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>Iletisime Gecin</a>
-<div class="ctl">
-<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak istiyorum.%0A%0ASaygilarimla." class="ca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic48@gmail.com</a>
-<a href="mailto:kaanalkanlic@outlook.com?subject=Alkanli Finans&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak istiyorum.%0A%0ASaygilarimla." class="ca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic@outlook.com</a>
-</div>
-</div>
+  <div style="text-align:center">
+    <div class="tag" style="justify-content:center">Fiyatlandırma</div>
+    <h2 class="tit" style="text-align:center">İşletmenize Özel Teklif</h2>
+  </div>
+  <div class="pricing-card">
+    <div class="pricing-title">İhtiyaçlarınıza Göre Fiyatlandırma</div>
+    <div class="pricing-desc">İşletmenizin büyüklüğüne ve ihtiyaçlarına göre yapılandırılmış, anahtar teslim çözüm.</div>
+    <ul class="pricing-list">
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Tüm modüller dahil — stok, POS, fatura, muhasebe</li>
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kontrol paneli, grafikler, bildirimler ve raporlar</li>
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>e-Fatura, KDV beyanname ve muhasebe dışa aktarımı</li>
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Çoklu depo, barkod tarama ve toplu işlemler</li>
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurumsal güvenlik, denetim kaydı ve yedekleme</li>
+      <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurulum, eğitim ve teknik destek dahil</li>
+    </ul>
+    <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans — Fiyat Teklifi&amp;body=Merhaba,%0A%0AAlkanlı Finans için fiyat teklifi almak istiyorum.%0A%0AŞirket Adı:%0ASektör:%0Aİletişim No:%0AE-posta:%0AMağaza Sayısı:%0ATahmini Ürün Sayısı:%0A%0ASaygılarımla." class="btn btn-primary" style="width:100%;justify-content:center;position:relative;z-index:1">Fiyat Teklifi Alın</a>
+  </div>
 </div>
 
-<footer><p>&#169; 2026 Kaan Alkanli &#8212; Alkanli Finans. Tum haklari saklidir.</p></footer>
+<div class="divider"></div>
+
+<!-- CTA -->
+<div class="sec rv" style="padding-top:clamp(80px,10vh,120px);padding-bottom:clamp(60px,8vh,100px)">
+  <div class="cta-box">
+    <h2 class="cta-title">İletişime Geçin</h2>
+    <p class="cta-desc">İşletmeniz için en uygun çözümü birlikte belirleyelim. Size özel demo hazırlayalım.</p>
+    <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans — Demo Talebi&amp;body=Merhaba,%0A%0AAlkanlı Finans hakkında bilgi almak ve demo görüşmesi yapmak istiyorum.%0A%0AŞirket Adı:%0Aİletişim No:%0AE-posta:%0A%0ASaygılarımla." class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>İletişime Geçin</a>
+    <div class="cta-links">
+      <a href="mailto:kaanalkanlic48@gmail.com" class="cta-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic48@gmail.com</a>
+      <a href="mailto:kaanalkanlic@outlook.com" class="cta-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic@outlook.com</a>
+    </div>
+  </div>
+</div>
+
+<footer><p>© 2026 Kaan Alkanlı — Alkanlı Finans. Tüm hakları saklıdır.</p></footer>
 
 <script>
-// Reveal
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -60px 0px'});
-document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+(function(){
+  'use strict';
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+  /* ── Scroll Progress Bar ── */
+  var progressBar = document.getElementById('scroll-progress');
 
-// Screenshot carousel
-function cs(i){
-document.querySelectorAll('.c-slide').forEach(s=>s.classList.remove('on'));
-document.querySelectorAll('.c-btn').forEach(b=>b.classList.remove('on'));
-document.querySelectorAll('.c-slide')[i].classList.add('on');
-document.querySelectorAll('.c-btn')[i].classList.add('on');
-}
+  /* ── Nav Scroll Effect ── */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    var scrollY = window.scrollY;
+    nav.classList.toggle('scrolled', scrollY > 60);
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight > 0) {
+      progressBar.style.width = (scrollY / docHeight * 100) + '%';
+    }
+  }, { passive: true });
 
-// Lightbox
-function olb(s){document.getElementById('li').src=s;document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden'}
-function clb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')clb()});
+  /* ── Smooth Scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 
-// Auto carousel (her 5 saniye)
-let ci=0;const cn=6;
-setInterval(()=>{ci=(ci+1)%cn;cs(ci)},5000);
+  /* ── Scroll Reveal ── */
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.rv').forEach(function(el) { revealObserver.observe(el); });
+
+  /* ── Animated Counters ── */
+  var counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var duration = 1800;
+        var start = performance.now();
+        function tick(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.round(eased * target);
+          el.textContent = current.toLocaleString('tr-TR') + (target >= 100 ? '+' : '');
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(function(el) { counterObserver.observe(el); });
+
+  /* ── Carousel ── */
+  var track = document.getElementById('c-track');
+  var viewport = document.getElementById('c-viewport');
+  var tabs = document.querySelectorAll('.c-tab');
+  var slides = document.querySelectorAll('.c-slide');
+  var dotsContainer = document.getElementById('c-dots');
+  var totalSlides = slides.length;
+  var currentSlide = 0;
+  var autoTimer;
+
+  // Build dots
+  for (var i = 0; i < totalSlides; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'c-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('data-i', i);
+    dot.addEventListener('click', function() { goToSlide(parseInt(this.getAttribute('data-i'), 10)); });
+    dotsContainer.appendChild(dot);
+  }
+  var dots = dotsContainer.querySelectorAll('.c-dot');
+
+  function goToSlide(index) {
+    currentSlide = ((index % totalSlides) + totalSlides) % totalSlides;
+    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    tabs.forEach(function(t, j) { t.classList.toggle('active', j === currentSlide); });
+    dots.forEach(function(d, j) { d.classList.toggle('active', j === currentSlide); });
+    resetAuto();
+  }
+  function nextSlide() { goToSlide(currentSlide + 1); }
+  function prevSlide() { goToSlide(currentSlide - 1); }
+
+  // Tab clicks
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() { goToSlide(parseInt(this.getAttribute('data-i'), 10)); });
+  });
+
+  // Arrow clicks
+  document.getElementById('c-prev').addEventListener('click', prevSlide);
+  document.getElementById('c-next').addEventListener('click', nextSlide);
+
+  // Image clicks → lightbox
+  slides.forEach(function(slide) {
+    var img = slide.querySelector('img');
+    img.addEventListener('click', function() { lbOpen(parseInt(this.getAttribute('data-i'), 10)); });
+  });
+
+  // Auto-rotate
+  function startAuto() { autoTimer = setInterval(nextSlide, 5000); }
+  function stopAuto() { clearInterval(autoTimer); }
+  function resetAuto() { stopAuto(); startAuto(); }
+  startAuto();
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
+
+  // Touch/swipe
+  var touchStartX = 0;
+  var touchStartY = 0;
+  viewport.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+  viewport.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].screenX - touchStartX;
+    var dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx > 0) prevSlide(); else nextSlide();
+    }
+  }, { passive: true });
+
+  /* ── Lightbox ── */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCounterEl = document.getElementById('lb-counter');
+  var lbIndex = 0;
+
+  var gallery = [];
+  slides.forEach(function(slide) {
+    var img = slide.querySelector('img');
+    gallery.push({ src: img.src, alt: img.alt });
+  });
+
+  function lbOpen(index) {
+    lbIndex = index;
+    lbUpdate();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  window.lbClose = function() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  window.lbPrev = function() {
+    lbIndex = ((lbIndex - 1) + gallery.length) % gallery.length;
+    lbUpdate();
+  };
+  window.lbNext = function() {
+    lbIndex = (lbIndex + 1) % gallery.length;
+    lbUpdate();
+  };
+  function lbUpdate() {
+    lbImg.src = gallery[lbIndex].src;
+    lbImg.alt = gallery[lbIndex].alt;
+    lbCounterEl.textContent = (lbIndex + 1) + ' / ' + gallery.length;
+  }
+
+  // Click backdrop to close
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) lbClose();
+  });
+
+  /* ── Keyboard Navigation ── */
+  document.addEventListener('keydown', function(e) {
+    if (lightbox.classList.contains('open')) {
+      if (e.key === 'Escape') lbClose();
+      else if (e.key === 'ArrowLeft') lbPrev();
+      else if (e.key === 'ArrowRight') lbNext();
+    } else {
+      if (e.key === 'ArrowLeft') prevSlide();
+      else if (e.key === 'ArrowRight') nextSlide();
+    }
+  });
+
+})();
 </script>
 </body>
 </html>
