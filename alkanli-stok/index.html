@@ -1,484 +1,111 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alkanlı Finans — Kurumsal Stok, POS ve Finans Yönetim Sistemi. Türkiye'nin en kapsamlı işletme yönetim yazılımı.">
-    <meta name="keywords" content="stok yönetimi, POS, finans, fatura, e-fatura, muhasebe, Türkiye, işletme yazılımı">
-    <meta name="author" content="Alkanlı Finans">
-    <meta name="theme-color" content="#6366f1">
-    <meta property="og:title" content="Alkanlı Finans — Kurumsal İşletme Yönetimi">
-    <meta property="og:description" content="Stok, POS, faturalama ve finans yönetimini tek platformda birleştirin.">
-    <meta property="og:type" content="website">
-    <title>Alkanlı Finans — Kurumsal Stok, POS ve Finans Yönetim Sistemi</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* ═══ Reset & Base ═══ */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --primary-glow: rgba(99,102,241,.15);
-            --bg: #fafbff;
-            --bg-dark: #0a0e1a;
-            --text: #111827;
-            --text-muted: #6b7280;
-            --emerald: #10b981;
-            --rose: #f43f5e;
-            --amber: #f59e0b;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            color: var(--text);
-            line-height: 1.7;
-            background: var(--bg);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* ═══ Navigation ═══ */
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(255,255,255,.85);
-            backdrop-filter: blur(20px) saturate(1.8);
-            border-bottom: 1px solid rgba(0,0,0,.06);
-            transition: all .3s ease;
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto;
-            padding: 0 2rem;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 72px;
-        }
-        .nav-logo {
-            display: flex; align-items: center; gap: .75rem;
-            text-decoration: none; color: var(--text);
-        }
-        .nav-logo-icon {
-            width: 38px; height: 38px;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary), var(--primary-dark));
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-weight: 800; font-size: 1.1rem;
-            box-shadow: 0 4px 12px rgba(99,102,241,.3);
-        }
-        .nav-logo-text {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800; font-size: 1.15rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a {
-            text-decoration: none; color: var(--text-muted);
-            font-size: .9rem; font-weight: 500;
-            transition: color .2s;
-        }
-        .nav-links a:hover { color: var(--primary); }
-        .nav-cta {
-            background: var(--primary); color: white !important;
-            padding: .6rem 1.5rem; border-radius: 10px;
-            font-weight: 600; font-size: .88rem;
-            box-shadow: 0 4px 14px rgba(99,102,241,.35);
-            transition: all .2s;
-        }
-        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99,102,241,.4); }
-
-        /* ═══ Hero ═══ */
-        .hero {
-            padding: 160px 2rem 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(99,102,241,.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: .5rem;
-            background: var(--primary-glow);
-            color: var(--primary);
-            padding: .45rem 1.2rem; border-radius: 50px;
-            font-size: .82rem; font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(99,102,241,.15);
-        }
-        .hero h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 800; line-height: 1.15;
-            letter-spacing: -.03em;
-            margin-bottom: 1.2rem;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-sub {
-            font-size: 1.15rem; color: var(--text-muted);
-            max-width: 640px; margin: 0 auto 2.5rem;
-            line-height: 1.8;
-        }
-        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-primary {
-            background: var(--primary); color: white;
-            padding: .85rem 2.2rem; border-radius: 12px;
-            font-weight: 700; font-size: 1rem; text-decoration: none;
-            box-shadow: 0 4px 14px rgba(99,102,241,.35);
-            transition: all .25s;
-            display: inline-flex; align-items: center; gap: .5rem;
-        }
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(99,102,241,.4); }
-        .btn-outline {
-            background: white; color: var(--text);
-            padding: .85rem 2.2rem; border-radius: 12px;
-            font-weight: 600; font-size: 1rem; text-decoration: none;
-            border: 1.5px solid rgba(0,0,0,.1);
-            transition: all .25s;
-        }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-
-        /* ═══ Hero Screenshot ═══ */
-        .hero-screenshot {
-            max-width: 1100px; margin: 3rem auto 0;
-            border-radius: 16px;
-            box-shadow: 0 25px 80px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.04);
-            overflow: hidden;
-            position: relative;
-        }
-        .hero-screenshot img { width: 100%; display: block; }
-        .hero-screenshot::after {
-            content: '';
-            position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
-            background: linear-gradient(transparent, var(--bg));
-        }
-
-        /* ═══ Stats Bar ═══ */
-        .stats-bar {
-            max-width: 1000px; margin: -40px auto 0;
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0,0,0,.08);
-            padding: 2rem;
-            position: relative; z-index: 2;
-        }
-        .stat-item { text-align: center; }
-        .stat-num {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2rem; font-weight: 800;
-            color: var(--primary);
-        }
-        .stat-label { font-size: .85rem; color: var(--text-muted); margin-top: .25rem; }
-
-        /* ═══ Section ═══ */
-        section { padding: 100px 2rem; }
-        .section-inner { max-width: 1200px; margin: 0 auto; }
-        .section-label {
-            display: inline-block;
-            font-size: .78rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: .08em;
-            color: var(--primary);
-            background: var(--primary-glow);
-            padding: .35rem 1rem; border-radius: 50px;
-            margin-bottom: 1rem;
-        }
-        .section-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(1.8rem, 3vw, 2.6rem);
-            font-weight: 800; letter-spacing: -.02em;
-            margin-bottom: .75rem;
-        }
-        .section-desc {
-            font-size: 1.05rem; color: var(--text-muted);
-            max-width: 600px; margin-bottom: 3rem;
-        }
-
-        /* ═══ Features Grid ═══ */
-        .features-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-        .feature-card {
-            background: white;
-            border: 1px solid rgba(0,0,0,.05);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all .3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,.08);
-            border-color: rgba(99,102,241,.15);
-        }
-        .feature-icon {
-            width: 48px; height: 48px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.25rem;
-            font-size: 1.4rem;
-        }
-        .feature-icon.blue { background: rgba(99,102,241,.1); color: var(--primary); }
-        .feature-icon.green { background: rgba(16,185,129,.1); color: var(--emerald); }
-        .feature-icon.red { background: rgba(244,63,94,.1); color: var(--rose); }
-        .feature-icon.amber { background: rgba(245,158,11,.1); color: var(--amber); }
-        .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
-        .feature-card p { font-size: .9rem; color: var(--text-muted); line-height: 1.6; }
-
-        /* ═══ Screenshots Section ═══ */
-        .screenshots-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .screenshot-card {
-            border-radius: 12px; overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,.08);
-            border: 1px solid rgba(0,0,0,.05);
-            transition: transform .3s;
-        }
-        .screenshot-card:hover { transform: scale(1.02); }
-        .screenshot-card img { width: 100%; display: block; }
-        .screenshot-label {
-            padding: .75rem 1rem;
-            background: white;
-            font-size: .85rem; font-weight: 600;
-            color: var(--text);
-        }
-
-        /* ═══ CTA Section ═══ */
-        .cta-section {
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f3a 100%);
-            color: white;
-            text-align: center;
-            border-radius: 0;
-        }
-        .cta-section .section-title { color: white; }
-        .cta-section .section-desc { color: rgba(255,255,255,.7); margin-left: auto; margin-right: auto; }
-
-        /* ═══ Footer ═══ */
-        .footer {
-            background: var(--bg-dark); color: rgba(255,255,255,.5);
-            padding: 3rem 2rem;
-            text-align: center; font-size: .85rem;
-        }
-        .footer a { color: var(--primary-light); text-decoration: none; }
-
-        /* ═══ Responsive ═══ */
-        @media (max-width: 768px) {
-            .features-grid { grid-template-columns: 1fr; }
-            .screenshots-grid { grid-template-columns: 1fr; }
-            .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-            .nav-links { display: none; }
-            .hero { padding: 120px 1.5rem 60px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alkanli Finans — Kurumsal Stok, POS ve Finans Yonetim Sistemi</title>
+<meta name="description" content="Stok takibi, POS satis, e-fatura ve muhasebe yonetimini tek platformda birlestirin. 1.113+ otomatik test ile dogrulanmis kurumsal yazilim.">
+<meta name="theme-color" content="#6366f1">
+<meta property="og:title" content="Alkanli Finans — Kurumsal Isletme Yonetim Sistemi">
+<meta property="og:description" content="Stok, POS, e-fatura ve finans yonetimini tek platformda birlestirin.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wilsonbia7.github.io/alkanli-stok/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#030308;--bg2:#08081a;--sf:rgba(255,255,255,.025);--sfh:rgba(255,255,255,.055);--bd:rgba(255,255,255,.06);--bdh:rgba(139,92,246,.3);--tx:#c8c8da;--dm:#505068;--br:#ececf8;--ac:#8b5cf6;--ac2:#7c3aed;--acl:#a78bfa;--gn:#34d399;--ff:'Inter',-apple-system,system-ui,sans-serif;--fd:'Space Grotesk',sans-serif;--fm:'JetBrains Mono',monospace;--e:cubic-bezier(.16,1,.3,1)}
+html{scroll-behavior:smooth}body{font-family:var(--ff);background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.65}::selection{background:rgba(139,92,246,.3);color:#fff}::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(139,92,246,.15);border-radius:4px}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.w{max-width:1140px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
+.amb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}.ob{position:absolute;border-radius:50%;filter:blur(150px)}.ob:nth-child(1){width:800px;height:800px;background:rgba(139,92,246,.05);top:-25%;left:-15%;animation:fl 28s ease-in-out infinite}.ob:nth-child(2){width:600px;height:600px;background:rgba(59,130,246,.03);bottom:-15%;right:-10%;animation:fl 35s ease-in-out infinite reverse}.ob:nth-child(3){width:450px;height:450px;background:rgba(168,85,247,.025);top:45%;left:55%;animation:fl 22s ease-in-out infinite 7s}@keyframes fl{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-60px) scale(1.05)}66%{transform:translate(-30px,50px) scale(.95)}}
+.grd{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(139,92,246,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.015) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 40% at 50% 0%,#000,transparent)}
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:3px;padding:5px 7px;background:rgba(8,8,26,.75);backdrop-filter:blur(28px) saturate(1.5);border:1px solid var(--bd);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.5)}.nb{display:flex;align-items:center;gap:8px;padding:0 14px;font-family:var(--fd);font-size:.84rem;font-weight:600;color:var(--br);white-space:nowrap;letter-spacing:-.3px}.ni{width:26px;height:26px;background:linear-gradient(135deg,var(--acl),var(--ac2));border-radius:7px;display:grid;place-items:center;font-size:.7rem;font-weight:700;color:#fff}.ns{width:1px;height:18px;background:var(--bd);margin:0 3px}.nl{font-family:var(--fd);font-size:.73rem;font-weight:400;color:var(--dm);padding:7px 13px;border-radius:10px;transition:all .25s}.nl:hover{color:var(--tx);background:var(--sf)}.nc{font-family:var(--fd);font-size:.73rem;font-weight:500;color:#fff;padding:7px 16px;border-radius:10px;background:var(--ac);transition:all .25s;white-space:nowrap}.nc:hover{background:var(--ac2);box-shadow:0 4px 16px rgba(139,92,246,.3)}
+.hero{position:relative;z-index:1;text-align:center;padding:clamp(150px,20vh,220px) 1.5rem 80px}.ht{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:2.5px;color:var(--ac);padding:7px 18px;border-radius:100px;border:1px solid rgba(139,92,246,.12);background:rgba(139,92,246,.04);margin-bottom:2rem;opacity:0;animation:fi .8s var(--e) .2s forwards}.hd{width:6px;height:6px;border-radius:50%;background:var(--gn);box-shadow:0 0 12px rgba(52,211,153,.5);animation:bk 2s ease-in-out infinite}@keyframes bk{0%,100%{opacity:1}50%{opacity:.25}}@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero h1{font-family:var(--fd);font-size:clamp(2.5rem,7.5vw,5rem);font-weight:700;letter-spacing:-3.5px;line-height:.95;margin-bottom:1.5rem;opacity:0;animation:hi 1s var(--e) .3s forwards}.hero h1 .l1{display:block;color:var(--br);margin-bottom:4px}.hero h1 .l2{display:block;background:linear-gradient(135deg,#e0e7ff,#c4b5fd,#a78bfa,#7c3aed,#5b21b6);background-size:250% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gr 7s ease infinite}@keyframes gr{0%,100%{background-position:0% center}50%{background-position:100% center}}@keyframes hi{from{opacity:0;transform:translateY(40px) scale(.97);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.hs{font-size:clamp(1rem,2vw,1.12rem);line-height:1.75;color:var(--tx);max-width:500px;margin:0 auto 2.5rem;font-weight:300;opacity:0;animation:fi 1s var(--e) .5s forwards}.hb{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fi 1s var(--e) .65s forwards}
+.btn{font-family:var(--fd);font-size:.84rem;font-weight:500;padding:14px 30px;border-radius:14px;display:inline-flex;align-items:center;gap:9px;transition:all .4s var(--e);cursor:pointer;border:none;position:relative;overflow:hidden}.btn svg{width:15px;height:15px}.bp{background:var(--ac);color:#fff;box-shadow:0 0 0 1px rgba(139,92,246,.3),0 6px 24px rgba(139,92,246,.25)}.bp::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent 50%);opacity:0;transition:opacity .3s}.bp:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(139,92,246,.4),0 12px 36px rgba(139,92,246,.35)}.bp:hover::after{opacity:1}.bo{background:rgba(12,12,34,.6);color:var(--tx);border:1px solid var(--bd);backdrop-filter:blur(12px)}.bo:hover{border-color:var(--bdh);color:var(--br);transform:translateY(-3px)}
+.mkw{max-width:940px;margin:clamp(2.5rem,5vw,4rem) auto 0;position:relative;opacity:0;animation:fi 1.2s var(--e) .8s forwards}.mkg{position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,rgba(139,92,246,.4),rgba(59,130,246,.1),rgba(168,85,247,.3));animation:bg 6s ease infinite;background-size:300% 300%;filter:blur(1px)}@keyframes bg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mk{position:relative;z-index:1;border-radius:21px;overflow:hidden;background:var(--bg2);box-shadow:0 40px 100px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04)}.mkb{display:flex;align-items:center;gap:6px;padding:12px 18px;background:rgba(255,255,255,.01);border-bottom:1px solid rgba(255,255,255,.04)}.md{width:10px;height:10px;border-radius:50%}.mr{background:#ff5f57}.my{background:#febc2e}.mg{background:#28c840}
+.sts{position:relative;z-index:2;max-width:860px;margin:-30px auto 0;opacity:0;animation:fi 1s var(--e) 1s forwards}.si{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(8,8,26,.85);backdrop-filter:blur(24px);border:1px solid var(--bd);border-radius:20px;padding:6px;box-shadow:0 20px 60px rgba(0,0,0,.35)}.st{text-align:center;padding:1.4rem .75rem;border-radius:16px;transition:background .3s}.st:hover{background:rgba(255,255,255,.03)}.sv{font-family:var(--fd);font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:700;letter-spacing:-1.5px;color:var(--br)}.sl{font-size:.64rem;color:var(--dm);text-transform:uppercase;letter-spacing:1.5px;font-weight:500;margin-top:3px}
+section{position:relative;z-index:1;padding:clamp(80px,12vh,140px) 1.5rem}.stag{font-family:var(--fm);font-size:.64rem;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--ac);margin-bottom:1.2rem;display:flex;align-items:center;gap:14px}.stag::before{content:'';width:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.5))}.stit{font-family:var(--fd);font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:700;letter-spacing:-2px;color:var(--br);margin-bottom:.6rem;line-height:1.08}.sdsc{font-size:.95rem;color:var(--dm);max-width:440px;line-height:1.7;margin-bottom:3.5rem}.dv{max-width:180px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent)}
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.bc{padding:1.75rem;border-radius:18px;border:1px solid var(--bd);background:var(--sf);transition:all .5s var(--e);position:relative;overflow:hidden}.bc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,transparent);transition:background .5s}.bc:hover{background:var(--sfh);border-color:var(--bdh);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.25)}.bc:hover::before{background:linear-gradient(90deg,transparent,rgba(139,92,246,.35),transparent)}.bi{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:1.2rem;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.08);transition:all .4s}.bc:hover .bi{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.2);transform:scale(1.08) rotate(-2deg)}.bi svg{width:20px;height:20px;color:var(--ac)}.bc h3{font-family:var(--fd);font-size:.95rem;font-weight:600;color:var(--br);margin-bottom:.4rem;letter-spacing:-.3px}.bc p{font-size:.82rem;line-height:1.65;color:var(--dm)}.bl{grid-column:span 2}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:14px}.gc{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--bd);background:var(--sf);cursor:pointer;transition:all .5s var(--e)}.gc:hover{border-color:var(--bdh);transform:scale(1.02);box-shadow:0 24px 64px rgba(0,0,0,.3)}.gc img{width:100%;display:block;transition:transform .7s var(--e)}.gc:hover img{transform:scale(1.04)}.gc-l{position:absolute;bottom:0;left:0;right:0;padding:.85rem 1.2rem;background:linear-gradient(transparent,rgba(3,3,8,.92));font-family:var(--fd);font-size:.78rem;font-weight:500;color:var(--br);display:flex;align-items:center;gap:8px;opacity:0;transform:translateY(10px);transition:all .4s var(--e)}.gc:hover .gc-l{opacity:1;transform:none}.gc-l::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--ac)}.gf{grid-column:span 2;max-height:400px}.gf img{width:100%;height:100%;object-fit:cover;object-position:top}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(3,3,8,.94);backdrop-filter:blur(32px);display:none;place-items:center;cursor:zoom-out;opacity:0;transition:opacity .35s ease}.lb.on{display:grid;opacity:1}.lb img{max-width:92vw;max-height:88vh;border-radius:16px;box-shadow:0 40px 100px rgba(0,0,0,.6);transform:scale(.92);transition:transform .5s var(--e)}.lb.on img{transform:scale(1)}.lb-x{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;color:var(--tx);cursor:pointer;font-size:1.1rem;transition:all .2s}.lb-x:hover{background:rgba(255,255,255,.1);color:#fff}
+.tech{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;padding:1.5rem 0}.tech span{font-family:var(--fm);font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--dm);display:flex;align-items:center;gap:6px}.tech span::before{content:'';width:4px;height:4px;border-radius:50%;background:rgba(139,92,246,.3)}
+.pc{max-width:440px;margin:0 auto;padding:2.5rem;border-radius:24px;border:1px solid rgba(139,92,246,.18);background:linear-gradient(180deg,rgba(139,92,246,.04),rgba(3,3,8,.9));text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(12px)}.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,rgba(139,92,246,.5) 50%,transparent 95%)}.pc::after{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;background:conic-gradient(from 0deg,transparent 0deg,rgba(139,92,246,.012) 60deg,transparent 120deg);animation:pr 20s linear infinite;pointer-events:none}@keyframes pr{to{transform:rotate(360deg)}}.pct{font-family:var(--fm);font-size:.6rem;text-transform:uppercase;letter-spacing:3px;color:var(--ac);margin-bottom:.8rem;position:relative;z-index:1}.pch{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--br);margin-bottom:.6rem;letter-spacing:-.5px;position:relative;z-index:1}.pcd{font-size:.85rem;color:var(--dm);line-height:1.6;margin-bottom:1.8rem;position:relative;z-index:1}.pl{list-style:none;text-align:left;margin-bottom:1.8rem;position:relative;z-index:1}.pl li{font-size:.84rem;color:var(--br);padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,.025);display:flex;align-items:center;gap:12px;font-weight:400}.pl li:last-child{border:none}.pk{width:18px;height:18px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.1);display:grid;place-items:center;flex-shrink:0}.pk svg{width:10px;height:10px;color:var(--gn)}
+.cta{max-width:660px;margin:0 auto;padding:3rem;border-radius:24px;border:1px solid var(--bd);background:var(--sf);text-align:center;backdrop-filter:blur(12px)}.ctt{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--br);letter-spacing:-.5px;margin-bottom:.6rem}.ctd{font-size:.88rem;color:var(--dm);margin-bottom:1.8rem;line-height:1.7}.ctl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}.cta-a{font-size:.78rem;color:var(--dm);display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:10px;border:1px solid var(--bd);transition:all .25s}.cta-a:hover{border-color:var(--bdh);color:var(--br)}.cta-a svg{width:13px;height:13px}
+footer{position:relative;z-index:1;text-align:center;padding:2rem;font-size:.68rem;color:var(--dm);border-top:1px solid rgba(255,255,255,.03)}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s var(--e),transform .9s var(--e)}.rv.v{opacity:1;transform:none}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+@media(max-width:768px){nav{top:10px;padding:4px 6px}.nl,.ns{display:none}.bento,.gal{grid-template-columns:1fr}.bl,.gf{grid-column:span 1}.gf{max-height:240px}.si{grid-template-columns:repeat(2,1fr)}section{padding:60px 1.25rem}}
+@media(max-width:480px){.hero h1{font-size:2.2rem;letter-spacing:-2px}.hb,.ctl{flex-direction:column;align-items:stretch}.btn,.cta-a{justify-content:center}}
+</style>
 </head>
 <body>
-
-<!-- Navigation -->
-<nav class="nav">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">
-            <div class="nav-logo-icon">A</div>
-            <span class="nav-logo-text">Alkanlı Finans</span>
-        </a>
-        <div class="nav-links">
-            <a href="#features">Özellikler</a>
-            <a href="#screenshots">Ekranlar</a>
-            <a href="#modules">Modüller</a>
-            <a href="#cta" class="nav-cta">Demo Talep Et</a>
-        </div>
-    </div>
-</nav>
-
-<!-- Hero -->
+<div class="amb"><div class="ob"></div><div class="ob"></div><div class="ob"></div></div>
+<div class="grd"></div>
+<div class="lb" id="lb" onclick="clb()"><img id="li" src="" alt=""><div class="lb-x" onclick="clb()">&#10005;</div></div>
+<nav><a href="./" class="nb"><div class="ni">A</div>Alkanli Finans</a><div class="ns"></div><a href="#ozellikler" class="nl">Ozellikler</a><a href="#ekranlar" class="nl">Ekranlar</a><a href="#fiyat" class="nl">Fiyat</a><a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans Hakkinda&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak istiyorum.%0A%0ASaygilarimla." class="nc">Iletisime Gecin</a></nav>
 <section class="hero">
-    <div class="hero-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        v5.12 — 1113 Test ile Doğrulanmış
-    </div>
-    <h1>İşletmenizi <span>Tek Platformdan</span><br>Yönetin</h1>
-    <p class="hero-sub">
-        Stok takibi, POS satış, faturalama, e-fatura, muhasebe ve müşteri yönetimini
-        tek bir kurumsal platformda birleştirin. Masaüstünden buluta ölçeklenebilir.
-    </p>
-    <div class="hero-buttons">
-        <a href="#cta" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Hemen Başlayın
-        </a>
-        <a href="#screenshots" class="btn-outline">Ekranları Gör</a>
-    </div>
-    <div class="hero-screenshot">
-        <img src="../screenshots/final-01-dashboard.png" alt="Alkanlı Finans Dashboard">
-    </div>
-</section>
-
-<!-- Stats Bar -->
-<div class="stats-bar">
-    <div class="stat-item">
-        <div class="stat-num">1.113</div>
-        <div class="stat-label">Otomatik Test</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-num">79+</div>
-        <div class="stat-label">Servis Modülü</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-num">200+</div>
-        <div class="stat-label">API Endpoint</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Muhasebe Formatı</div>
-    </div>
+<div class="ht"><span class="hd"></span>v5.12 &#8212; 1.113 Test ile Dogrulanmis</div>
+<h1><span class="l1">Profesyonel</span><span class="l2">Isletme Yonetim Sistemi</span></h1>
+<p class="hs">Stok takibi, POS satis, e-fatura, muhasebe ve musteri yonetimini tek platformda birlestirin. Masaustunden buluta olceklenebilir.</p>
+<div class="hb">
+<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans — Bilgi ve Demo Talebi&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak ve demo gorusmesi yapmak istiyorum.%0A%0ASirket Adi: %0AIletisim No: %0AE-posta: %0A%0ASaygilarimla." class="btn bp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>Iletisime Gecin</a>
+<a href="#ekranlar" class="btn bo">Ekranlari Goruntuleyin</a>
 </div>
-
-<!-- Features -->
-<section id="features">
-    <div class="section-inner">
-        <span class="section-label">Özellikler</span>
-        <h2 class="section-title">İşletmeniz İçin Her Şey Tek Yerde</h2>
-        <p class="section-desc">Küçük mağazadan kurumsal zincire kadar her ölçekte profesyonel yönetim.</p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon blue">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-                </div>
-                <h3>Stok Yönetimi</h3>
-                <p>Barkod tarama, seri numarası, varyant (beden/renk), toplu fiyat güncelleme, stok tahmin motoru ve otomatik yeniden sipariş önerisi.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon green">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg>
-                </div>
-                <h3>POS — Hızlı Satış</h3>
-                <p>Nakit, kart, bölünmüş ödeme. Kasa yönetimi, Z raporu, kısmi iade, askıya alma. Termal yazıcı ve kasa çekmecesi desteği.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon red">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                </div>
-                <h3>e-Fatura & Faturalama</h3>
-                <p>UBL-TR XML, GİB entegrasyonu (Foriba), profesyonel PDF fatura, KDV beyanname export. Tek tıkla e-mail gönderim.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon amber">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                </div>
-                <h3>Finans & Muhasebe</h3>
-                <p>Gelir/gider takibi, veresiye defteri, taksitli ödeme, mali dönem kapanışı. Paraşüt, Logo, Mikro export.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon blue">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                </div>
-                <h3>Müşteri Yönetimi</h3>
-                <p>CRM, borç/alacak takibi, müşteri portalı, ödeme hatırlatma, veresiye yaşlandırma raporu. AES-256 veri şifreleme.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon green">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
-                </div>
-                <h3>Raporlar & Analiz</h3>
-                <p>Kâr analizi, ABC, stok devir hızı, dönemsel rapor, banka uzlaşma. Tüm raporlar tek tıkla PDF. Stok tahmin motoru.</p>
-            </div>
-        </div>
-    </div>
+<div class="mkw"><div class="mkg"></div><div class="mk"><div class="mkb"><span class="md mr"></span><span class="md my"></span><span class="md mg"></span></div><img src="img/dashboard.png" alt="Alkanli Finans Kontrol Paneli" loading="eager"></div></div>
 </section>
-
-<!-- Screenshots -->
-<section id="screenshots" style="background: #f0f2f8;">
-    <div class="section-inner">
-        <span class="section-label">Ekranlar</span>
-        <h2 class="section-title">Profesyonel Tasarım, Kolay Kullanım</h2>
-        <p class="section-desc">Light ve dark mode desteği. Mobil uyumlu arayüz.</p>
-        <div class="screenshots-grid">
-            <div class="screenshot-card">
-                <img src="../screenshots/final-01-dashboard.png" alt="Dashboard">
-                <div class="screenshot-label">Kontrol Paneli — Anlık İstatistikler</div>
-            </div>
-            <div class="screenshot-card">
-                <img src="../screenshots/final-10-dashboard-dark.png" alt="Dashboard Dark Mode">
-                <div class="screenshot-label">Dark Mode — Göz Yorulmaz</div>
-            </div>
-            <div class="screenshot-card">
-                <img src="../screenshots/final-02-products.png" alt="Ürün Kataloğu">
-                <div class="screenshot-label">Ürün Kataloğu — Detaylı Yönetim</div>
-            </div>
-            <div class="screenshot-card">
-                <img src="../screenshots/final-03-pos.png" alt="POS">
-                <div class="screenshot-label">Hızlı Satış (POS) — Barkod Tarama</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Modules -->
-<section id="modules">
-    <div class="section-inner">
-        <span class="section-label">Teknik Altyapı</span>
-        <h2 class="section-title">Kurumsal Seviye Mühendislik</h2>
-        <p class="section-desc">1.113 otomatik test, Decimal hassasiyet, HMAC audit trail, PostgreSQL desteği.</p>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon blue">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                </div>
-                <h3>Dual-Backend Veritabanı</h3>
-                <p>SQLite (masaüstü) veya PostgreSQL (sunucu). Tek kod tabanı, iki deployment seçeneği.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon green">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <h3>Kurumsal Güvenlik</h3>
-                <p>RBAC, AES-256-GCM şifreleme, HMAC-SHA256 audit trail, rate limiting, OWASP uyumlu.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon amber">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                </div>
-                <h3>Entegrasyonlar</h3>
-                <p>Webhook, TCMB döviz kuru, e-mail bildirim, Redis cache, WebSocket real-time, Docker deployment.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section id="cta" class="cta-section">
-    <div class="section-inner" style="max-width:700px;">
-        <h2 class="section-title">İşletmenizi Dönüştürmeye Hazır mısınız?</h2>
-        <p class="section-desc">İşletmeniz için en uygun çözümü birlikte belirleyelim.</p>
-        <div class="hero-buttons" style="margin-top:2rem;">
-            <a href="#" class="btn-primary" style="font-size:1.1rem; padding:1rem 2.5rem;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Windows İndir (115 MB)
-            </a>
-            <a href="#" class="btn-outline" style="border-color:rgba(255,255,255,.2); color:white;">Docker ile Kur</a>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <p>&copy; 2026 Alkanlı Finans — Kurumsal Stok, POS ve Finans Yönetim Sistemi</p>
-    <p style="margin-top:.5rem;">
-        <a href="#">Dokümantasyon</a> &middot;
-        <a href="#">API</a> &middot;
-        <a href="#">GitHub</a> &middot;
-        <a href="#">İletişim</a>
-    </p>
-</footer>
-
+<div class="sts"><div class="si"><div class="st"><div class="sv">1.113+</div><div class="sl">Otomatik Test</div></div><div class="st"><div class="sv">79+</div><div class="sl">Servis Modulu</div></div><div class="st"><div class="sv">200+</div><div class="sl">API Uc Noktasi</div></div><div class="st"><div class="sv">4</div><div class="sl">Muhasebe Formati</div></div></div></div>
+<section id="ozellikler"><div class="w rv">
+<div class="stag">Ozellikler</div><h2 class="stit">Isletmeniz Icin<br>Her Sey Tek Yerde</h2><p class="sdsc">Kucuk magazadan kurumsal zincire kadar her olcekte profesyonel yonetim.</p>
+<div class="bento">
+<div class="bc bl rv d1"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><h3>Kapsamli Stok Yonetimi</h3><p>Barkod tarama, seri numarasi takibi, urun varyantlari (beden/renk), toplu fiyat guncelleme, stok tahmin motoru ve otomatik yeniden siparis onerisi. 100.000+ urun kapasitesi.</p></div>
+<div class="bc rv d2"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg></div><h3>POS &#8212; Hizli Satis</h3><p>Nakit, kart, bolunmus odeme ve veresiye destegi. Z raporu, kismi iade, termal yazici entegrasyonu.</p></div>
+<div class="bc rv d3"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>e-Fatura ve Faturalama</h3><p>UBL-TR XML, GIB entegrasyonu (Foriba), profesyonel PDF, KDV beyanname disa aktarimi.</p></div>
+<div class="bc rv d1"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Finans ve Muhasebe</h3><p>Gelir/gider takibi, veresiye defteri, taksitli odeme planlari, mali donem kapanisi. Parasut, Logo, Mikro disa aktarim.</p></div>
+<div class="bc bl rv d2"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div><h3>Raporlar, Analiz ve Musteri Portali</h3><p>Kar analizi, ABC siniflandirmasi, stok devir hizi, donemsel raporlar, banka uzlasmasi. Tum raporlar tek tikla PDF. Musteri portali ile musterileriniz fatura ve bakiye bilgilerine erisebilir.</p></div>
+</div></div></section>
+<div class="dv"></div>
+<div class="tech rv"><span>Python</span><span>Flask</span><span>SQLite</span><span>PostgreSQL</span><span>Redis</span><span>Electron</span><span>Docker</span></div>
+<div class="dv"></div>
+<section id="ekranlar"><div class="w rv">
+<div class="stag">Ekran Goruntuleri</div><h2 class="stit">Profesyonel Tasarim,<br>Kolay Kullanim</h2><p class="sdsc">Aydinlik ve karanlik tema destegi. Temiz, sade ve kullanimi kolay arayuz.</p>
+<div class="gal">
+<div class="gc gf rv" onclick="olb('img/dashboard.png')"><img src="img/dashboard.png" alt="Kontrol Paneli" loading="lazy"><div class="gc-l">Kontrol Paneli &#8212; Anlik Istatistikler</div></div>
+<div class="gc rv d1" onclick="olb('img/products.png')"><img src="img/products.png" alt="Urun Katalogu" loading="lazy"><div class="gc-l">Urun Katalogu</div></div>
+<div class="gc rv d2" onclick="olb('img/dashboard-dark.png')"><img src="img/dashboard-dark.png" alt="Karanlik Tema" loading="lazy"><div class="gc-l">Karanlik Tema</div></div>
+<div class="gc rv d1" onclick="olb('img/finance.png')"><img src="img/finance.png" alt="Gelir ve Gider" loading="lazy"><div class="gc-l">Gelir ve Gider Takibi</div></div>
+<div class="gc rv d2" onclick="olb('img/reports.png')"><img src="img/reports.png" alt="Raporlar" loading="lazy"><div class="gc-l">Raporlar ve Analiz</div></div>
+<div class="gc gf rv" onclick="olb('img/products-dark.png')"><img src="img/products-dark.png" alt="Urunler Karanlik" loading="lazy"><div class="gc-l">Urun Katalogu &#8212; Karanlik Tema</div></div>
+</div></div></section>
+<div class="dv"></div>
+<section id="fiyat"><div class="w rv"><div style="text-align:center"><div class="stag" style="justify-content:center">Fiyatlandirma</div><h2 class="stit" style="text-align:center">Isletmenize Ozel Teklif</h2></div>
+<div class="pc"><div class="pct">Kisiye Ozel</div><div class="pch">Ihtiyaclariniza Gore Fiyatlandirma</div><div class="pcd">Isletmenizin buyuklugune ve ihtiyaclarina gore yapilandirilmis, anahtar teslim cozum.</div>
+<ul class="pl">
+<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Tum moduller dahil &#8212; stok, POS, fatura, muhasebe</li>
+<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kontrol paneli, grafikler, bildirimler ve raporlar</li>
+<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>e-Fatura, KDV beyanname ve muhasebe disa aktarimi</li>
+<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Coklu depo, barkod tarama ve toplu islemler</li>
+<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurumsal guvenlik, denetim kaydi ve otomatik yedekleme</li>
+<li><span class="pk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurulum, egitim ve teknik destek dahil</li>
+</ul>
+<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans — Fiyat Teklifi Talebi&amp;body=Merhaba,%0A%0AAlkanli Finans icin fiyat teklifi almak istiyorum.%0A%0ASirket Adi: %0ASektor: %0AIletisim No: %0AE-posta: %0AMagaza / Sube Sayisi: %0ATahmini Urun Sayisi: %0A%0AEk bilgi veya sorulariniz:%0A%0A%0ASaygilarimla." class="btn bp" style="width:100%;justify-content:center;position:relative;z-index:1">Fiyat Teklifi Alin</a>
+</div></div></section>
+<div class="dv"></div>
+<section><div class="w rv"><div class="cta">
+<h2 class="ctt">Iletisime Gecin</h2>
+<p class="ctd">Isletmeniz icin en uygun cozumu birlikte belirleyelim. Size ozel demo hazirlayalim.</p>
+<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans — Bilgi ve Demo Talebi&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak ve demo gorusmesi yapmak istiyorum.%0A%0ASirket Adi: %0AIletisim No: %0AE-posta: %0A%0ASaygilarimla." class="btn bp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>Iletisime Gecin</a>
+<div class="ctl">
+<a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanli Finans Hakkinda&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak istiyorum.%0A%0ASaygilarimla." class="cta-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic48@gmail.com</a>
+<a href="mailto:kaanalkanlic@outlook.com?subject=Alkanli Finans Hakkinda&amp;body=Merhaba,%0A%0AAlkanli Finans hakkinda bilgi almak istiyorum.%0A%0ASaygilarimla." class="cta-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic@outlook.com</a>
+</div></div></div></section>
+<footer><p>&#169; 2026 Kaan Alkanli &#8212; Alkanli Finans. Tum haklari saklidir.</p></footer>
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -50px 0px'});document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+function olb(s){const l=document.getElementById('lb');document.getElementById('li').src=s;l.classList.add('on');document.body.style.overflow='hidden'}
+function clb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')clb()});
+</script>
 </body>
 </html>
