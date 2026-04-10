@@ -3,620 +3,482 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alkanlı Finans — Kurumsal İşletme Yönetimi</title>
-    <meta name="description" content="Stok, cari hesap, fatura, gelir/gider ve raporlama y&#246;netimi i&#231;in profesyonel Windows masa&#252;st&#252; uygulamas&#305;. &#199;oklu depo, barkod, toplu i&#351;lem ve daha fazlas&#305;.">
-    <meta name="author" content="Kaan Alkanl&#305;">
-    <meta property="og:title" content="Alkanlı Finans — Kurumsal Stok, POS ve Finans Yönetim Sistemi">
-    <meta property="og:description" content="Stok, cari hesap, fatura, gelir/gider ve raporlama y&#246;netimi i&#231;in profesyonel Windows masa&#252;st&#252; uygulamas&#305;. &#199;oklu depo, barkod, toplu i&#351;lem ve daha fazlas&#305;.">
+    <meta name="description" content="Alkanlı Finans — Kurumsal Stok, POS ve Finans Yönetim Sistemi. Türkiye'nin en kapsamlı işletme yönetim yazılımı.">
+    <meta name="keywords" content="stok yönetimi, POS, finans, fatura, e-fatura, muhasebe, Türkiye, işletme yazılımı">
+    <meta name="author" content="Alkanlı Finans">
+    <meta name="theme-color" content="#6366f1">
+    <meta property="og:title" content="Alkanlı Finans — Kurumsal İşletme Yönetimi">
+    <meta property="og:description" content="Stok, POS, faturalama ve finans yönetimini tek platformda birleştirin.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wilsonbia7.github.io/alkanli-stok/">
-    <meta name="theme-color" content="#050510">
+    <title>Alkanlı Finans — Kurumsal Stok, POS ve Finans Yönetim Sistemi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#030308;--bg2:#08081a;--bg3:#0c0c22;--text:#c0c0d8;--text-dim:#505068;--text-bright:#ececf8;--accent:#8b5cf6;--accent2:#7c3aed;--accent3:#6d28d9;--accent-glow:rgba(139,92,246,0.15);--card-bg:rgba(255,255,255,0.02);--card-border:rgba(255,255,255,0.05);--card-hover-bg:rgba(255,255,255,0.05);--card-hover-border:rgba(139,92,246,0.25);--glass:rgba(12,12,34,0.6);--ease:cubic-bezier(0.16,1,0.3,1);--ease-s:cubic-bezier(0.4,0,0.2,1);--green:#34d399;--blue:#60a5fa;--orange:#fb923c;--red:#f87171;--cyan:#22d3ee}
-        html{scroll-behavior:smooth}
-        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-        ::selection{background:rgba(139,92,246,0.35);color:#fff}
-        ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(139,92,246,0.2);border-radius:10px}
+        /* ═══ Reset & Base ═══ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --primary-glow: rgba(99,102,241,.15);
+            --bg: #fafbff;
+            --bg-dark: #0a0e1a;
+            --text: #111827;
+            --text-muted: #6b7280;
+            --emerald: #10b981;
+            --rose: #f43f5e;
+            --amber: #f59e0b;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
 
-        /* INTRO */
-        .intro{position:fixed;inset:0;z-index:100;pointer-events:none}
-        .intro-overlay{position:absolute;inset:0;background:linear-gradient(180deg,#020208 0%,#08081e 50%,#020208 100%);animation:introReveal 2.6s cubic-bezier(0.83,0,0.17,1) 0.7s forwards}
-        .intro-spark{position:absolute;top:0;left:50%;transform:translateX(-50%);width:0;height:2px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(200,170,255,0.9),rgba(139,92,246,0.4),transparent);filter:blur(1px);animation:sparkExpand 0.7s var(--ease) 0.15s forwards}
-        @keyframes sparkExpand{0%{width:0;opacity:0;filter:blur(0)}20%{opacity:1}100%{width:60vw;opacity:0;filter:blur(6px)}}
-        .intro-line{position:absolute;left:0;right:0;top:0;height:1px;opacity:0;animation:lineSweep 2.6s cubic-bezier(0.83,0,0.17,1) 0.7s forwards}
-        .intro-line::before{content:'';position:absolute;left:-5%;right:-5%;top:-60px;bottom:-60px;background:linear-gradient(180deg,transparent 0%,rgba(100,60,200,0.02) 25%,rgba(139,92,246,0.07) 45%,rgba(160,120,246,0.10) 50%,rgba(139,92,246,0.07) 55%,rgba(100,60,200,0.02) 75%,transparent 100%);filter:blur(12px)}
-        .intro-line::after{content:'';position:absolute;left:8%;right:8%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(160,130,240,0.5) 20%,rgba(210,190,255,0.85) 45%,rgba(230,220,255,1) 50%,rgba(210,190,255,0.85) 55%,rgba(160,130,240,0.5) 80%,transparent);box-shadow:0 0 8px 2px rgba(139,92,246,0.35),0 0 25px 5px rgba(124,58,237,0.15),0 0 50px 10px rgba(109,40,217,0.06)}
-        @keyframes introReveal{from{clip-path:inset(0 0 0 0)}to{clip-path:inset(100% 0 0 0)}}
-        @keyframes lineSweep{0%{top:-1px;opacity:0}2%{opacity:1}88%{opacity:0.9}100%{top:100%;opacity:0}}
+        /* ═══ Navigation ═══ */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,.85);
+            backdrop-filter: blur(20px) saturate(1.8);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            transition: all .3s ease;
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 72px;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: .75rem;
+            text-decoration: none; color: var(--text);
+        }
+        .nav-logo-icon {
+            width: 38px; height: 38px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary), var(--primary-dark));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 800; font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(99,102,241,.3);
+        }
+        .nav-logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800; font-size: 1.15rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-muted);
+            font-size: .9rem; font-weight: 500;
+            transition: color .2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary); color: white !important;
+            padding: .6rem 1.5rem; border-radius: 10px;
+            font-weight: 600; font-size: .88rem;
+            box-shadow: 0 4px 14px rgba(99,102,241,.35);
+            transition: all .2s;
+        }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99,102,241,.4); }
 
-        /* BG */
-        .bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-        .orb{position:absolute;border-radius:50%;filter:blur(100px);animation:orbFloat 20s ease-in-out infinite}
-        .orb-1{width:600px;height:600px;background:rgba(139,92,246,0.07);top:-200px;left:-100px;animation-duration:25s}
-        .orb-2{width:500px;height:500px;background:rgba(59,130,246,0.05);bottom:-200px;right:-100px;animation-duration:30s;animation-delay:-5s}
-        .orb-3{width:400px;height:400px;background:rgba(168,85,247,0.04);top:40%;left:60%;animation-duration:22s;animation-delay:-10s}
-        @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-40px) scale(1.05)}50%{transform:translate(-20px,30px) scale(0.95)}75%{transform:translate(40px,20px) scale(1.02)}}
-        .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(139,92,246,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.018) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,0,0,0.5) 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,0,0,0.5) 0%,transparent 70%)}
-        #cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:opacity 0.3s ease;opacity:0}
+        /* ═══ Hero ═══ */
+        .hero {
+            padding: 160px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(99,102,241,.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: .5rem;
+            background: var(--primary-glow);
+            color: var(--primary);
+            padding: .45rem 1.2rem; border-radius: 50px;
+            font-size: .82rem; font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(99,102,241,.15);
+        }
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800; line-height: 1.15;
+            letter-spacing: -.03em;
+            margin-bottom: 1.2rem;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-sub {
+            font-size: 1.15rem; color: var(--text-muted);
+            max-width: 640px; margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--primary); color: white;
+            padding: .85rem 2.2rem; border-radius: 12px;
+            font-weight: 700; font-size: 1rem; text-decoration: none;
+            box-shadow: 0 4px 14px rgba(99,102,241,.35);
+            transition: all .25s;
+            display: inline-flex; align-items: center; gap: .5rem;
+        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(99,102,241,.4); }
+        .btn-outline {
+            background: white; color: var(--text);
+            padding: .85rem 2.2rem; border-radius: 12px;
+            font-weight: 600; font-size: 1rem; text-decoration: none;
+            border: 1.5px solid rgba(0,0,0,.1);
+            transition: all .25s;
+        }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
 
-        /* NAV */
-        nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;padding:0 8px;height:52px;display:flex;align-items:center;gap:2px;background:var(--glass);backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);border:1px solid rgba(255,255,255,0.06);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.4);transition:all 0.4s var(--ease-s)}
-        .nav-brand{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text-bright);text-decoration:none;letter-spacing:-0.3px;display:flex;align-items:center;gap:8px;padding:0 14px;transition:opacity 0.3s ease;white-space:nowrap}
-        .nav-brand:hover{opacity:0.8}.nav-brand svg{width:18px;height:18px;color:var(--accent)}
-        .nav-sep{width:1px;height:20px;background:rgba(255,255,255,0.06);margin:0 4px}
-        .nav-link{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:400;color:var(--text-dim);text-decoration:none;padding:6px 12px;border-radius:10px;transition:all 0.25s ease}
-        .nav-link:hover{color:var(--text);background:rgba(255,255,255,0.04)}
-        .nav-cta{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;color:#fff;text-decoration:none;padding:7px 16px;border-radius:10px;background:var(--accent);transition:all 0.25s ease;white-space:nowrap}
-        .nav-cta:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 4px 12px rgba(139,92,246,0.3)}
+        /* ═══ Hero Screenshot ═══ */
+        .hero-screenshot {
+            max-width: 1100px; margin: 3rem auto 0;
+            border-radius: 16px;
+            box-shadow: 0 25px 80px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.04);
+            overflow: hidden;
+            position: relative;
+        }
+        .hero-screenshot img { width: 100%; display: block; }
+        .hero-screenshot::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+            background: linear-gradient(transparent, var(--bg));
+        }
 
-        /* HERO */
-        .hero{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:200px 48px 120px;text-align:center}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent);padding:8px 22px;border-radius:100px;border:1px solid rgba(139,92,246,0.12);background:rgba(139,92,246,0.04);margin-bottom:36px;opacity:0;animation:fadeIn 0.8s var(--ease) 0.2s forwards}
-        .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(52,211,153,0.5);animation:blink 2s ease-in-out infinite}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,7.5vw,80px);font-weight:700;letter-spacing:-3.5px;line-height:0.95;margin-bottom:28px;opacity:0;animation:heroIn 1.2s var(--ease) 0.3s forwards}
-        .hero h1 .l1{color:var(--text-bright);display:block;margin-bottom:4px}
-        .hero h1 .l2{display:block;background:linear-gradient(135deg,#e0e7ff 0%,#c4b5fd 25%,#a78bfa 50%,#7c3aed 75%,#5b21b6 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 6s ease-in-out infinite}
-        @keyframes gradientShift{0%,100%{background-position:0% center}50%{background-position:100% center}}
-        @keyframes heroIn{from{opacity:0;transform:translateY(40px) scale(0.97);filter:blur(10px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
-        .hero-desc{font-size:18px;line-height:1.7;color:var(--text-bright);max-width:500px;margin:0 auto 48px;font-weight:400;opacity:0;animation:fadeUp 1s var(--ease) 0.5s forwards}
-        .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) 0.65s forwards}
+        /* ═══ Stats Bar ═══ */
+        .stats-bar {
+            max-width: 1000px; margin: -40px auto 0;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.08);
+            padding: 2rem;
+            position: relative; z-index: 2;
+        }
+        .stat-item { text-align: center; }
+        .stat-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem; font-weight: 800;
+            color: var(--primary);
+        }
+        .stat-label { font-size: .85rem; color: var(--text-muted); margin-top: .25rem; }
 
-        .btn{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;padding:15px 34px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;transition:all 0.4s var(--ease);display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden}
-        .btn-p{background:var(--accent);color:#fff;box-shadow:0 0 0 1px rgba(139,92,246,0.3),0 6px 24px rgba(139,92,246,0.25)}
-        .btn-p::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%);opacity:0;transition:opacity 0.3s}
-        .btn-p:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(139,92,246,0.4),0 12px 36px rgba(139,92,246,0.35)}
-        .btn-p:hover::after{opacity:1}
-        .btn-o{background:var(--glass);color:var(--text);border:1px solid var(--card-border);backdrop-filter:blur(12px)}
-        .btn-o:hover{border-color:var(--card-hover-border);color:var(--text-bright);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
-        .btn svg{width:16px;height:16px}
+        /* ═══ Section ═══ */
+        section { padding: 100px 2rem; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            display: inline-block;
+            font-size: .78rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--primary);
+            background: var(--primary-glow);
+            padding: .35rem 1rem; border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 800; letter-spacing: -.02em;
+            margin-bottom: .75rem;
+        }
+        .section-desc {
+            font-size: 1.05rem; color: var(--text-muted);
+            max-width: 600px; margin-bottom: 3rem;
+        }
 
-        /* MOCKUP */
-        .mockup-wrap{position:relative;z-index:1;max-width:1000px;margin:80px auto 0;padding:0 48px}
-        .mockup-border{padding:1px;border-radius:22px;background:linear-gradient(135deg,rgba(139,92,246,0.3),rgba(59,130,246,0.1),rgba(139,92,246,0.05),rgba(168,85,247,0.2));animation:borderRotate 8s linear infinite;background-size:300% 300%}
-        @keyframes borderRotate{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        .mockup{border-radius:21px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.5)}
-        .mockup img{width:100%;height:auto;display:block}
-        .green{color:var(--green)}.blue{color:var(--blue)}.orange{color:var(--orange)}.red{color:var(--red)}.cyan{color:var(--cyan)}
+        /* ═══ Features Grid ═══ */
+        .features-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .feature-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,.05);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all .3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,.08);
+            border-color: rgba(99,102,241,.15);
+        }
+        .feature-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.4rem;
+        }
+        .feature-icon.blue { background: rgba(99,102,241,.1); color: var(--primary); }
+        .feature-icon.green { background: rgba(16,185,129,.1); color: var(--emerald); }
+        .feature-icon.red { background: rgba(244,63,94,.1); color: var(--rose); }
+        .feature-icon.amber { background: rgba(245,158,11,.1); color: var(--amber); }
+        .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+        .feature-card p { font-size: .9rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* SECTIONS */
-        .sec{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 48px}
-        .sec-header{text-align:center;margin-bottom:64px}
-        .sec-tag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:14px}
-        .sec-tag::before,.sec-tag::after{content:'';width:32px;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.4))}
-        .sec-tag::after{background:linear-gradient(90deg,rgba(139,92,246,0.4),transparent)}
-        .sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,4.5vw,48px);font-weight:700;letter-spacing:-2px;color:var(--text-bright);margin-bottom:16px;line-height:1.1}
-        .sec-desc{font-size:16px;color:var(--text);max-width:460px;margin:0 auto;line-height:1.65;font-weight:400}
+        /* ═══ Screenshots Section ═══ */
+        .screenshots-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .screenshot-card {
+            border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,.08);
+            border: 1px solid rgba(0,0,0,.05);
+            transition: transform .3s;
+        }
+        .screenshot-card:hover { transform: scale(1.02); }
+        .screenshot-card img { width: 100%; display: block; }
+        .screenshot-label {
+            padding: .75rem 1rem;
+            background: white;
+            font-size: .85rem; font-weight: 600;
+            color: var(--text);
+        }
 
-        /* HOW IT WORKS */
-        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
-        .steps::before{content:'';position:absolute;top:44px;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.15) 20%,rgba(139,92,246,0.15) 80%,transparent);z-index:0}
-        .step{text-align:center;position:relative;z-index:1}
-        .step-num{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--accent);background:var(--bg);border:1px solid rgba(139,92,246,0.15);box-shadow:0 0 24px rgba(139,92,246,0.08);transition:all 0.4s ease}
-        .step:hover .step-num{border-color:rgba(139,92,246,0.3);box-shadow:0 0 32px rgba(139,92,246,0.15);transform:scale(1.05)}
-        .step-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text-bright);margin-bottom:8px}
-        .step-desc{font-size:14px;color:var(--text);line-height:1.6;max-width:240px;margin:0 auto;font-weight:400}
+        /* ═══ CTA Section ═══ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f3a 100%);
+            color: white;
+            text-align: center;
+            border-radius: 0;
+        }
+        .cta-section .section-title { color: white; }
+        .cta-section .section-desc { color: rgba(255,255,255,.7); margin-left: auto; margin-right: auto; }
 
-        /* FEATURES */
-        .f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-        .f-card{padding:32px 28px;border-radius:18px;border:1px solid var(--card-border);background:var(--card-bg);transition:all 0.5s var(--ease);position:relative;overflow:hidden}
-        .f-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,transparent);transition:background 0.5s ease}
-        .f-card:hover{background:var(--card-hover-bg);border-color:var(--card-hover-border);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.25),0 0 0 1px rgba(139,92,246,0.1)}
-        .f-card:hover::before{background:linear-gradient(90deg,transparent,rgba(139,92,246,0.35),transparent)}
-        .f-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.08);transition:all 0.4s ease}
-        .f-card:hover .f-icon{background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.2);transform:scale(1.08) rotate(-2deg)}
-        .f-icon svg{width:20px;height:20px;color:var(--accent)}
-        .f-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text-bright);margin-bottom:10px}
-        .f-desc{font-size:14px;line-height:1.65;color:var(--text);font-weight:400}
+        /* ═══ Footer ═══ */
+        .footer {
+            background: var(--bg-dark); color: rgba(255,255,255,.5);
+            padding: 3rem 2rem;
+            text-align: center; font-size: .85rem;
+        }
+        .footer a { color: var(--primary-light); text-decoration: none; }
 
-        /* SECTORS MARQUEE */
-        .marquee-wrap{position:relative;z-index:1;overflow:hidden;padding:40px 0;margin:0 -48px}
-        .marquee-track{display:flex;gap:16px;animation:marquee 40s linear infinite;width:max-content}
-        .marquee-track:hover{animation-play-state:paused}
-        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-        .m-card{display:flex;align-items:center;gap:14px;padding:18px 24px;border-radius:16px;border:1px solid var(--card-border);background:var(--card-bg);backdrop-filter:blur(8px);white-space:nowrap;transition:all 0.3s ease;flex-shrink:0}
-        .m-card:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg)}
-        .m-emoji{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.1)}
-        .m-emoji svg{width:20px;height:20px;color:var(--accent)}
-        .m-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;color:var(--text)}
-        .m-sub{font-size:12px;color:var(--text);margin-top:2px;font-weight:400}
-
-        /* PRICING */
-        .p-card{max-width:460px;margin:0 auto;padding:44px;border-radius:24px;border:1px solid rgba(139,92,246,0.2);background:linear-gradient(180deg,rgba(139,92,246,0.04) 0%,rgba(3,3,8,0.8) 100%);text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(12px)}
-        .p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,rgba(139,92,246,0.6) 50%,transparent 95%)}
-        .p-card::after{content:'';position:absolute;top:-60%;left:-60%;width:220%;height:220%;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(139,92,246,0.015) 60deg,transparent 120deg);animation:pR 20s linear infinite;pointer-events:none}
-        @keyframes pR{to{transform:rotate(360deg)}}
-        .p-l,.p-t,.p-d,.p-list,.p-list+a{position:relative;z-index:1}
-        .p-l{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:12px}
-        .p-t{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--text-bright);letter-spacing:-0.5px;margin-bottom:14px}
-        .p-d{font-size:15px;color:var(--text);line-height:1.65;margin-bottom:32px;font-weight:400}
-        .p-list{list-style:none;text-align:left;margin-bottom:36px}
-        .p-list li{font-size:14px;color:var(--text-bright);padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:14px;font-weight:400}
-        .p-list li:last-child{border-bottom:none}
-        .p-ck{width:20px;height:20px;border-radius:8px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .p-ck svg{width:11px;height:11px;color:var(--green)}
-
-        /* CTA */
-        .cta-sec{position:relative;z-index:1;max-width:750px;margin:0 auto;padding:0 48px 120px;text-align:center}
-        .cta-box{padding:56px 48px;border-radius:24px;border:1px solid var(--card-border);background:var(--card-bg);position:relative;overflow:hidden;backdrop-filter:blur(8px)}
-        .cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(139,92,246,0.05),transparent 60%);pointer-events:none}
-        .cta-t{font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,4vw,34px);font-weight:700;letter-spacing:-1.2px;color:var(--text-bright);margin-bottom:14px;position:relative}
-        .cta-d{font-size:15px;color:var(--text);margin-bottom:32px;line-height:1.65;position:relative;font-weight:400}
-        .cta-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative}
-        .cta-a{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono','Fira Code',monospace;font-size:12.5px;font-weight:400;color:var(--text);text-decoration:none;padding:12px 22px;border-radius:12px;border:1px solid var(--card-border);background:rgba(255,255,255,0.01);transition:all 0.4s var(--ease);backdrop-filter:blur(8px);letter-spacing:-0.3px}
-        .cta-a:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg);color:var(--text-bright);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
-        .cta-a svg{width:14px;height:14px;color:var(--text-dim)}
-
-        footer{position:relative;z-index:1;text-align:center;padding:24px 48px;border-top:1px solid rgba(255,255,255,0.025);font-family:'JetBrains Mono',monospace;font-size:10px;color:#1e1e30;font-weight:400;letter-spacing:0.5px}
-        footer a{color:#2e2e45;text-decoration:none;transition:color 0.3s}footer a:hover{color:var(--text-dim)}
-
-        .divider{max-width:1100px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
-        .divider hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.08),transparent)}
-
-        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-        @keyframes fadeUp{from{opacity:0;transform:translateY(30px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-        .reveal{opacity:0;transform:translateY(50px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);filter:blur(8px)}
-        .reveal.vis{opacity:1;transform:translateY(0);filter:blur(0)}
-        .rc > *{opacity:0;transform:translateY(24px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
-        .rc.vis > *{opacity:1;transform:translateY(0)}
-        .rc.vis > *:nth-child(1){transition-delay:0s}.rc.vis > *:nth-child(2){transition-delay:0.07s}.rc.vis > *:nth-child(3){transition-delay:0.14s}.rc.vis > *:nth-child(4){transition-delay:0.21s}.rc.vis > *:nth-child(5){transition-delay:0.28s}.rc.vis > *:nth-child(6){transition-delay:0.35s}.rc.vis > *:nth-child(7){transition-delay:0.42s}.rc.vis > *:nth-child(8){transition-delay:0.49s}.rc.vis > *:nth-child(9){transition-delay:0.56s}.rc.vis > *:nth-child(10){transition-delay:0.63s}.rc.vis > *:nth-child(11){transition-delay:0.7s}.rc.vis > *:nth-child(12){transition-delay:0.77s}.rc.vis > *:nth-child(13){transition-delay:0.84s}.rc.vis > *:nth-child(14){transition-delay:0.91s}.rc.vis > *:nth-child(15){transition-delay:0.98s}.rc.vis > *:nth-child(16){transition-delay:1.05s}.rc.vis > *:nth-child(17){transition-delay:1.12s}.rc.vis > *:nth-child(18){transition-delay:1.19s}
-
-        /* STATS COUNTER */
-        .stat-row{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:80px;opacity:0;animation:fadeUp 1s var(--ease) 0.8s forwards}
-        .stat-item{text-align:center}
-        .stat-num{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--text-bright);letter-spacing:-1px}
-        .stat-num .stat-suffix{font-size:0.6em;color:var(--accent);font-weight:500}
-        .stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);margin-top:6px;letter-spacing:0.5px;text-transform:uppercase}
-
-        /* BACK TO TOP */
-        .back-top{position:fixed;bottom:28px;right:28px;z-index:40;width:44px;height:44px;border-radius:14px;border:1px solid var(--card-border);background:var(--glass);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(12px);transition:all 0.4s var(--ease)}
-        .back-top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
-        .back-top:hover{border-color:var(--card-hover-border);background:var(--card-hover-bg);transform:translateY(-2px)}
-        .back-top svg{width:18px;height:18px;color:var(--text-dim)}
-
-        /* APP SHOWCASE */
-        .showcase-tabs{display:flex;justify-content:center;gap:6px;margin-bottom:40px;flex-wrap:wrap}
-        .s-tab{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--text-dim);padding:10px 22px;border-radius:12px;border:1px solid var(--card-border);background:var(--card-bg);cursor:pointer;transition:all 0.3s ease;display:flex;align-items:center;gap:8px}
-        .s-tab:hover{border-color:rgba(139,92,246,0.15);color:var(--text)}
-        .s-tab.active{background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.25);color:var(--accent)}
-        .s-tab svg{width:16px;height:16px}
-        .showcase-panel{display:none;animation:fadeUp 0.5s var(--ease)}
-        .showcase-panel.active{display:block}
-        .showcase-layout{display:grid;grid-template-columns:1fr;gap:32px}
-        .showcase-screen{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);box-shadow:0 24px 64px rgba(0,0,0,0.4)}
-        .showcase-screen img{width:100%;height:auto;display:block}
-        .showcase-info{padding:28px 32px;border-radius:18px;border:1px solid var(--card-border);background:var(--card-bg);backdrop-filter:blur(8px)}
-        .showcase-info-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text-bright);margin-bottom:12px;display:flex;align-items:center;gap:12px}
-        .showcase-info-title svg{width:22px;height:22px;color:var(--accent)}
-        .showcase-info-desc{font-size:15px;color:var(--text-bright);line-height:1.75;margin-bottom:18px;font-weight:400}
-        .showcase-features{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-        .showcase-features li{font-family:'Inter',-apple-system,sans-serif;font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px;padding:6px 0;font-weight:400}
-        .showcase-features li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
-        .dual-screens{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-
-        @media(max-width:1024px){.f-grid{grid-template-columns:repeat(2,1fr)}.stat-row{gap:32px}}
-        @media(max-width:768px){nav{top:10px;padding:0 6px;height:48px}.nav-brand{padding:0 10px;font-size:13px}.nav-sep{display:none}.hero{padding:130px 24px 60px}.hero-desc{font-size:16px}.mockup-wrap{margin-top:48px}.mockup-wrap,.sec,.cta-sec{padding-left:20px;padding-right:20px}.sec{padding-top:72px;padding-bottom:72px}.sec-header{margin-bottom:40px}.f-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr;gap:28px}.steps::before{display:none}.nav-link{display:none}.showcase-tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.showcase-tabs::-webkit-scrollbar{display:none}.showcase-features{grid-template-columns:1fr}.dual-screens{grid-template-columns:1fr}.showcase-info{padding:20px}.showcase-info-title{font-size:17px}.showcase-info-desc{font-size:13px}.showcase-screen{border-radius:14px}.mockup-border{border-radius:16px}.mockup{border-radius:15px}.marquee-wrap{margin:0 -20px}.sec-title{letter-spacing:-1.5px}.sec-desc{font-size:14px}.p-card{padding:32px 24px}.p-t{font-size:22px}.cta-box{padding:36px 24px}.cta-t{letter-spacing:-0.8px}.stat-row{gap:24px;margin-top:48px}.stat-num{font-size:28px}.back-top{bottom:20px;right:20px;width:40px;height:40px;border-radius:12px}footer{padding:20px 24px}}
-        @media(max-width:480px){.hero h1{letter-spacing:-2px;font-size:36px}.hero-badge{font-size:10px;letter-spacing:2px;padding:6px 16px}.hero-actions{flex-direction:column;align-items:stretch}.btn{justify-content:center;padding:14px 24px}.cta-links{flex-direction:column;align-items:stretch}.cta-a{justify-content:center}.p-card{padding:24px 16px}.showcase-tabs{gap:4px;margin-bottom:24px}.s-tab{font-size:11px;padding:8px 12px;flex-shrink:0}.s-tab span{display:none}.f-card{padding:24px 20px}.step-desc{font-size:12px}.p-t{font-size:20px}.p-d{font-size:13px}.p-list li{font-size:13px;padding:9px 0}.stat-row{gap:20px}.stat-item{min-width:80px}}
+        /* ═══ Responsive ═══ */
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .screenshots-grid { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .nav-links { display: none; }
+            .hero { padding: 120px 1.5rem 60px; }
+        }
     </style>
 </head>
 <body>
-    <div class="intro" aria-hidden="true"><div class="intro-overlay"></div><div class="intro-spark"></div><div class="intro-line"></div></div>
-    <div class="bg-orbs" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <div class="bg-grid" aria-hidden="true"></div>
-    <div id="cursor-glow"></div>
 
-    <nav>
-        <a href="./" class="nav-brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4"/><path d="M2 12h20"/></svg>Alkanlı Finans</a>
-        <div class="nav-sep"></div>
-        <a href="#ekran-goruntuleri" class="nav-link">Ekranlar</a>
-        <a href="#ozellikler" class="nav-link">&#214;zellikler</a>
-        <a href="#sektorler" class="nav-link">Sekt&#246;rler</a>
-        <a href="#fiyat" class="nav-link">Fiyat</a>
-        <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans Hakkında&body=Merhaba,%0A%0AAlkanlı Finans hakkında bilgi almak istiyorum.%0A%0ASaygılarımla." class="nav-cta">&#304;leti&#351;im</a>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-badge"><span class="hero-badge-dot"></span> v5.12 — 1113 Test ile Doğrulanmış</div>
-        <h1><span class="l1">Kurumsal</span><span class="l2">İşletme Yönetim Sistemi</span></h1>
-        <p class="hero-desc">Stok takibi, POS satış, e-fatura, muhasebe, müşteri portalı ve 79+ servis modülü. Masaüstünden buluta ölçeklenebilir.</p>
-        <div class="hero-actions">
-            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans — Bilgi ve Demo Talebi&body=Merhaba,%0A%0AAlkanlı Finans hakkında bilgi almak ve demo görüşmesi yapmak istiyorum.%0A%0AŞirket Adı: %0Aİletişim No: %0AE-posta: %0A%0ASaygılarımla." class="btn btn-p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>&#304;leti&#351;ime Ge&#231;</a>
-            <a href="#ekran-goruntuleri" class="btn btn-o">Uygulamay&#305; &#304;ncele <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg></a>
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <div class="nav-logo-icon">A</div>
+            <span class="nav-logo-text">Alkanlı Finans</span>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Özellikler</a>
+            <a href="#screenshots">Ekranlar</a>
+            <a href="#modules">Modüller</a>
+            <a href="#cta" class="nav-cta">Demo Talep Et</a>
         </div>
-        <div class="stat-row">
-            <div class="stat-item"><div class="stat-num" data-target="24">0<span class="stat-suffix">+</span></div><div class="stat-label">Temel &#214;zellik</div></div>
-            <div class="stat-item"><div class="stat-num" data-target="12">0<span class="stat-suffix">+</span></div><div class="stat-label">Farkl&#305; Ekran</div></div>
-            <div class="stat-item"><div class="stat-num" data-target="1113" data-suffix="+"><span class="counter">1113</span>+</div><div class="stat-label">Otomatik Test</div></div>
-            <div class="stat-item"><div class="stat-num" data-target="7">0<span class="stat-suffix">/24</span></div><div class="stat-label">Teknik Destek</div></div>
-        </div>
-    </section>
+    </div>
+</nav>
 
-    <section class="mockup-wrap reveal">
-        <div class="mockup-border">
-            <div class="mockup">
-                <img src="img/dashboard.png" alt="Alkanlı Stok - Kontrol Paneli" loading="eager">
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        v5.12 — 1113 Test ile Doğrulanmış
+    </div>
+    <h1>İşletmenizi <span>Tek Platformdan</span><br>Yönetin</h1>
+    <p class="hero-sub">
+        Stok takibi, POS satış, faturalama, e-fatura, muhasebe ve müşteri yönetimini
+        tek bir kurumsal platformda birleştirin. Masaüstünden buluta ölçeklenebilir.
+    </p>
+    <div class="hero-buttons">
+        <a href="#cta" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Ücretsiz İndir
+        </a>
+        <a href="#screenshots" class="btn-outline">Ekranları Gör</a>
+    </div>
+    <div class="hero-screenshot">
+        <img src="../screenshots/final-01-dashboard.png" alt="Alkanlı Finans Dashboard">
+    </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+    <div class="stat-item">
+        <div class="stat-num">1.113</div>
+        <div class="stat-label">Otomatik Test</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">79+</div>
+        <div class="stat-label">Servis Modülü</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">API Endpoint</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Muhasebe Formatı</div>
+    </div>
+</div>
+
+<!-- Features -->
+<section id="features">
+    <div class="section-inner">
+        <span class="section-label">Özellikler</span>
+        <h2 class="section-title">İşletmeniz İçin Her Şey Tek Yerde</h2>
+        <p class="section-desc">Küçük mağazadan kurumsal zincire kadar her ölçekte profesyonel yönetim.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon blue">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                </div>
+                <h3>Stok Yönetimi</h3>
+                <p>Barkod tarama, seri numarası, varyant (beden/renk), toplu fiyat güncelleme, stok tahmin motoru ve otomatik yeniden sipariş önerisi.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg>
+                </div>
+                <h3>POS — Hızlı Satış</h3>
+                <p>Nakit, kart, bölünmüş ödeme. Kasa yönetimi, Z raporu, kısmi iade, askıya alma. Termal yazıcı ve kasa çekmecesi desteği.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon red">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <h3>e-Fatura & Faturalama</h3>
+                <p>UBL-TR XML, GİB entegrasyonu (Foriba), profesyonel PDF fatura, KDV beyanname export. Tek tıkla e-mail gönderim.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon amber">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+                <h3>Finans & Muhasebe</h3>
+                <p>Gelir/gider takibi, veresiye defteri, taksitli ödeme, mali dönem kapanışı. Paraşüt, Logo, Mikro export.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon blue">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3>Müşteri Yönetimi</h3>
+                <p>CRM, borç/alacak takibi, müşteri portalı, ödeme hatırlatma, veresiye yaşlandırma raporu. AES-256 veri şifreleme.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+                </div>
+                <h3>Raporlar & Analiz</h3>
+                <p>Kâr analizi, ABC, stok devir hızı, dönemsel rapor, banka uzlaşma. Tüm raporlar tek tıkla PDF. Stok tahmin motoru.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <div class="divider" style="margin-top:120px"><hr></div>
-
-    <section class="sec reveal" id="nasil">
-        <div class="sec-header"><div class="sec-tag">Nas&#305;l &#199;al&#305;&#351;&#305;r?</div><h2 class="sec-title">3 Ad&#305;mda Ba&#351;lay&#305;n</h2><p class="sec-desc">Basit, h&#305;zl&#305; ve sorunsuz.</p></div>
-        <div class="steps rc">
-            <div class="step"><div class="step-num">1</div><div class="step-title">&#304;leti&#351;ime Ge&#231;in</div><div class="step-desc">Sekt&#246;r&#252;n&#252;z&#252; ve ihtiya&#231;lar&#305;n&#305;z&#305; bize iletin.</div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-title">Yaz&#305;l&#305;m Haz&#305;rlan&#305;r</div><div class="step-desc">&#304;&#351; ak&#305;&#351;&#305;n&#305;za g&#246;re yap&#305;land&#305;r&#305;l&#305;r.</div></div>
-            <div class="step"><div class="step-num">3</div><div class="step-title">Kullanmaya Ba&#351;lay&#305;n</div><div class="step-desc">Kurulum ve e&#287;itim deste&#287;iyle teslim edilir.</div></div>
-        </div>
-    </section>
-
-    <div class="divider"><hr></div>
-
-    <section class="sec reveal" id="ekran-goruntuleri">
-        <div class="sec-header"><div class="sec-tag">Uygulama &#304;&#231;i</div><h2 class="sec-title">Ekran G&#246;r&#252;nt&#252;leri</h2><p class="sec-desc">Uygulamadan al&#305;nan ger&#231;ek g&#246;r&#252;nt&#252;ler.</p></div>
-
-        <div class="showcase-tabs">
-            <button class="s-tab active" data-panel="panel-dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Kontrol Paneli</span></button>
-            <button class="s-tab" data-panel="panel-urun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>&#220;r&#252;nler</span></button>
-            <button class="s-tab" data-panel="panel-stok-op"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><span>Stok &#304;&#351;lemleri</span></button>
-            <button class="s-tab" data-panel="panel-hareket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Hareketler</span></button>
-            <button class="s-tab" data-panel="panel-sayim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg><span>Stok Say&#305;m</span></button>
-            <button class="s-tab" data-panel="panel-finans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span>Gelir &amp; Gider</span></button>
-            <button class="s-tab" data-panel="panel-musteriler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>M&#252;&#351;teriler</span></button>
-            <button class="s-tab" data-panel="panel-faturalar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span>Faturalar</span></button>
-            <button class="s-tab" data-panel="panel-raporlar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg><span>Raporlar</span></button>
-            <button class="s-tab" data-panel="panel-yonetim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9c.17.59.6 1.05 1.18 1.22h.3a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg><span>Y&#246;netim</span></button>
-            <button class="s-tab" data-panel="panel-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span>Dark Mode</span></button>
-        </div>
-
-        <!-- Dashboard -->
-        <div class="showcase-panel active" id="panel-dashboard">
-            <div class="showcase-layout">
-                <div class="showcase-screen"><img src="img/dashboard.png" alt="Kontrol Paneli" loading="lazy"></div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Kontrol Paneli</div>
-                    <p class="showcase-info-desc">&#304;&#351;letmenizin anl&#305;k durumunu tek ekranda g&#246;r&#252;n. Stok de&#287;eri, d&#252;&#351;&#252;k stok uyar&#305;lar&#305;, g&#252;nl&#252;k i&#351;lem &#246;zeti ve grafikler bir bak&#305;&#351;ta.</p>
-                    <ul class="showcase-features">
-                        <li>&#214;zet kartlar ve stok de&#287;eri</li>
-                        <li>30 g&#252;nl&#252;k hareket grafi&#287;i</li>
-                        <li>Kategori da&#287;&#305;l&#305;m grafi&#287;i</li>
-                        <li>D&#252;&#351;&#252;k stok uyar&#305;lar&#305;</li>
-                        <li>En &#231;ok hareket g&#246;ren &#252;r&#252;nler</li>
-                        <li>Bildirim merkezi</li>
-                    </ul>
-                </div>
+<!-- Screenshots -->
+<section id="screenshots" style="background: #f0f2f8;">
+    <div class="section-inner">
+        <span class="section-label">Ekranlar</span>
+        <h2 class="section-title">Profesyonel Tasarım, Kolay Kullanım</h2>
+        <p class="section-desc">Light ve dark mode desteği. Mobil uyumlu arayüz.</p>
+        <div class="screenshots-grid">
+            <div class="screenshot-card">
+                <img src="../screenshots/final-01-dashboard.png" alt="Dashboard">
+                <div class="screenshot-label">Kontrol Paneli — Anlık İstatistikler</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="../screenshots/final-10-dashboard-dark.png" alt="Dashboard Dark Mode">
+                <div class="screenshot-label">Dark Mode — Göz Yorulmaz</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="../screenshots/final-02-products.png" alt="Ürün Kataloğu">
+                <div class="screenshot-label">Ürün Kataloğu — Detaylı Yönetim</div>
+            </div>
+            <div class="screenshot-card">
+                <img src="../screenshots/final-03-pos.png" alt="POS">
+                <div class="screenshot-label">Hızlı Satış (POS) — Barkod Tarama</div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- &#220;r&#252;nler -->
-        <div class="showcase-panel" id="panel-urun">
-            <div class="showcase-layout">
-                <div class="dual-screens">
-                    <div class="showcase-screen"><img src="img/products.png" alt="&#220;r&#252;n Listesi" loading="lazy"></div>
-                    <div class="showcase-screen"><img src="img/add-product.png" alt="Yeni &#220;r&#252;n Ekle" loading="lazy"></div>
+<!-- Modules -->
+<section id="modules">
+    <div class="section-inner">
+        <span class="section-label">Teknik Altyapı</span>
+        <h2 class="section-title">Kurumsal Seviye Mühendislik</h2>
+        <p class="section-desc">1.113 otomatik test, Decimal hassasiyet, HMAC audit trail, PostgreSQL desteği.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon blue">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>&#220;r&#252;n Y&#246;netimi</div>
-                    <p class="showcase-info-desc">&#220;r&#252;nlerinizi listeleyin, aray&#305;n, filtreleyin. Yeni &#252;r&#252;n ekleyin, toplu i&#351;lem yap&#305;n, barkod etiketi olu&#351;turun.</p>
-                    <ul class="showcase-features">
-                        <li>Arama, filtreleme ve s&#305;ralama</li>
-                        <li>Al&#305;&#351;/sat&#305;&#351; fiyat&#305; takibi</li>
-                        <li>Barkod etiketi yazd&#305;rma</li>
-                        <li>&#220;r&#252;n g&#246;rseli y&#252;kleme</li>
-                        <li>Toplu silme ve g&#252;ncelleme</li>
-                        <li>CSV ile toplu i&#231;e aktarma</li>
-                    </ul>
+                <h3>Dual-Backend Veritabanı</h3>
+                <p>SQLite (masaüstü) veya PostgreSQL (sunucu). Tek kod tabanı, iki deployment seçeneği.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
+                <h3>Kurumsal Güvenlik</h3>
+                <p>RBAC, AES-256-GCM şifreleme, HMAC-SHA256 audit trail, rate limiting, OWASP uyumlu.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon amber">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <h3>Entegrasyonlar</h3>
+                <p>Webhook, TCMB döviz kuru, e-mail bildirim, Redis cache, WebSocket real-time, Docker deployment.</p>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Stok &#304;&#351;lemleri -->
-        <div class="showcase-panel" id="panel-stok-op">
-            <div class="showcase-layout">
-                <div class="showcase-screen"><img src="img/stock-op.png" alt="Stok Giri&#351;/&#199;&#305;k&#305;&#351;" loading="lazy"></div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>Stok Giri&#351;/&#199;&#305;k&#305;&#351;</div>
-                    <p class="showcase-info-desc">&#220;r&#252;n&#252; aray&#305;p se&#231;in, miktar girin, giri&#351; veya &#231;&#305;k&#305;&#351; yap&#305;n. Yanl&#305;&#351; i&#351;lemi an&#305;nda geri al&#305;n.</p>
-                    <ul class="showcase-features">
-                        <li>H&#305;zl&#305; &#252;r&#252;n arama</li>
-                        <li>Barkod ile &#252;r&#252;n bulma</li>
-                        <li>Giri&#351; ve &#231;&#305;k&#305;&#351; tek ekranda</li>
-                        <li>Son i&#351;lemi geri alma</li>
-                        <li>&#304;&#351;lem notu ekleme</li>
-                        <li>Depo se&#231;imi</li>
-                    </ul>
-                </div>
-            </div>
+<!-- CTA -->
+<section id="cta" class="cta-section">
+    <div class="section-inner" style="max-width:700px;">
+        <h2 class="section-title">İşletmenizi Dönüştürmeye Hazır mısınız?</h2>
+        <p class="section-desc">Ücretsiz indirin, 5 dakikada kurun, hemen kullanmaya başlayın.</p>
+        <div class="hero-buttons" style="margin-top:2rem;">
+            <a href="#" class="btn-primary" style="font-size:1.1rem; padding:1rem 2.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Windows İndir (115 MB)
+            </a>
+            <a href="#" class="btn-outline" style="border-color:rgba(255,255,255,.2); color:white;">Docker ile Kur</a>
         </div>
+    </div>
+</section>
 
-        <!-- Hareketler -->
-        <div class="showcase-panel" id="panel-hareket">
-            <div class="showcase-layout">
-                <div class="showcase-screen"><img src="img/movements.png" alt="Stok Hareketleri" loading="lazy"></div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Stok Hareketleri</div>
-                    <p class="showcase-info-desc">T&#252;m giri&#351;/&#231;&#305;k&#305;&#351; hareketlerini tarih, &#252;r&#252;n ve miktar bilgisiyle g&#246;r&#252;n. Filtreleyin, aray&#305;n ve d&#305;&#351;a aktar&#305;n.</p>
-                    <ul class="showcase-features">
-                        <li>Giri&#351;/&#231;&#305;k&#305;&#351; filtresi</li>
-                        <li>Tarih aral&#305;&#287;&#305; filtresi</li>
-                        <li>Renk kodlu hareket t&#252;r&#252;</li>
-                        <li>&#220;r&#252;n ve kod ile arama</li>
-                        <li>CSV d&#305;&#351;a aktarma</li>
-                        <li>Kronolojik s&#305;ralama</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2026 Alkanlı Finans — Kurumsal Stok, POS ve Finans Yönetim Sistemi</p>
+    <p style="margin-top:.5rem;">
+        <a href="#">Dokümantasyon</a> &middot;
+        <a href="#">API</a> &middot;
+        <a href="#">GitHub</a> &middot;
+        <a href="#">İletişim</a>
+    </p>
+</footer>
 
-        <!-- Stok Say&#305;m -->
-        <div class="showcase-panel" id="panel-sayim">
-            <div class="showcase-layout">
-                <div class="showcase-screen"><img src="img/stock-count.png" alt="Stok Say&#305;m" loading="lazy"></div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>Stok Say&#305;m</div>
-                    <p class="showcase-info-desc">Fiziksel say&#305;m sonu&#231;lar&#305;n&#305; girin, farklar otomatik hesaplans&#305;n. Toplu g&#252;ncelleme ile stoklar&#305;n&#305;z&#305; d&#252;zeltin.</p>
-                    <ul class="showcase-features">
-                        <li>Sistem vs. say&#305;m kar&#351;&#305;la&#351;t&#305;rmas&#305;</li>
-                        <li>Otomatik fark hesaplama</li>
-                        <li>Renk kodlu fark g&#246;stergesi</li>
-                        <li>Kategori filtresi</li>
-                        <li>Toplu g&#252;ncelleme</li>
-                        <li>Otomatik hareket kayd&#305;</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Gelir & Gider -->
-        <div class="showcase-panel" id="panel-finans">
-            <div class="showcase-layout">
-                <div class="showcase-screen"><img src="img/finance.png" alt="Gelir &amp; Gider" loading="lazy"></div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Gelir &amp; Gider</div>
-                    <p class="showcase-info-desc">Gelir ve giderlerinizi kategorilere ay&#305;r&#305;n. Tekrarlayan kay&#305;tlarla sabit giderleri otomatikle&#351;tirin.</p>
-                    <ul class="showcase-features">
-                        <li>Gelir ve gider kayd&#305;</li>
-                        <li>Kategori ve ki&#351;i filtresi</li>
-                        <li>Ayl&#305;k/y&#305;ll&#305;k &#246;zet kartlar&#305;</li>
-                        <li>Tekrarlayan kay&#305;t sistemi</li>
-                        <li>Otomatik ayl&#305;k olu&#351;turma</li>
-                        <li>CSV d&#305;&#351;a aktarma</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- M&#252;&#351;teriler -->
-        <div class="showcase-panel" id="panel-musteriler">
-            <div class="showcase-layout">
-                <div class="showcase-screen"><img src="img/customers.png" alt="M&#252;&#351;teri / Cari Hesaplar" loading="lazy"></div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Cari Hesaplar</div>
-                    <p class="showcase-info-desc">M&#252;&#351;teri ve tedarik&#231;ilerinizi y&#246;netin. Bor&#231;/alacak bakiyelerini takip edin, &#246;deme ge&#231;mi&#351;ini g&#246;r&#252;n.</p>
-                    <ul class="showcase-features">
-                        <li>M&#252;&#351;teri ve tedarik&#231;i kayd&#305;</li>
-                        <li>Bor&#231;/alacak bakiye takibi</li>
-                        <li>&#214;deme kayd&#305; ve ge&#231;mi&#351;i</li>
-                        <li>Cari hesap ekstresi</li>
-                        <li>Arama ve filtreleme</li>
-                        <li>&#304;leti&#351;im bilgileri</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Faturalar -->
-        <div class="showcase-panel" id="panel-faturalar">
-            <div class="showcase-layout">
-                <div class="showcase-screen"><img src="img/invoices.png" alt="Fatura Y&#246;netimi" loading="lazy"></div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Fatura Sistemi</div>
-                    <p class="showcase-info-desc">Sat&#305;&#351; ve al&#305;&#351; faturalar&#305;n&#305;z&#305; olu&#351;turun. PDF olarak kaydedin veya yazd&#305;r&#305;n. Cari hesaplarla otomatik entegre.</p>
-                    <ul class="showcase-features">
-                        <li>Sat&#305;&#351; ve al&#305;&#351; faturas&#305;</li>
-                        <li>&#199;oklu &#252;r&#252;n sat&#305;r&#305;</li>
-                        <li>PDF olarak kaydetme</li>
-                        <li>Cari hesap entegrasyonu</li>
-                        <li>Fatura numaras&#305; takibi</li>
-                        <li>Durum takibi (&#246;dendi/bekliyor)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Raporlar -->
-        <div class="showcase-panel" id="panel-raporlar">
-            <div class="showcase-layout">
-                <div class="showcase-screen"><img src="img/reports.png" alt="Raporlar" loading="lazy"></div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>Raporlar</div>
-                    <p class="showcase-info-desc">K&#226;r/zarar analizi, d&#246;nemsel kar&#351;&#305;la&#351;t&#305;rmalar, stok de&#287;erleme ve devir h&#305;z&#305;. 5 farkl&#305; rapor t&#252;r&#252;yle i&#351;letmenizi analiz edin.</p>
-                    <ul class="showcase-features">
-                        <li>K&#226;r/zarar ve marj analizi</li>
-                        <li>D&#246;nemsel kar&#351;&#305;la&#351;t&#305;rma raporu</li>
-                        <li>Stok de&#287;erleme raporu</li>
-                        <li>Stok devir h&#305;z&#305; analizi</li>
-                        <li>En &#231;ok hareket g&#246;ren &#252;r&#252;nler</li>
-                        <li>G&#246;rsel bar grafikler</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Y&#246;netim -->
-        <div class="showcase-panel" id="panel-yonetim">
-            <div class="showcase-layout">
-                <div class="dual-screens">
-                    <div class="showcase-screen"><img src="img/warehouses.png" alt="Depo Y&#246;netimi" loading="lazy"></div>
-                    <div class="showcase-screen"><img src="img/settings.png" alt="Ayarlar" loading="lazy"></div>
-                </div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4"/></svg>Y&#246;netim Paneli</div>
-                    <p class="showcase-info-desc">&#199;oklu depo y&#246;netimi, denetim kayd&#305;, uygulama ayarlar&#305; ve veri yedekleme. T&#252;m y&#246;netim ara&#231;lar&#305; tek yerde.</p>
-                    <ul class="showcase-features">
-                        <li>&#199;oklu depo y&#246;netimi</li>
-                        <li>Denetim kayd&#305; (audit log)</li>
-                        <li>Uygulama ayarlar&#305;</li>
-                        <li>Veritaban&#305; yedekleme</li>
-                        <li>Veri i&#231;e/d&#305;&#351;a aktarma</li>
-                        <li>PIN g&#252;venlik sistemi</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Dark Mode -->
-        <div class="showcase-panel" id="panel-dark">
-            <div class="showcase-layout">
-                <div class="dual-screens">
-                    <div class="showcase-screen"><img src="img/dashboard-dark.png" alt="Dashboard - Dark Mode" loading="lazy"></div>
-                    <div class="showcase-screen"><img src="img/products-dark.png" alt="&#220;r&#252;nler - Dark Mode" loading="lazy"></div>
-                </div>
-                <div class="dual-screens">
-                    <div class="showcase-screen"><img src="img/finance-dark.png" alt="Gelir/Gider - Dark Mode" loading="lazy"></div>
-                    <div class="showcase-screen"><img src="img/customers-dark.png" alt="M&#252;&#351;teriler - Dark Mode" loading="lazy"></div>
-                </div>
-                <div class="showcase-info">
-                    <div class="showcase-info-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>Karanl&#305;k Tema</div>
-                    <p class="showcase-info-desc">T&#252;m ekranlar karanl&#305;k temay&#305; destekler. Alt+D ile an&#305;nda ge&#231;i&#351; yap&#305;n, tercihiniz otomatik hat&#305;rlan&#305;r.</p>
-                    <ul class="showcase-features">
-                        <li>T&#252;m ekranlar dark mode uyumlu</li>
-                        <li>G&#246;z yormayan renk paleti</li>
-                        <li>Alt+D k&#305;sayolu ile ge&#231;i&#351;</li>
-                        <li>Tercih otomatik kaydedilir</li>
-                        <li>Grafikler ve tablolar uyumlu</li>
-                        <li>Formlar ve modallar destekli</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"><hr></div>
-
-    <section class="sec reveal" id="ozellikler">
-        <div class="sec-header"><div class="sec-tag">&#214;zellikler</div><h2 class="sec-title">Neler Yapabilirsiniz?</h2><p class="sec-desc">&#304;&#351;letme y&#246;netimini tek uygulamada toplayan &#246;zellikler.</p></div>
-        <div class="f-grid rc">
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="f-title">Kontrol Paneli</div><div class="f-desc">Stok durumu, i&#351;lemler, grafikler ve uyar&#305;lar tek ekranda.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="f-title">Cari Hesaplar</div><div class="f-desc">M&#252;&#351;teri ve tedarik&#231;i y&#246;netimi. Bor&#231;/alacak bakiyesi ve &#246;deme takibi.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="f-title">Fatura Sistemi</div><div class="f-desc">Sat&#305;&#351;/al&#305;&#351; faturas&#305; olu&#351;turun, PDF olarak kaydedin veya yazd&#305;r&#305;n.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="f-title">Gelir &amp; Gider</div><div class="f-desc">Kategorili gelir/gider takibi. Tekrarlayan kay&#305;tlarla otomatikle&#351;tirin.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div><div class="f-title">Raporlar</div><div class="f-desc">K&#226;r/zarar, d&#246;nemsel kar&#351;&#305;la&#351;t&#305;rma, stok de&#287;erleme ve devir h&#305;z&#305; analizi.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div><div class="f-title">Stok Say&#305;m</div><div class="f-desc">Fiziksel say&#305;m sonu&#231;lar&#305;n&#305; girin, farklar hesaplans&#305;n, toplu g&#252;ncelleyin.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div><div class="f-title">&#199;oklu Depo</div><div class="f-desc">Birden fazla depo tan&#305;mlay&#305;n, her &#252;r&#252;n&#252;n hangi depoda oldu&#287;unu takip edin.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h.01M7 12h.01M7 17h.01M12 7h.01M17 7h.01"/></svg></div><div class="f-title">Barkod &amp; Etiket</div><div class="f-desc">Barkod etiketi olu&#351;turun, yazd&#305;r&#305;n. Kamera ile barkod okutun.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="f-title">Spotlight Arama</div><div class="f-desc">Ctrl+K ile an&#305;nda &#252;r&#252;n, m&#252;&#351;teri veya i&#351;lem aray&#305;n.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="f-title">PIN G&#252;venli&#287;i</div><div class="f-desc">Uygulamay&#305; PIN ile koruyun. T&#252;m yazma i&#351;lemleri oturum do&#287;rulamas&#305; gerektirir.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div><div class="f-title">Bildirim Merkezi</div><div class="f-desc">D&#252;&#351;&#252;k stok, vadesi gelen &#246;demeler ve sistem uyar&#305;lar&#305; tek yerde.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div class="f-title">CSV &amp; PDF Aktarma</div><div class="f-desc">Toplu &#252;r&#252;n i&#231;e aktar&#305;n. Verileri CSV veya PDF olarak d&#305;&#351;a aktar&#305;n.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="f-title">Denetim Kayd&#305;</div><div class="f-desc">T&#252;m i&#351;lemler kay&#305;t alt&#305;na al&#305;n&#305;r. Kim, ne zaman, ne yapt&#305; &#8212; her &#351;ey izlenebilir.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><div class="f-title">Karanl&#305;k Tema</div><div class="f-desc">T&#252;m ekranlar dark mode destekli. Alt+D ile ge&#231;i&#351; yap&#305;n.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></div><div class="f-title">Otomatik Yedekleme</div><div class="f-desc">Veritaban&#305; otomatik yedeklenir. Tek t&#305;kla geri y&#252;kleme yap&#305;n.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="f-title">Masa&#252;st&#252; Uygulamas&#305;</div><div class="f-desc">Windows&#8217;ta &#231;al&#305;&#351;&#305;r, internet gerekmez, an&#305;nda a&#231;&#305;l&#305;r.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><div class="f-title">Toplu &#304;&#351;lem</div><div class="f-desc">Birden fazla &#252;r&#252;n&#252; se&#231;in; toplu silme, kategori ve fiyat g&#252;ncelleme yap&#305;n.</div></div>
-            <div class="f-card"><div class="f-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/><path d="M12 7v5l3 3"/></svg></div><div class="f-title">Geri Alma</div><div class="f-desc">Yanl&#305;&#351; stok i&#351;lemini an&#305;nda geri al&#305;n, eski haline d&#246;nd&#252;r&#252;n.</div></div>
-        </div>
-    </section>
-
-    <div class="divider"><hr></div>
-
-    <section class="sec reveal" id="sektorler">
-        <div class="sec-header"><div class="sec-tag">Sekt&#246;rler</div><h2 class="sec-title">Her Sekt&#246;re Uyarlan&#305;r</h2><p class="sec-desc">&#304;&#351; ak&#305;&#351;&#305;n&#305;za g&#246;re yap&#305;land&#305;r&#305;l&#305;r.</p></div>
-        <div class="marquee-wrap">
-            <div class="marquee-track">
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span><div><div class="m-name">Telefon &amp; Par&#231;a</div><div class="m-sub">Ekran, batarya, aksesuar</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span><div><div class="m-name">Market &amp; Bakkal</div><div class="m-sub">G&#305;da, i&#231;ecek, temizlik</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div><div class="m-name">Mobilya</div><div class="m-sub">Yatak, koltuk, masa</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span><div><div class="m-name">H&#305;rdavat</div><div class="m-sub">Alet, vida, boya</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.38 3.46L16 2 12 5.5 8 2l-4.38 1.46a.5.5 0 00-.32.6L5 11.5 12 21l7-9.5 1.7-7.44a.5.5 0 00-.32-.6z"/></svg></span><div><div class="m-name">Giyim &amp; Tekstil</div><div class="m-sub">K&#305;yafet, ayakkab&#305;</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><div><div class="m-name">Elektronik</div><div class="m-sub">Bilgisayar, tablet</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></span><div><div class="m-name">Eczane &amp; Medikal</div><div class="m-sub">&#304;la&#231;, malzeme</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4"/></svg></span><div><div class="m-name">Di&#287;er Sekt&#246;rler</div><div class="m-sub">Size &#246;zel &#231;&#246;z&#252;m</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span><div><div class="m-name">Telefon &amp; Par&#231;a</div><div class="m-sub">Ekran, batarya, aksesuar</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></span><div><div class="m-name">Market &amp; Bakkal</div><div class="m-sub">G&#305;da, i&#231;ecek, temizlik</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div><div class="m-name">Mobilya</div><div class="m-sub">Yatak, koltuk, masa</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span><div><div class="m-name">H&#305;rdavat</div><div class="m-sub">Alet, vida, boya</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.38 3.46L16 2 12 5.5 8 2l-4.38 1.46a.5.5 0 00-.32.6L5 11.5 12 21l7-9.5 1.7-7.44a.5.5 0 00-.32-.6z"/></svg></span><div><div class="m-name">Giyim &amp; Tekstil</div><div class="m-sub">K&#305;yafet, ayakkab&#305;</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><div><div class="m-name">Elektronik</div><div class="m-sub">Bilgisayar, tablet</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></span><div><div class="m-name">Eczane &amp; Medikal</div><div class="m-sub">&#304;la&#231;, malzeme</div></div></div>
-                <div class="m-card"><span class="m-emoji"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4"/></svg></span><div><div class="m-name">Di&#287;er Sekt&#246;rler</div><div class="m-sub">Size &#246;zel &#231;&#246;z&#252;m</div></div></div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"><hr></div>
-
-    <section class="sec reveal" id="fiyat">
-        <div class="sec-header"><div class="sec-tag">Fiyatland&#305;rma</div><h2 class="sec-title">Fiyat Teklifi</h2></div>
-        <div class="p-card">
-            <div class="p-l">Tek Seferlik &#214;deme</div>
-            <div class="p-t">Sekt&#246;r&#252;n&#252;ze G&#246;re Fiyatland&#305;r&#305;l&#305;r</div>
-            <div class="p-d">Ayl&#305;k abonelik yok. Yaz&#305;l&#305;m&#305; bir kez al&#305;n. Teknik destek ve g&#252;ncellemeler dahildir.</div>
-            <ul class="p-list">
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Tüm modüller dahil — stok, POS, fatura, muhasebe</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kontrol paneli, grafikler, bildirimler ve raporlar</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Fatura sistemi, gelir/gider takibi ve tekrarlayan kay&#305;tlar</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>&#199;oklu depo, stok say&#305;m, barkod ve toplu i&#351;lemler</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>PIN g&#252;venli&#287;i, denetim kayd&#305; ve otomatik yedekleme</li>
-                <li><span class="p-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Dark mode, CSV/PDF aktarma, kurulum ve e&#287;itim deste&#287;i</li>
-            </ul>
-            <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans — Fiyat Teklifi Talebi&body=Merhaba,%0A%0AAlkanlı Finans için fiyat teklifi almak istiyorum.%0A%0AŞirket Adı: %0ASektör: %0Aİletişim No: %0AE-posta: %0AMağaza / Şube Sayısı: %0ATahmini Ürün Sayısı: %0A%0AEk bilgi veya sorularınız:%0A%0A%0ASaygılarımla." class="btn btn-p" style="width:100%;justify-content:center;position:relative;z-index:1;">Fiyat Teklifi Al</a>
-        </div>
-    </section>
-
-    <section class="cta-sec reveal">
-        <div class="cta-box">
-            <h2 class="cta-t">Hemen Ba&#351;lay&#305;n</h2>
-            <p class="cta-d">Sorular&#305;n&#305;z i&#231;in bize ula&#351;&#305;n.</p>
-            <div class="cta-links">
-                <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans Hakkında&body=Merhaba,%0A%0AAlkanlı Finans hakkında bilgi almak istiyorum.%0A%0ASaygılarımla." class="cta-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic48@gmail.com</a>
-                <a href="mailto:kaanalkanlic@outlook.com?subject=Alkanlı Finans Hakkında&body=Merhaba,%0A%0AAlkanlı Finans hakkında bilgi almak istiyorum.%0A%0ASaygılarımla." class="cta-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>kaanalkanlic@outlook.com</a>
-                <a href="https://github.com/wilsonbia7" target="_blank" rel="noopener noreferrer" class="cta-a"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
-            </div>
-        </div>
-    </section>
-
-    <button class="back-top" id="back-top" aria-label="Yukar&#305; git"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg></button>
-
-    <footer>&copy; 2026 <a href="../">Kaan Alkanl&#305;</a> &mdash; Alkanlı Finans v3.0</footer>
-
-    <script>
-    // Cursor glow
-    const glow=document.getElementById('cursor-glow');
-    let gX=-500,gY=-500;
-    document.addEventListener('mousemove',e=>{gX=e.clientX;gY=e.clientY;glow.style.opacity='1'});
-    document.addEventListener('mouseleave',()=>{glow.style.opacity='0'});
-    (function moveGlow(){glow.style.left=gX+'px';glow.style.top=gY+'px';requestAnimationFrame(moveGlow)})();
-
-
-    // Scroll reveal
-    const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal,.rc').forEach(el=>obs.observe(el));
-
-    // Nav scroll effect
-    const nav=document.querySelector('nav');
-    addEventListener('scroll',()=>{if(scrollY>100){nav.style.background='rgba(8,8,26,0.85)';nav.style.borderColor='rgba(255,255,255,0.08)'}else{nav.style.background='';nav.style.borderColor=''}});
-
-    // Showcase tabs
-    document.querySelectorAll('.s-tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.showcase-panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.panel).classList.add('active')})});
-
-    // Smooth anchor
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
-
-    // Back to top
-    const btt=document.getElementById('back-top');
-    addEventListener('scroll',()=>{if(scrollY>600)btt.classList.add('show');else btt.classList.remove('show')});
-    btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-    // Stat counter animation (delayed to sync with fadeUp)
-    let statDone=false;
-    function runCounters(){document.querySelectorAll('.stat-num[data-target]').forEach(el=>{const t=parseInt(el.dataset.target);if(t===0)return;const suffix=el.querySelector('.stat-suffix');const suffixHTML=suffix?suffix.outerHTML:'';let c=0;const step=Math.max(1,Math.floor(t/30));const iv=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(iv)}el.innerHTML=c+suffixHTML},40)})}
-    const statObs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting&&!statDone){statDone=true;setTimeout(runCounters,1200)}})},{threshold:0.3});
-    document.querySelectorAll('.stat-row').forEach(el=>statObs.observe(el));
-    </script>
 </body>
 </html>
