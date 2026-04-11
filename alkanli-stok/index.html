@@ -225,6 +225,34 @@ nav.scrolled{background:rgba(8,8,26,.92);border-color:rgba(139,92,246,.12);box-s
 /* ── Footer ── */
 footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7rem;color:var(--dm);border-top:1px solid rgba(255,255,255,.03)}
 
+/* ── Word Cycle ── */
+.word-cycle{color:var(--acl);font-weight:500;display:inline-block;transition:opacity .25s ease,transform .25s var(--ease)}
+
+/* ── Third Orb ── */
+.orb:nth-child(3){width:500px;height:500px;background:rgba(52,211,153,.025);top:45%;right:-8%;animation:drift 42s ease-in-out infinite}
+
+/* ── Scroll to Top ── */
+.scroll-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:14px;background:rgba(8,8,26,.75);backdrop-filter:blur(16px);border:1px solid rgba(139,92,246,.1);display:grid;place-items:center;color:var(--dm);cursor:pointer;z-index:99;opacity:0;transform:translateY(20px);transition:all .3s var(--ease);pointer-events:none}
+.scroll-top.visible{opacity:1;transform:none;pointer-events:auto}
+.scroll-top:hover{background:rgba(139,92,246,.25);color:#fff;border-color:rgba(139,92,246,.2);transform:translateY(-2px)}
+.scroll-top svg{width:16px;height:16px}
+
+/* ── Feature Numbering ── */
+.bento-num{position:absolute;top:1.5rem;right:1.5rem;font-family:var(--fm);font-size:.6rem;color:rgba(139,92,246,.18);letter-spacing:1px;z-index:2}
+
+/* ── Trust Badges ── */
+.trust-badges{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;position:relative;z-index:2}
+.trust-badge{font-family:var(--fm);font-size:.58rem;color:var(--dm);display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:1px}
+.trust-badge svg{width:12px;height:12px;color:var(--gn)}
+
+/* ── Footer Enhanced ── */
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:0 clamp(1.5rem,4vw,3rem)}
+.footer-brand{display:flex;align-items:center;gap:8px;font-family:var(--fd);font-size:.8rem;font-weight:600;color:var(--br)}
+.footer-brand .nav-icon{width:22px;height:22px;font-size:.6rem;border-radius:6px}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.72rem;color:var(--dm);transition:color .2s}
+.footer-links a:hover{color:var(--acl)}
+
 /* ── Rotating Border ── */
 @property --angle{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes borderRotate{to{--angle:360deg}}
@@ -262,6 +290,9 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
   .c-tabs{gap:4px}
   .c-tab{font-size:.72rem;padding:8px 14px}
   .c-controls{gap:1rem}
+  .footer-inner{flex-direction:column;text-align:center}
+  .trust-badges{flex-direction:column;align-items:center}
+  .scroll-top{bottom:16px;right:16px;width:38px;height:38px}
 }
 </style>
 </head>
@@ -271,7 +302,7 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
 <div id="scroll-progress"></div>
 
 <!-- Background -->
-<div class="amb"><div class="orb"></div><div class="orb"></div></div>
+<div class="amb"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
 <div class="grid-bg"></div>
 
 <!-- Lightbox -->
@@ -297,7 +328,7 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
 <div class="sec hero">
   <div class="hero-tag"><span class="hero-dot"></span>v5.12 — 1.113 Test ile Doğrulanmış</div>
   <h1><span class="line1">Profesyonel</span><span class="line2">İşletme Yönetim Sistemi</span></h1>
-  <p class="hero-sub">Stok takibi, POS satış, e-fatura, muhasebe ve müşteri yönetimini tek platformda birleştirin. Masaüstünden buluta ölçeklenebilir.</p>
+  <p class="hero-sub">Tek platformda profesyonel <span class="word-cycle" id="word-cycle">stok yönetimi</span> çözümü. Masaüstünden buluta ölçeklenebilir.</p>
   <div class="hero-btns">
     <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans — Demo Talebi&amp;body=Merhaba,%0A%0AAlkanlı Finans hakkında bilgi almak ve demo görüşmesi yapmak istiyorum.%0A%0AŞirket Adı:%0Aİletişim No:%0AE-posta:%0A%0ASaygılarımla." class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 7 10-7"/></svg>İletişime Geçin</a>
     <a href="#ekranlar" class="btn btn-outline">Ekranları Görüntüleyin</a>
@@ -328,31 +359,37 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
   <p class="desc">Küçük mağazadan kurumsal zincire kadar her ölçekte profesyonel yönetim.</p>
   <div class="bento">
     <div class="bento-card bento-wide rv rv-delay-1">
+      <span class="bento-num">01</span>
       <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
       <h3>Kapsamlı Stok Yönetimi</h3>
       <p>Barkod tarama, seri numarası takibi, ürün varyantları (beden/renk), toplu fiyat güncelleme, stok tahmin motoru ve otomatik yeniden sipariş önerisi. 100.000+ ürün kapasitesi.</p>
     </div>
     <div class="bento-card rv rv-delay-2">
+      <span class="bento-num">02</span>
       <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/></svg></div>
       <h3>POS — Hızlı Satış</h3>
       <p>Nakit, kart, bölünmüş ödeme, veresiye. Z raporu, kısmi iade, termal yazıcı entegrasyonu.</p>
     </div>
     <div class="bento-card rv rv-delay-3">
+      <span class="bento-num">03</span>
       <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
       <h3>e-Fatura ve Faturalama</h3>
       <p>UBL-TR XML, GİB entegrasyonu, profesyonel PDF çıktı, KDV beyanname dışa aktarımı.</p>
     </div>
     <div class="bento-card rv rv-delay-1">
+      <span class="bento-num">04</span>
       <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
       <h3>Finans ve Muhasebe</h3>
       <p>Gelir/gider takibi, veresiye defteri, taksitli ödeme, mali dönem kapanışı.</p>
     </div>
     <div class="bento-card bento-wide rv rv-delay-2">
+      <span class="bento-num">05</span>
       <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
       <h3>Raporlar ve Analiz</h3>
       <p>Kâr analizi, ABC sınıflandırması, stok devir hızı, banka uzlaşması. Tüm raporlar tek tıkla PDF. Paraşüt, Logo, Mikro muhasebe aktarımı.</p>
     </div>
     <div class="bento-card rv rv-delay-3">
+      <span class="bento-num">06</span>
       <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
       <h3>Müşteri Portalı</h3>
       <p>Token tabanlı erişim, fatura görüntüleme, bakiye sorgulama, ödeme hatırlatma.</p>
@@ -429,6 +466,11 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
       <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Kurulum, eğitim ve teknik destek dahil</li>
     </ul>
     <a href="mailto:kaanalkanlic48@gmail.com?subject=Alkanlı Finans — Fiyat Teklifi&amp;body=Merhaba,%0A%0AAlkanlı Finans için fiyat teklifi almak istiyorum.%0A%0AŞirket Adı:%0ASektör:%0Aİletişim No:%0AE-posta:%0AMağaza Sayısı:%0ATahmini Ürün Sayısı:%0A%0ASaygılarımla." class="btn btn-primary" style="width:100%;justify-content:center;position:relative;z-index:1">Fiyat Teklifi Alın</a>
+    <div class="trust-badges">
+      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>AES-256 Şifreleme</span>
+      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>KVKK Uyumlu</span>
+      <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Teknik Destek</span>
+    </div>
   </div>
 </div>
 
@@ -447,21 +489,42 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
   </div>
 </div>
 
-<footer><p>© 2026 Kaan Alkanlı — Alkanlı Finans. Tüm hakları saklıdır.</p></footer>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-icon">A</div>Alkanlı Finans</div>
+    <div class="footer-links">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="#ekranlar">Ekranlar</a>
+      <a href="#fiyat">Fiyat</a>
+      <a href="mailto:kaanalkanlic48@gmail.com">İletişim</a>
+    </div>
+    <span class="footer-copy">© 2026 Kaan Alkanlı. Tüm hakları saklıdır.</span>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<div class="scroll-top" id="scroll-top" aria-label="Sayfa başına dön">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</div>
 
 <script>
 (function(){
   'use strict';
 
-  /* ── Scroll Progress Bar + Nav ── */
+  /* ── Scroll Progress + Nav + Scroll-to-Top ── */
   var progressBar = document.getElementById('scroll-progress');
   var nav = document.getElementById('nav');
+  var scrollTopBtn = document.getElementById('scroll-top');
   window.addEventListener('scroll', function() {
     var scrollY = window.scrollY;
     nav.classList.toggle('scrolled', scrollY > 60);
+    scrollTopBtn.classList.toggle('visible', scrollY > 600);
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     if (docHeight > 0) progressBar.style.width = (scrollY / docHeight * 100) + '%';
   }, { passive: true });
+  scrollTopBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   /* ── Smooth Scroll ── */
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
@@ -686,6 +749,23 @@ footer{position:relative;z-index:1;text-align:center;padding:2.5rem;font-size:.7
   lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) lbClose();
   });
+
+  /* ── Word Cycle — hero subtitle ── */
+  var wordCycleEl = document.getElementById('word-cycle');
+  if (wordCycleEl) {
+    var words = ['stok yönetimi', 'POS satış', 'e-fatura', 'finans takibi', 'müşteri yönetimi'];
+    var wordIdx = 0;
+    setInterval(function() {
+      wordCycleEl.style.opacity = '0';
+      wordCycleEl.style.transform = 'translateY(-8px)';
+      setTimeout(function() {
+        wordIdx = (wordIdx + 1) % words.length;
+        wordCycleEl.textContent = words[wordIdx];
+        wordCycleEl.style.opacity = '1';
+        wordCycleEl.style.transform = 'translateY(0)';
+      }, 250);
+    }, 2500);
+  }
 
   /* ── Keyboard Navigation ── */
   document.addEventListener('keydown', function(e) {
